@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yorumlar | Müzik Aletleri</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components/header.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main style="max-width: 700px; margin: 40px auto; padding: 20px;">
+    <h1 style="text-align:center; margin-bottom: 20px;">Yorumlar</h1>
+
+    <form id="commentForm">
+      <input type="text" name="name" placeholder="Adınız" style="width:100%; padding:10px; margin-bottom:10px;">
+      <textarea name="message" rows="4" placeholder="Yorumunuzu yazın..." style="width:100%; padding:10px; margin-bottom:10px;"></textarea>
+      <button type="submit" class="btn" style="border:none;">Yorum Gönder</button>
+    </form>
+
+    <h2 style="margin-top:40px;">Gönderilen Yorumlar</h2>
+    <div id="commentList" style="margin-top:15px;"></div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/components/form-validation.js"></script>
+  <script>
+    // localStorage’daki yorumları listele
+    document.addEventListener("DOMContentLoaded", () => {
+      const comments = JSON.parse(localStorage.getItem("comments")) || [];
+      const list = document.getElementById("commentList");
+
+      if (comments.length === 0) {
+        list.innerHTML = "<p>Henüz yorum yapılmamış.</p>";
+      } else {
+        list.innerHTML = comments.map(c => `
+          <div style="border:1px solid #ddd; border-radius:10px; padding:10px; margin-bottom:10px;">
+            <strong>${c.name}</strong> <small>(${c.date})</small>
+            <p>${c.message}</p>
+          </div>
+        `).join("");
+      }
+    });
+  </script>
+</body>
+</html>
