@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Müziğin tarihçesi, türleri ve ruh hâline etkisi. Enstrümanları keşfedin." />
+  <title>Müzik Aletleri | Ana Sayfa</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components/header.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/components/card.css">
+  <link rel="stylesheet" href="css/homepage-toggle.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header id="site-header"></header>
+
+  <!-- ANA İÇERİK (Flex ile büyüyen) -->
+  <main class="main-content">
+   <!-- HERO -->
+<section class="hero">
+  <div class="hero-container">
+    <img src="assets/images/hero-piano.jpg" alt="Müzik, Ruhun İlacı" class="hero-image">
+    <div class="hero-content">
+      <button id="toggleInfoBtn" class="btn">Keşfetmeye Başla</button>
+    </div>
+  </div>
+</section>
+    <!-- AÇILIP KAPANAN BİLGİ BÖLÜMÜ -->
+    <section class="info-sections" id="infoSections">
+      <div class="info-card">
+        <img src="assets/images/history.jpg" alt="Müziğin Tarihçesi">
+        <div class="info-text">
+          <h2>Müziğin Tarihçesi</h2>
+          <p>Müzik, insanlık tarihi kadar eskidir. Mağara duvarlarındaki ilk ritimlerden, antik uygarlıkların ilahilerine, Rönesans polifonisine kadar her dönemde var olmuştur.</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-text">
+          <h2>Müzik Türleri</h2>
+          <p>Klasik, caz, rock, pop, elektronik, halk müziği... Her tür farklı bir ruh hâlini yansıtır. Klasik müzik dinginlik, rock enerji, caz doğaçlama verir.</p>
+        </div>
+        <img src="assets/images/genres.jpg" alt="Müzik Türleri">
+      </div>
+
+      <div class="info-card">
+        <img src="assets/images/brain-music.jpg" alt="Beyin ve Müzik">
+        <div class="info-text">
+          <h2>Müziğin Ruh Hâline Etkisi</h2>
+          <p>Bilimsel olarak kanıtlandı: Müzik stresi azaltır, mutluluğu artırır, hafızayı güçlendirir. Hızlı ritim enerji, yavaş melodi huzur verir.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (SABİT ALTTA) -->
+  <footer id="site-footer" class="fixed-footer"></footer>
+
+  <!-- JS -->
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/homepage-toggle.js"></script>
+</body>
+</html>

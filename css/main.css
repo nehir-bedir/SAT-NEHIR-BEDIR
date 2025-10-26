@@ -1,0 +1,510 @@
+/* Genel site teması ve layout */
+body {
+  background-color: #fafafa;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Hero alanı */
+.hero {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.hero-image {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+  filter: brightness(0.6);
+  border-bottom: 5px solid #d4af37;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  background-color: #d4af37;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #b8962f;
+}
+
+/* Öne çıkan enstrümanlar */
+.featured {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.featured h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Footer */
+footer {
+  background-color: #222;
+  color: #eee;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+}
+/* Dropdown menü */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #1e1e1e;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #444;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* === Bilgilendirici Bölümler === */
+.info-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 60px 10%;
+  background-color: #111;
+  color: #fff;
+}
+
+.info-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  background-color: #1b1b1b;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.info-card img {
+  width: 40%;
+  border-radius: 10px;
+}
+
+.info-text {
+  width: 60%;
+}
+
+.info-text h2 {
+  margin-bottom: 10px;
+  color: #ffcc00;
+}
+
+.info-text p {
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+/* Mobil görünüm */
+@media (max-width: 768px) {
+  .info-card {
+    flex-direction: column;
+  }
+  .info-card img, .info-text {
+    width: 100%;
+  }
+}
+/* HERO - YAZI NETLİĞİ */
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  width: 90%;
+  max-width: 800px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6); /* SİYAH YARI ŞEFFAF ARKA PLAN */
+  border-radius: 20px;
+  backdrop-filter: blur(5px); /* BULANIKLAŞTIRMA EFEKTİ */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.hero-text h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  color: #ffffff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+}
+
+.hero-text p {
+  font-size: 1.25rem;
+  margin-bottom: 25px;
+  color: #f0f0f0 !important;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* Buton */
+#toggleInfoBtn {
+  background-color: #d4af37;
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+#toggleInfoBtn:hover {
+  background-color: #f1c40f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+}
+
+#toggleInfoBtn.active {
+  background-color: #e67e22;
+}
+/* === SABİT FOOTER === */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fafafa;
+  color: #222;
+  line-height: 1.6;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.fixed-footer {
+  background-color: #111;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  margin-top: auto;
+}
+
+/* Footer linkleri */
+.fixed-footer a {
+  color: #d4af37;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+.fixed-footer a:hover {
+  color: white;
+}
+/* === YENİ HERO - RESİMLİ + MOBİL BUTON === */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Mobilde buton görünür, masaüstünde gizli */
+.hero-mobile-btn {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: none;
+}
+
+.hero-mobile-btn .btn {
+  background-color: #f1c40f;
+  color: #000;
+  font-weight: bold;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(241, 196, 15, 0.4);
+  transition: all 0.3s ease;
+}
+
+.hero-mobile-btn .btn:hover {
+  background-color: #f39c12;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(241, 196, 15, 0.6);
+}
+
+/* MOBİL İÇİN */
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh;
+  }
+  .hero-mobile-btn {
+    display: block;
+  }
+  #toggleInfoBtn {
+    width: 80%;
+    max-width: 300px;
+  }
+}
+/* === YENİ HERO - ORANTILI + BUTON HER ZAMAN GÖRÜNÜR === */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 90vh;           /* Ekranın %90'ı kadar */
+  min-height: 500px;      /* En az 500px */
+  max-height: 800px;               /* En fazla 800px */
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;  /* Butonu alta sabitle */
+  justify-content: center;
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* Resim bozulmadan kaplar */
+  object-position: center;
+  z-index: 1;
+}
+
+/* Buton overlay */
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 0 20px 60px 20px; /* Alt boşluk */
+  text-align: center;
+  width: 100%;
+}
+
+.hero-overlay .btn {
+  background-color: #f1c40f;
+  color: #000;
+  font-weight: bold;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  box-shadow: 0 6px 20px rgba(241, 196, 15, 0.5);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  min-width: 220px;
+}
+
+.hero-overlay .btn:hover {
+  background-color: #f39c12;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(241, 196, 15, 0.7);
+}
+
+.hero-overlay .btn.active {
+  background-color: #e67e22;
+}
+
+/* MOBİL UYUM */
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh;
+    min-height: 400px;
+  }
+  .hero-overlay {
+    padding-bottom: 40px;
+  }
+  .hero-overlay .btn {
+    padding: 14px 30px;
+    font-size: 1.1rem;
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: 60vh;
+  }
+  .hero-overlay .btn {
+    padding: 12px 28px;
+    font-size: 1rem;
+  }
+}
+/* === HERO - TAM ORANTILI, TAŞMA YOK, NET GÖRÜNÜM === */
+.hero {
+  width: 100%;
+  height: 90vh;
+  min-height: 500px;
+  max-height: 900px;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  background: #0f3460;
+}
+
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* Resim bozulmadan kaplar */
+  object-position: center top; /* Piyano tuşları üstte kalsın */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Hover efekti (isteğe bağlı) */
+.hero:hover .hero-image {
+  transform: scale(1.03);
+}
+
+/* Buton overlay */
+.hero-content {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+.hero-content .btn {
+  background: linear-gradient(135deg, #f1c40f, #e67e22);
+  color: #000;
+  font-weight: 800;
+  font-size: 1.3rem;
+  padding: 16px 40px;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 0 8px 25px rgba(241, 196, 15, 0.5);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  min-width: 240px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hero-content .btn:hover {
+  background: linear-gradient(135deg, #f39c12, #d35400);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(241, 196, 15, 0.7);
+}
+
+.hero-content .btn.active {
+  background: #c0392b;
+  color: white;
+}
+
+/* === MOBİL UYUM === */
+@media (max-width: 992px) {
+  .hero {
+    height: 80vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh;
+    min-height: 450px;
+  }
+  .hero-content {
+    bottom: 50px;
+  }
+  .hero-content .btn {
+    padding: 14px 32px;
+    font-size: 1.1rem;
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: 60vh;
+    min-height: 400px;
+  }
+  .hero-content {
+    bottom: 40px;
+    width: 85%;
+  }
+  .hero-content .btn {
+    padding: 12px 28px;
+    font-size: 1rem;
+    min-width: 180px;
+  }
+}

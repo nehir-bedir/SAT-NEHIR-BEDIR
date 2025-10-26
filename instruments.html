@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Müzik Aletleri</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components/header.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/components/card.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main style="padding: 40px;">
+    <h1 style="text-align:center; margin-bottom: 30px;">Tüm Müzik Aletleri</h1>
+    <div class="card-container" id="all-instruments">
+      <!-- instrument-card.html buraya JS ile yüklenecek -->
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Sayfa açıldığında tüm enstrüman kartlarını yükle
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("partials/instrument-card.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("all-instruments").innerHTML = html;
+        });
+    });
+  </script>
+</body>
+</html>
