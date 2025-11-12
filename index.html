@@ -13,37 +13,171 @@
   <link rel="stylesheet" href="css/components/footer.css">
   <link rel="stylesheet" href="css/components/card.css">
   <link rel="stylesheet" href="css/homepage-toggle.css">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      background-color: #111;
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+    }
+
+    main.main-content {
+      flex: 1;
+      padding-bottom: 100px; /* footer kadar boşluk */
+    }
+
+    footer.fixed-footer {
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 0.9rem;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      border-top: 1px solid #333;
+    }
+
+    footer.fixed-footer a {
+      color: #ffcc00;
+      text-decoration: none;
+      margin: 0 6px;
+    }
+
+    footer.fixed-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 75vh;
+      overflow: hidden;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.6);
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .hero-content .btn {
+      background-color: #ffcc00;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .hero-content .btn:hover {
+      background-color: #e6b800;
+    }
+
+    .info-sections {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding: 60px 10%;
+      background-color: #111;
+      color: #fff;
+    }
+
+    .info-card {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+      background-color: #1b1b1b;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .info-card img {
+      width: 40%;
+      border-radius: 10px;
+    }
+
+    .info-text {
+      width: 60%;
+    }
+
+    .info-text h2 {
+      margin-bottom: 10px;
+      color: #ffcc00;
+    }
+
+    .info-text p {
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 768px) {
+      .info-card {
+        flex-direction: column;
+      }
+      .info-card img, .info-text {
+        width: 100%;
+      }
+      footer.fixed-footer {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Header -->
+  <!-- HEADER -->
   <header id="site-header"></header>
 
-  <!-- ANA İÇERİK (Flex ile büyüyen) -->
+  <!-- ANA İÇERİK -->
   <main class="main-content">
-   <!-- HERO -->
-<section class="hero">
-  <div class="hero-container">
-    <img src="assets/images/hero-piano.jpg" alt="Müzik, Ruhun İlacı" class="hero-image">
-    <div class="hero-content">
-      <button id="toggleInfoBtn" class="btn">Keşfetmeye Başla</button>
-    </div>
-  </div>
-</section>
-    <!-- AÇILIP KAPANAN BİLGİ BÖLÜMÜ -->
+    <section class="hero">
+      <div class="hero-container">
+        <img src="assets/images/hero-piano.jpg" alt="Müzik, Ruhun İlacı" class="hero-image">
+        <div class="hero-content">
+          <button id="toggleInfoBtn" class="btn">Keşfetmeye Başla</button>
+        </div>
+      </div>
+    </section>
+
     <section class="info-sections" id="infoSections">
       <div class="info-card">
         <img src="assets/images/history.jpg" alt="Müziğin Tarihçesi">
         <div class="info-text">
           <h2>Müziğin Tarihçesi</h2>
-          <p>Müzik, insanlık tarihi kadar eskidir. Mağara duvarlarındaki ilk ritimlerden, antik uygarlıkların ilahilerine, Rönesans polifonisine kadar her dönemde var olmuştur.</p>
+          <p>
+            Müzik, insanlık tarihi kadar eskidir. Mağara duvarlarındaki ilk ritimlerden,
+            antik uygarlıkların ilahilerine, Rönesans polifonisine kadar her dönemde var olmuştur.
+          </p>
         </div>
       </div>
 
       <div class="info-card">
         <div class="info-text">
           <h2>Müzik Türleri</h2>
-          <p>Klasik, caz, rock, pop, elektronik, halk müziği... Her tür farklı bir ruh hâlini yansıtır. Klasik müzik dinginlik, rock enerji, caz doğaçlama verir.</p>
+          <p>
+            Klasik, caz, rock, pop, elektronik, halk müziği...
+            Her tür farklı bir ruh hâlini yansıtır. Klasik müzik dinginlik, rock enerji, caz doğaçlama verir.
+          </p>
         </div>
         <img src="assets/images/genres.jpg" alt="Müzik Türleri">
       </div>
@@ -52,13 +186,16 @@
         <img src="assets/images/brain-music.jpg" alt="Beyin ve Müzik">
         <div class="info-text">
           <h2>Müziğin Ruh Hâline Etkisi</h2>
-          <p>Bilimsel olarak kanıtlandı: Müzik stresi azaltır, mutluluğu artırır, hafızayı güçlendirir. Hızlı ritim enerji, yavaş melodi huzur verir.</p>
+          <p>
+            Bilimsel olarak kanıtlandı: Müzik stresi azaltır, mutluluğu artırır, hafızayı güçlendirir.
+            Hızlı ritim enerji, yavaş melodi huzur verir.
+          </p>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER (SABİT ALTTA) -->
+  <!-- SABİT FOOTER -->
   <footer id="site-footer" class="fixed-footer"></footer>
 
   <!-- JS -->
@@ -67,3 +204,4 @@
   <script src="js/homepage-toggle.js"></script>
 </body>
 </html>
+r

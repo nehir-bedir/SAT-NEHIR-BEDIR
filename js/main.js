@@ -4,6 +4,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   loadPartials();
   loadFeaturedInstruments();
+  initInstrumentSearch(); // Yeni eklendi 🎯
 });
 
 // HTML parçalarını dinamik olarak yükleme
@@ -48,6 +49,7 @@ function loadFeaturedInstruments() {
   instruments.forEach(inst => {
     const card = document.createElement("div");
     card.classList.add("instrument-card");
+    card.setAttribute("data-name", inst.name.toLowerCase());
     card.innerHTML = `
       <img src="${inst.img}" alt="${inst.name}">
       <div class="info">
@@ -56,5 +58,23 @@ function loadFeaturedInstruments() {
       </div>
     `;
     container.appendChild(card);
+  });
+}
+
+// === 🎵 MÜZİK ALETLERİ SAYFASI: Arama & Filtreleme ===
+function initInstrumentSearch() {
+  const searchInput = document.getElementById("searchInput");
+  const cards = document.querySelectorAll(".instrument-card");
+
+  // Eğer sayfa "instruments.html" değilse, çık.
+  if (!searchInput || cards.length === 0) return;
+
+  searchInput.addEventListener("input", () => {
+    const value = searchInput.value.toLowerCase();
+
+    cards.forEach(card => {
+      const name = card.dataset.name.toLowerCase();
+      card.style.display = name.includes(value) ? "block" : "none";
+    });
   });
 }

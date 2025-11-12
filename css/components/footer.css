@@ -1,0 +1,47 @@
+footer {
+  background-color: #111;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+}
+
+footer a {
+  color: #d4af37;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+footer a:hover {
+  color: white;
+}
+footer.fixed-footer,
+footer.fixed-footer-inner {
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 0.9rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  border-top: 1px solid #333;
+}
+
+footer.fixed-footer a,
+footer.fixed-footer-inner a {
+  color: #ffcc00;
+  text-decoration: none;
+  margin: 0 6px;
+}
+
+footer.fixed-footer a:hover,
+footer.fixed-footer-inner a:hover {
+  text-decoration: underline;
+}
+
+/* Footer'ın içerikle çakışmaması için sayfa altına boşluk */
+body {
+  padding-bottom: 80px;
+}
