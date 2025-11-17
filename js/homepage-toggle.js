@@ -1,22 +1,34 @@
+// js/homepage-toggle.js
+
 document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("toggleInfoBtn");
-  const section = document.getElementById("infoSections");
+    const heroSection = document.querySelector('.hero');
+    const infoSections = document.getElementById('infoSections');
+    const exploreButton = heroSection ? heroSection.querySelector('.btn') : null;
 
-  if (!btn || !section) return;
-
-  // Başlangıçta kapalı
-  section.classList.remove("show");
-  btn.classList.remove("active");
-
-  btn.addEventListener("click", () => {
-    if (section.classList.contains("show")) {
-      section.classList.remove("show");
-      btn.textContent = "Keşfetmeye Başla";
-      btn.classList.remove("active");
-    } else {
-      section.classList.add("show");
-      btn.textContent = "Kapat";
-      btn.classList.add("active");
+    if (!heroSection || !infoSections || !exploreButton) {
+        // Gerekli elemanlar yoksa (diğer sayfalardaysak) çalışmayı durdur.
+        return;
     }
-  });
+
+    // Başlangıçta info-sections görünür olmamalı
+    infoSections.classList.remove('visible'); 
+
+    // Butona tıklandığında geçişi yap
+    exploreButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        
+        // 1. Hero alanını küçült (CSS'teki .hero-minimized sınıfını kullanır)
+        heroSection.classList.add('hero-minimized');
+        
+        // 2. Info Sections içeriğini göster
+        infoSections.classList.add('visible');
+
+        // 3. Kullanıcıyı gösterilen içeriğe kaydır
+        setTimeout(() => {
+            infoSections.scrollIntoView({ behavior: 'smooth' });
+        }, 500); // CSS animasyon süresiyle senkronize et
+
+        // 4. Butonu devre dışı bırak/gizle (isteğe bağlı)
+        exploreButton.style.display = 'none';
+    });
 });

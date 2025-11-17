@@ -1,0 +1,134 @@
+/* css/components/detail-page.css - MAKSİMUM CANLILIK VE ETKİLEŞİM İÇİN GÜNCELLENDİ */
+
+/* Genel Detay Sayfası Düzeni */
+.detail-container {
+    padding: 30px 0;
+}
+
+/* Ana Enstrüman Bilgisi Bölümü (Canlılık Artışı) */
+.instrument-info {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-bottom: 60px;
+    background-color: var(--content-bg);
+    padding: 30px;
+    border-radius: 10px;
+    /* GÖLGE CANLILIĞI ARTIRILDI */
+    box-shadow: 0 4px 30px rgba(255, 204, 0, 0.35); /* Belirgin sarı glow */
+    border: 2px solid rgba(255, 204, 0, 0.6); /* Daha belirgin sarı kenarlık */
+}
+
+.instrument-info img {
+    width: 40%;
+    max-width: 400px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.4s ease;
+    /* Görsele hafif bir parlaklık efekti */
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+}
+
+.instrument-info img:hover {
+    transform: scale(1.05); /* Daha belirgin büyüme */
+}
+
+.instrument-text {
+    width: 60%;
+}
+
+.instrument-text h2 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-top: 0;
+    border-bottom: 3px solid var(--primary-color); 
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    /* Başlığa Canlılık Katma */
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.7); 
+}
+
+.instrument-text p {
+    line-height: 1.7;
+    color: var(--light-text-color);
+    margin-bottom: 15px;
+}
+
+/* YENİ VE CANLI CTA Butonunun Detay Sayfası Versiyonu */
+.detail-cta-button {
+    display: block;
+    width: 100%;
+    padding: 22px; /* Biraz daha büyük */
+    margin: 40px 0 20px 0;
+    background-color: var(--primary-color); /* Sarı arkaplan */
+    color: #111; /* Koyu yazı */
+    font-size: 1.8rem; /* Daha büyük */
+    font-weight: 900; /* Ekstra kalın yazı */
+    text-align: center;
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    /* ÇOK DAHA CANLI GÖLGE */
+    box-shadow: 0 8px 30px rgba(255, 204, 0, 0.7); 
+    text-transform: uppercase;
+}
+
+.detail-cta-button:hover {
+    background-color: #ffd700;
+    /* Hover'da daha da parlama ve sıçrama efekti */
+    box-shadow: 0 15px 40px rgba(255, 204, 0, 1), 0 0 50px rgba(255, 204, 0, 0.8); 
+    transform: translateY(-5px) scale(1.005); 
+}
+
+/* Çeşitler/Türler Bölümü (Açılır Kapanır Animasyon) */
+.type-section {
+    margin-top: 20px;
+    overflow: hidden; 
+    max-height: 0; 
+    opacity: 0;
+    transition: max-height 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.7s ease; /* Daha yumuşak geçiş */
+}
+
+.type-section.visible {
+    max-height: 2000px; 
+    opacity: 1;
+    padding-bottom: 40px; 
+}
+
+.type-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding-top: 20px;
+}
+
+.type-card {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.type-card:hover {
+    transform: translateY(-8px); /* Daha belirgin sıçrama */
+    /* Kartların da canlanması */
+    box-shadow: 0 0 25px rgba(255, 204, 0, 0.8), 0 5px 15px rgba(0, 0, 0, 0.5); 
+    background-color: #282828; 
+}
+
+/* Mobil Düzenleme */
+@media (max-width: 992px) {
+    .instrument-info {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    .instrument-info img,
+    .instrument-text {
+        width: 100%;
+        max-width: none;
+    }
+}

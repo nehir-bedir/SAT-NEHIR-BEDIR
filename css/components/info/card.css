@@ -1,0 +1,65 @@
+/* css/components/info-card.css */
+
+/* Bilgi Kartları Genel Düzeni */
+.info-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px 0;
+}
+
+.info-card {
+    display: flex;
+    align-items: center;
+    background-color: var(--content-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.info-card img {
+    /* Görselin tam olarak yarım kartı kaplamasını sağlar */
+    width: 50%;
+    height: 300px; 
+    object-fit: cover;
+}
+
+.info-text {
+    width: 50%;
+    padding: 30px;
+}
+
+.info-text h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-size: 1.8rem;
+}
+
+.info-text p {
+    color: var(--light-text-color);
+    line-height: 1.6;
+}
+
+/* 🔄 Ters Sıralama (Çift Sayılı Kartlar) */
+.info-sections .info-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* 📱 Mobil Düzenleme */
+@media (max-width: 992px) {
+    .info-card, 
+    .info-sections .info-card:nth-child(even) {
+        flex-direction: column; /* Mobil cihazlarda kartları dikey hizala */
+    }
+
+    .info-card img,
+    .info-text {
+        width: 100%; /* Hem görsel hem metin alanı tam genişlik kaplar */
+        height: auto;
+    }
+}

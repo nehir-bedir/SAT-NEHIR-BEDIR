@@ -1,0 +1,66 @@
+/* css/components/wide-card.css */
+
+/* Izgara Düzeni: Dikeyde sıralanmış kartlar için bir sütunlu ızgara */
+.instruments-grid {
+    display: grid;
+    /* Tek sütun, kartların tam genişliği kaplamasını sağlar */
+    grid-template-columns: 1fr; 
+    gap: 25px; /* Kartlar arası dikey boşluk */
+    padding: 20px 0;
+}
+
+/* Tekil Geniş Buton/Kart Stili */
+.instrument-card {
+    display: flex;
+    align-items: center; /* İçerikleri dikeyde ortalar */
+    text-decoration: none;
+    background-color: var(--content-bg); /* Koyu arkaplan */
+    color: #fff;
+    border-radius: 8px;
+    padding: 20px 30px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    /* Kartların daha büyük ve dikdörtgen görünmesi için minimum yükseklik */
+    min-height: 80px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Kart Hover Efekti (Buton hissi vermek için) */
+.instrument-card:hover {
+    background-color: var(--secondary-color); /* Hover'da arka planı hafifçe aç */
+    transform: translateY(-3px); /* Hafif yukarı kalkma efekti */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* Enstrüman Adı Stili */
+.instrument-card h3 {
+    margin: 0;
+    color: var(--primary-color); /* Sarı renkte başlık */
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+/* Açıklama Metni Stili */
+.instrument-card p {
+    margin: 0;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* Görseli Gizleme veya Küçültme (Gerekirse) */
+.instrument-card img {
+    /* İkinci resminizdeki gibi sadece yazı varsa, bu kısmı kaldırabilirsiniz. */
+    /* Veya küçük bir ikon gibi görünmesini sağlayabilirsiniz: */
+    width: 60px; 
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+    flex-shrink: 0; /* Küçülmesini engeller */
+    display: none; /* İkinci resminizdeki tasarımda görsel yok, bu yüzden gizleyebiliriz */
+}
+
+/* Kart içindeki metin alanını düzenleme */
+.instrument-card > div {
+    display: flex;
+    flex-direction: column;
+}

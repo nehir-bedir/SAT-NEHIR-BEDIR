@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tuşlu Çalgılar | Müzik Aletleri</title>
+  
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/header.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+  
+  <link rel="stylesheet" href="css/components/wide-card.css" /> 
+  
+  </head>
+
+<body>
+  <header id="site-header"></header>
+
+  <main>
+    <h1>Tuşlu Çalgılar</h1>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Bir enstrüman ara...">
+    </div>
+
+    <div class="instruments-grid" id="instrumentsGrid">
+      
+      <a href="piyano.html" class="instrument-card" data-name="Piyano">
+        <div>
+          <h3>Piyano</h3>
+          <p>Tuşlara basıldığında tellere çekiç vuran, en popüler ve geniş ses aralığına sahip çalgıdır.</p>
+        </div>
+      </a>
+
+      <a href="org.html" class="instrument-card" data-name="Org">
+        <div>
+          <h3>Org</h3>
+          <p>Klavyeli, üflemeli veya elektronik yollarla hava üreterek ses çıkaran anıtsal çalgıdır.</p>
+        </div>
+      </a>
+
+      <a href="akordeon.html" class="instrument-card" data-name="Akordeon">
+        <div>
+          <h3>Akordeon</h3>
+          <p>Körük yardımıyla hava itilerek çalışan, tuşlu/düğmeli taşınabilir bir çalgıdır.</p>
+        </div>
+      </a>
+
+      <a href="melodika.html" class="instrument-card" data-name="Melodika">
+        <div>
+          <h3>Melodika</h3>
+          <p>Üflemeli ve tuşlu özelliklerini birleştiren, küçük, elde taşınabilir bir eğitim çalgısıdır.</p>
+        </div>
+      </a>
+
+      <a href="klavsen.html" class="instrument-card" data-name="Klavsen">
+        <div>
+          <h3>Klavsen</h3>
+          <p>Piyanodan önceki Barok dönemde kullanılan, tellerin tırnaklanarak ses çıkardığı çalgıdır.</p>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer id="site-footer" class="fixed-footer"></footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Header ve Footer yükle (Tüm sayfalarda aynı)
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("partials/header.html")
+        .then(res => res.text())
+        .then(data => {
+            const header = document.getElementById("site-header");
+            if(header) header.innerHTML = data;
+        });
+
+      fetch("partials/footer.html")
+        .then(res => res.text())
+        .then(data => {
+            const footer = document.getElementById("site-footer");
+            if(footer) footer.innerHTML = data;
+        });
+    });
+  </script>
+</body>
+</html>
