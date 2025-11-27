@@ -9,13 +9,14 @@
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/components/header.css" />
   <link rel="stylesheet" href="css/components/footer.css" />
-  
   <link rel="stylesheet" href="css/components/wide-card.css" /> 
   
   <style>
-    /* ... (Daha önce <categories.html> veya ana sayfadan kopyaladığınız style bloğu buraya gelmelidir) ... */
-    /* **ÖNEMLİ:** Eğer bu stil bloğunu <telli-calgilar.html>'e kopyaladıysanız, buraya koymalısınız. */
-    /* Örneğin: body { background-color: #111; } gibi tanımlar. */
+    /* Eğer siteniz koyu temadaysa bu stil gereklidir */
+    body {
+      background-color: var(--background-dark, #111);
+      color: var(--text-light, #fff);
+    }
   </style>
   
 </head>
@@ -32,31 +33,10 @@
 
     <div class="instruments-grid" id="instrumentsGrid">
       
-      <a href="gitar.html" class="instrument-card" data-name="Gitar">
+      <a href="gitar.html" class="instrument-card" data-name="Gitar"> 
         <div>
             <h3>Gitar</h3>
-            <p>Modern ve klasik müzikte en sık kullanılan telli çalgıdır.</p>
-        </div>
-      </a>
-
-      <a href="baglama.html" class="instrument-card" data-name="Bağlama">
-        <div>
-            <h3>Bağlama</h3>
-            <p>Türk halk müziğinin temel taşı olan, telli ve mızrapla çalınan çalgıdır.</p>
-        </div>
-      </a>
-
-      <a href="kanun.html" class="instrument-card" data-name="Kanun">
-        <div>
-            <h3>Kanun</h3>
-            <p>Geleneksel Türk müziğinde yaygın olan, diz üstünde çalınan çok telli çalgıdır.</p>
-        </div>
-      </a>
-
-      <a href="ud.html" class="instrument-card" data-name="Ud">
-        <div>
-            <h3>Ud</h3>
-            <p>Perdesiz, armut biçimli, mızrapla çalınan, Orta Doğu müziğinde kullanılan çalgıdır.</p>
+            <p>Modern ve klasik müziğin en temel telli çalgısıdır.</p>
         </div>
       </a>
 
@@ -66,23 +46,34 @@
             <p>Yay kullanılarak çalınan, dört telli, batı müziği orkestralarının temelini oluşturan çalgıdır.</p>
         </div>
       </a>
+      
+      <a href="baglama.html" class="instrument-card" data-name="Bağlama">
+        <div>
+            <h3>Bağlama</h3>
+            <p>Türk halk müziğinin temel taşı olan, telli ve mızrapla çalınan çalgıdır.</p>
+        </div>
+      </a>
+      
+      <a href="ud.html" class="instrument-card" data-name="Ud">
+        <div>
+            <h3>Ud</h3>
+            <p>Perdesiz, armut biçimli, mızrapla çalınan, Orta Doğu müziğinde kullanılan çalgıdır.</p>
+        </div>
+      </a>
+      
+      <a href="kanun.html" class="instrument-card" data-name="Kanun">
+        <div>
+            <h3>Kanun</h3>
+            <p>Geleneksel Türk müziğinde yaygın olan, diz üstünde çalınan çok telli çalgıdır.</p>
+        </div>
+      </a>
 
-    </div>
+      </div>
   </main>
 
   <footer id="site-footer" class="fixed-footer"></footer>
 
-  <script>
-    // Header ve Footer yükle (Tüm sayfalarda olmalı)
-    document.addEventListener("DOMContentLoaded", () => {
-      fetch("partials/header.html")
-        .then(res => res.text())
-        .then(data => document.getElementById("site-header").innerHTML = data);
-
-      fetch("partials/footer.html")
-        .then(res => res.text())
-        .then(data => document.getElementById("site-footer").innerHTML = data);
-    });
-  </script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Müziğin Tarihçesi | Detay</title>
+  
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/header.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+  <link rel="stylesheet" href="css/components/detail-page.css" /> 
+</head>
+
+<body>
+  <header id="site-header"></header>
+
+  <main>
+    <div class="detail-container">
+      
+      <h1>Müziğin Tarihsel Yolculuğu</h1>
+
+      <section class="info-detail-content">
+        <h2>İlk Çağlardan Günümüze Müzik</h2>
+        <p>Müziğin tarihi, insanlık tarihi kadar eskidir. İlk insanlar, ritim ve sesleri iletişim, ritüeller ve eğlence amacıyla kullanmışlardır. Taştan, kemikten veya hayvan derilerinden yapılan ilk enstrümanlar, müziğin temelini oluşturmuştur.</p>
+
+        <h3>Antik Çağ ve Medeniyetler</h3>
+        <p>Antik Mısır, Mezopotamya, Yunan ve Roma medeniyetleri, müzik teorisi ve enstrüman gelişimine büyük katkılarda bulunmuştur. Özellikle Yunan felsefesinde müziğin evren ve ruh üzerindeki etkileri detaylıca incelenmiştir.</p>
+
+        <h3>Orta Çağ ve Rönesans</h3>
+        <p>Orta Çağ'da kilise müziği (Gregorian İlahileri) baskınken, Rönesans dönemi polifoni (çok seslilik) ve insan odaklı sanatın yükselişini beraberinde getirmiştir.</p>
+        
+        <h3>Barok, Klasik ve Romantik Dönemler</h3>
+        <p>Bach, Mozart, Beethoven gibi devlerin eser verdiği bu dönemler, orkestra, opera ve senfoninin altın çağlarıdır. Her dönem, kendi içinde yeni armoni ve form kurallarını oluşturmuştur.</p>
+      </section>
+      
+    </div>
+  </main>
+
+  <footer id="site-footer" class="fixed-footer"></footer>
+
+  <script>
+    // Header ve Footer yükle (Tüm sayfalarda aynı)
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("partials/header.html").then(res => res.text()).then(data => document.getElementById("site-header").innerHTML = data);
+      fetch("partials/footer.html").then(res => res.text()).then(data => document.getElementById("site-footer").innerHTML = data);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vurmalı Çalgılar | Müzik Aletleri</title>
+  
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/header.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+  
+  <link rel="stylesheet" href="css/components/wide-card.css" /> 
+  
+  </head>
+
+<body>
+  <header id="site-header"></header>
+
+  <main>
+    <h1>Vurmalı Çalgılar</h1>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Bir enstrüman ara...">
+    </div>
+
+    <div class="instruments-grid" id="instrumentsGrid">
+      
+      <a href="bateri.html" class="instrument-card" data-name="Bateri">
+        <div>
+          <h3>Bateri</h3>
+          <p>Davul, zil ve pedallardan oluşan, ritim ve tempoyu belirleyen modern bir settir.</p>
+        </div>
+      </a>
+
+      <a href="darbuka.html" class="instrument-card" data-name="Darbuka">
+        <div>
+          <h3>Darbuka</h3>
+          <p>Orta Doğu ve Balkanlar'da popüler olan, elle çalınan, kum saati şeklindeki davuldur.</p>
+        </div>
+      </a>
+
+      <a href="timpani.html" class="instrument-card" data-name="Timpani">
+        <div>
+          <h3>Timpani</h3>
+          <p>Orkestralarda kullanılan, gerilmiş derinin vurulmasıyla ses çıkaran büyük yarımküre davuldur.</p>
+        </div>
+      </a>
+
+      <a href="djembe.html" class="instrument-card" data-name="Djembe">
+        <div>
+          <h3>Djembe</h3>
+          <p>Batı Afrika kökenli, kadeh şeklinde, güçlü ve derin sesler çıkarabilen el davuludur.</p>
+        </div>
+      </a>
+      
+      <a href="handpan.html" class="instrument-card" data-name="Handpan">
+        <div>
+          <h3>Handpan</h3>
+          <p>Melodik vurmalı çalgı. Metal yüzeyindeki ton alanlarına vurularak huzur verici sesler üretilir.</p>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer id="site-footer" class="fixed-footer"></footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Header ve Footer yükle (Tüm sayfalarda aynı)
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("partials/header.html")
+        .then(res => res.text())
+        .then(data => {
+            const header = document.getElementById("site-header");
+            if(header) header.innerHTML = data;
+        });
+
+      fetch("partials/footer.html")
+        .then(res => res.text())
+        .then(data => {
+            const footer = document.getElementById("site-footer");
+            if(footer) footer.innerHTML = data;
+        });
+    });
+  </script>
+</body>
+</html>

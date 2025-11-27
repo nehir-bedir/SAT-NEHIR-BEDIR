@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Üflemeli Çalgılar | Müzik Aletleri</title>
+  
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/header.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+  
+  <link rel="stylesheet" href="css/components/wide-card.css" /> 
+  
+  </head>
+
+<body>
+  <header id="site-header"></header>
+
+  <main>
+    <h1>Üflemeli Çalgılar</h1>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Bir enstrüman ara...">
+    </div>
+
+    <div class="instruments-grid" id="instrumentsGrid">
+      
+      <a href="flut.html" class="instrument-card" data-name="Flüt">
+        <div>
+          <h3>Flüt</h3>
+          <p>Yan üflemeli, metal veya tahtadan yapılabilen, zarif tınılı bir orkestra çalgısıdır.</p>
+        </div>
+      </a>
+
+      <a href="klarnet.html" class="instrument-card" data-name="Klarnet">
+        <div>
+          <h3>Klarnet</h3>
+          <p>Tek kamışlı, silindir gövdeli, geniş ses aralığına sahip popüler bir nefesli çalgıdır.</p>
+        </div>
+      </a>
+
+      <a href="saksafon.html" class="instrument-card" data-name="Saksafon">
+        <div>
+          <h3>Saksafon</h3>
+          <p>Konik gövdeli, metalden yapılmış, caz müziği ile özdeşleşmiş bir çalgıdır.</p>
+        </div>
+      </a>
+
+      <a href="trompet.html" class="instrument-card" data-name="Trompet">
+        <div>
+          <h3>Trompet</h3>
+          <p>Bakır üflemeliler grubunun en tiz sesli çalgısıdır, parlak ve keskin bir sese sahiptir.</p>
+        </div>
+      </a>
+
+      <a href="ney.html" class="instrument-card" data-name="Ney">
+        <div>
+          <h3>Ney</h3>
+          <p>Türk ve Ortadoğu müziğinde kullanılan, kamıştan yapılan, mistik bir sese sahip çalgıdır.</p>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer id="site-footer" class="fixed-footer"></footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Header ve Footer yükle (Tüm sayfalarda olmalı)
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("partials/header.html")
+        .then(res => res.text())
+        .then(data => {
+            const header = document.getElementById("site-header");
+            if(header) header.innerHTML = data;
+        });
+
+      fetch("partials/footer.html")
+        .then(res => res.text())
+        .then(data => {
+            const footer = document.getElementById("site-footer");
+            if(footer) footer.innerHTML = data;
+        });
+    });
+  </script>
+</body>
+</html>

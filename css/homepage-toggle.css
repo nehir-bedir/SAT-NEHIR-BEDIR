@@ -1,90 +1,151 @@
-/* Açılır/Kapanır Bölüm */
+/* homepage-toggle.css - KESİN SON HALİ (KOMPAKT BUTONLAR) */
+
+/* 1. Açılır/Kapanır Bölümün Temel Ayarları (MAVİ ARKA PLAN) */
 #infoSections {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: all 0.6s ease-in-out;
-  padding: 0 10%;
-  background-color: #111;
+  /* Gizlenme/açılma animasyonu için ayarlar */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1); 
+  padding: 0 10%;
+ 
+  /* KOYU MAVİ ARKA PLAN */
+  background: linear-gradient(to bottom, #0f3460, #16213e); 
+  color: #eee;
 }
 
-#infoSections.show {
-  max-height: 3000px;
-  opacity: 1;
-  padding: 60px 10%;
+/* 2. Bölüm Açıldığında Uygulanan Stiller */
+#infoSections.visible {
+  max-height: 3500px;
+  opacity: 1;
+  padding: 80px 10%;
 }
 
-/* Buton */
-#toggleInfoBtn {
-  background-color: #d4af37;
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 30px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+/* 3. Buton (cta-button) Stilleri (SARI) */
+.cta-button {
+  background-color: #d4af37;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  display: inline-block; 
 }
 
-#toggleInfoBtn:hover {
-  background-color: #b8962f;
+.cta-button:hover {
+  background-color: #b8962f;
 }
 
-#toggleInfoBtn.active {
-  background-color: #b8962f;
-}
-/* Açılır/Kapanır Bölüm */
-#infoSections {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
-  padding: 0 10%;
-  background: linear-gradient(to bottom, #111, #1a1a1a);
+/* 4. Ana Kartlar için Konteyner (Yan yana görünüm) */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
 }
 
-#infoSections.show {
-  max-height: 3500px;
-  opacity: 1;
-  padding: 80px 10%;
-}
-/* Açılır/Kapanır Bölüm */
-#infoSections {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
-  padding: 0 10%;
-  background: linear-gradient(to bottom, #0f3460, #16213e);
-  color: #eee;
-}
-
-#infoSections.show {
-  max-height: 3500px;
-  opacity: 1;
-  padding: 80px 10%;
-}
-
-/* Kartlar */
+/* 5. Bilgi Kartı Stilleri (Transparan) */
 .info-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+  display: flex; 
+  flex-direction: column;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
 }
 
 .info-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 .info-text {
-  padding: 20px;
+  padding: 20px;
+  flex-grow: 1; 
 }
 
 .info-text h2 {
-  color: #f1c40f;
-  margin-bottom: 10px;
+  color: #f1c40f;
+  margin-bottom: 10px;
+}
+
+/* ---------------------------------------------------- */
+/* 6. Kategori Butonları ve Yan Yana Düzenleme (KOMPAKT) */
+/* ---------------------------------------------------- */
+
+/* Kategori Önizleme Alanı */
+.categories-preview {
+    padding-top: 50px;
+}
+
+/* Kategori Başlığı Stili */
+.categories-preview h2 {
+    color: #f1c40f;
+    margin: 0 0 30px;
+    text-align: center;
+    font-size: 1.8em;
+}
+
+/* Butonların Yan Yana Gelmesini Sağlayan Konteyner */
+.category-grid {
+    display: flex;
+    gap: 15px; /* Boşluğu hafifçe küçülttük */
+    justify-content: center;
+    flex-wrap: wrap; 
+    margin-bottom: 50px;
+}
+
+/* Kategori Butonu Stili (SARI VE KÜÇÜK) */
+.category-card {
+    background-color: #d4af37;
+    color: #111;
+    
+    /* *** DEĞİŞİKLİK BURADA: GENİŞLİK KÜÇÜLTÜLDÜ *** */
+    width: 150px; /* 200px'den 150px'e küçültüldü */
+    padding: 8px; /* İç boşluk azaltıldı */
+    /* ********************************************* */
+    
+    border-radius: 8px; /* Köşe yuvarlaklığı azaltıldı */
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    font-weight: 600; /* Yazı kalınlığı azaltıldı */
+    font-size: 1em; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.category-card:hover {
+    background-color: #f1c40f; 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+.category-card img {
+    /* *** DEĞİŞİKLİK BURADA: RESİM YÜKSEKLİĞİ KÜÇÜLTÜLDÜ *** */
+    width: 100%;
+    height: 90px; /* 120px'den 90px'e küçültüldü */
+    margin-bottom: 3px; /* Boşluk azaltıldı */
+    /* ********************************************* */
+    
+    object-fit: cover;
+    border-radius: 4px; /* Köşe yuvarlaklığı azaltıldı */
+}
+
+.category-card h4 {
+    color: #111;
+    margin: 3px 0 0 0; /* Boşluk azaltıldı */
+    font-size: 0.9em; /* Yazı boyutu hafifçe küçültüldü */
 }

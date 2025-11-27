@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kanun | Detaylı İnceleme</title>
+  
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/header.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+  
+  <link rel="stylesheet" href="css/components/detail-page.css" /> 
+
+  <style>
+    /* ----------------------------------------------------------------- */
+    /* 💥 KRİTİK GÖMÜLÜ STİLLER: KOYU DENİZ MAVİSİ TEMA VE SARI BUTON VURGUSU */
+    /* ----------------------------------------------------------------- */
+
+    /* Ana Arka Plan Rengi: Koyu Deniz Mavisi */
+    body {
+        background-color: #183040 !important; 
+        color: #eee;
+    }
+
+    /* Genel Kontayner Ayarları */
+    .detail-container {
+        max-width: 1100px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #204055; /* İç konteyner biraz daha açık mavi */
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        color: #eee;
+    }
+    
+    /* Başlıklar ve Vurgu Renkleri (Sarı/Altın kalır) */
+    .detail-container h1 {
+        font-size: 2.5rem;
+        color: #d4af37; /* Sarı/Altın */
+        text-align: center;
+        margin-bottom: 40px;
+        border-bottom: 3px solid #f1c40f; 
+        padding-bottom: 10px;
+    }
+    .instrument-text h2 {
+        color: #f1c40f; /* Parlak Sarı Başlık */
+        border-left: 5px solid #d4af37;
+        padding-left: 10px;
+    }
+
+    /* Detaylar ve Butonlar Bölümü (Arka Plan) */
+    .detail-sections {
+        margin-top: 40px;
+        padding: 30px;
+        background-color: #2A516C; /* Orta mavi tonu */
+        border-radius: 10px;
+        color: #eee;
+    }
+    .detail-sections h3 {
+        color: #d4af37;
+        border-bottom: 1px dashed #666;
+        padding-bottom: 5px;
+    }
+
+    /* Ana Toggle Buton Stili (SARI VURGU) */
+    .toggle-button {
+        display: inline-block;
+        background-color: #f1c40f; /* Sarı Buton Rengi */
+        color: #183040; /* Koyu Mavi Metin */
+        padding: 12px 25px;
+        border-radius: 30px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        text-decoration: none;
+        margin-top: 20px;
+        text-align: center;
+        border: none;
+    }
+    .toggle-button:hover {
+        background-color: #d4af37; /* Hover için daha koyu sarı */
+        transform: translateY(-2px);
+    }
+    
+    /* Açılır Kapanır Alanın CSS'i (Animasyon) */
+    .hidden-section {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.7s ease-in-out, opacity 0.5s;
+        padding: 0 10px; 
+    }
+    .hidden-section.visible {
+        max-height: 1500px; 
+        opacity: 1;
+        padding: 20px 10px; 
+    }
+    
+    /* Kanun Teknikleri Liste Stili */
+    #typeDetails {
+        margin-top: 20px;
+        background-color: #204055; /* Konteyner rengi */
+        padding: 20px;
+        border-radius: 8px;
+    }
+    #typeDetails h4 {
+        color: #f1c40f;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        border-bottom: 1px dashed #666;
+        padding-bottom: 5px;
+    }
+    #typeDetails ul {
+        list-style: none; /* Varsayılan noktaları kaldır */
+        padding-left: 0;
+    }
+    #typeDetails li {
+        background-color: #2A516C; /* Liste elemanları için orta mavi tonu */
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 6px;
+        border-left: 5px solid #d4af37; /* Sarı Vurgu Çizgisi */
+        font-size: 1.1rem;
+    }
+
+    /* Mobil Uyumlu Düzenleme */
+    @media (max-width: 800px) {
+        .instrument-info {
+            flex-direction: column;
+        }
+        .instrument-info img {
+            width: 100%;
+            max-width: none;
+            margin-bottom: 20px;
+        }
+        .detail-container {
+            margin: 20px 10px;
+            padding: 20px;
+        }
+    }
+  </style>
+</head>
+
+<body>
+  <header id="site-header"></header>
+
+  <main>
+    <div class="detail-container">
+      
+      <h1>Kanun</h1>
+
+      <section class="instrument-info">
+        <img src="assets/images/instruments/kanun-ana.jpg" alt="Kanun Ana Görseli">
+        
+        <div class="instrument-text">
+          <h2>Kanun Nedir ve Tarihçesi?</h2>
+          <p>
+            Kanun, telli ve mızrapla (yüzüklere takılan pena) çalınan, düz bir tahta kutu üzerine gerilmiş çok sayıda tele sahip geleneksel bir Türk ve Orta Doğu çalgısıdır. Çalan kişi dizlerinin üzerine koyarak oturur pozisyonda icra eder.
+          </p>
+          <p>
+            Her bir nota için birden fazla tel bulunur. Kanun'un en belirgin özelliği, çeyrek sesleri ayarlamak için kullanılan, her telin üstündeki küçük metal mandallar (kilitler) sayesinde makam müziğine tam uyum sağlamasıdır. Kanun kelimesi Arapça'da "kural" veya "yasa" anlamına gelir.
+          </p>
+        </div>
+      </section>
+      
+      <div class="detail-sections">
+        <h3>Kanun'un Yapısı ve Çalınma Teknikleri</h3>
+        
+        <button id="toggleTypesButton" class="toggle-button">
+            Kanun'un Yapısını ve Çalınma Tekniklerini Keşfet! ⬇️
+        </button>
+        
+        <div id="instrumentTypesSection" class="hidden-section"> 
+            
+            <div id="typeDetails">
+                <h4>Kanun'u Farklı Kılan Temel Özellikler</h4>
+                <ul>
+                    <li>**Mandallar (Kilitler):** Kanun'un en kritik parçasıdır. Her bir telin üstüne yerleştirilmiş küçük metal kancalardır ve sesin perdesini mikrotonal olarak değiştirmeye yarar. Bu, makam müziği için elzemdir.</li>
+                    <li>**Pena (Mızrap):** Telleri çekmek için parmaklara takılan tırnak şeklindeki iki küçük parçadır. Genellikle plastikten yapılır ve hızlı, temiz vuruşlar sağlar.</li>
+                    <li>**Tremolo Tekniği:** Hızlı ve ardışık tel vuruşlarıyla Kanun'a özgü, akıcı ve uzun süren sesler elde edilir. Bu, enstrümanın imza tekniklerinden biridir.</li>
+                </ul>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="fixed-footer"></footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+  
+  <script>
+    // Sadece açılır kapanır mekanizması için JavaScript yeterlidir.
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      // Header ve Footer yükle
+      fetch("partials/header.html").then(res => res.text()).then(data => {
+          const header = document.getElementById("site-header");
+          if(header) header.innerHTML = data;
+      });
+
+      fetch("partials/footer.html").then(res => res.text()).then(data => {
+          const footer = document.getElementById("site-footer");
+          if(footer) footer.innerHTML = data;
+      });
+        
+      // Ana Toggle Butonu Fonksiyonu
+      const toggleButton = document.getElementById('toggleTypesButton');
+      const typesSection = document.getElementById('instrumentTypesSection');
+
+      if (toggleButton && typesSection) {
+          toggleButton.addEventListener('click', function() {
+              const isVisible = typesSection.classList.toggle('visible');
+              
+              if (isVisible) {
+                  toggleButton.innerHTML = 'Kanun'un Yapısını ve Çalınma Tekniklerini Gizle ⬆️';
+                  setTimeout(() => {
+                      typesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }, 100); 
+              } else {
+                  toggleButton.innerHTML = 'Kanun'un Yapısını ve Çalınma Tekniklerini Keşfet! ⬇️';
+              }
+          });
+      }
+    });
+  </script>
+</body>
+</html>
