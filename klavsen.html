@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Klavsen (Harpsichord) | Detaylı İnceleme</title>
+  
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/header.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+  
+  <link rel="stylesheet" href="css/components/detail-page.css" /> 
+
+  <style>
+    /* ----------------------------------------------------------------- */
+    /* 💥 KRİTİK GÖMÜLÜ STİLLER: KOYU DENİZ MAVİSİ TEMA VE SARI BUTON VURGUSU */
+    /* ----------------------------------------------------------------- */
+
+    /* Ana Arka Plan Rengi: Koyu Deniz Mavisi */
+    body {
+        background-color: #183040 !important; 
+        color: #eee;
+    }
+
+    /* Genel Kontayner Ayarları */
+    .detail-container {
+        max-width: 1100px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #204055; /* İç konteyner biraz daha açık mavi */
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        color: #eee;
+    }
+    
+    /* Başlıklar ve Vurgu Renkleri (Sarı/Altın kalır) */
+    .detail-container h1 {
+        font-size: 2.5rem;
+        color: #d4af37; /* Sarı/Altın */
+        text-align: center;
+        margin-bottom: 40px;
+        border-bottom: 3px solid #f1c40f; 
+        padding-bottom: 10px;
+    }
+    .instrument-text h2 {
+        color: #f1c40f; /* Parlak Sarı Başlık */
+        border-left: 5px solid #d4af37;
+        padding-left: 10px;
+    }
+
+    /* Detaylar ve Butonlar Bölümü (Arka Plan) */
+    .detail-sections {
+        margin-top: 40px;
+        padding: 30px;
+        background-color: #2A516C; /* Orta mavi tonu */
+        border-radius: 10px;
+        color: #eee;
+    }
+    .detail-sections h3 {
+        color: #d4af37;
+        border-bottom: 1px dashed #666;
+        padding-bottom: 5px;
+    }
+
+    /* Ana Toggle Buton Stili (SARI VURGU) */
+    .toggle-button {
+        display: inline-block;
+        background-color: #f1c40f; /* Sarı Buton Rengi */
+        color: #183040; /* Koyu Mavi Metin */
+        padding: 12px 25px;
+        border-radius: 30px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        text-decoration: none;
+        margin-top: 20px;
+        text-align: center;
+        border: none;
+    }
+    .toggle-button:hover {
+        background-color: #d4af37; /* Hover için daha koyu sarı */
+        transform: translateY(-2px);
+    }
+    
+    /* YENİ: ÇEŞİTLER İÇİN YAN YANA GÖRSEL BUTON YAPISI */
+    .types-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+        gap: 20px;
+        padding: 20px 0;
+    }
+
+    .type-button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+        background-color: #2A516C; /* .detail-sections ile aynı ton */
+        border: 2px solid transparent;
+        border-radius: 10px;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .type-button:hover {
+        background-color: #386485; 
+        border-color: #f1c40f; /* Sarı çerçeve vurgusu */
+        transform: translateY(-3px);
+    }
+
+    /* Tıklanan butonu sürekli vurgulama stili (SARI VURGU) */
+    .type-button.active {
+        border-color: #f1c40f !important; /* Aktif sarı çerçeve */
+        background-color: #386485;
+    }
+
+    .type-button img {
+        width: 100%;
+        height: auto;
+        max-height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+    .type-button h4 {
+        color: #d4af37;
+    }
+
+    /* Açılır Kapanır Alanın CSS'i (Animasyon) */
+    .hidden-section {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.7s ease-in-out, opacity 0.5s;
+        padding: 0 10px; 
+    }
+    .hidden-section.visible {
+        max-height: 1500px; 
+        opacity: 1;
+        padding: 20px 10px; 
+    }
+    /* Detay alanı içindeki stil */
+    #typeDetails {
+        margin-top: 30px; 
+        padding: 20px; 
+        background-color: #204055 !important; /* Detay alanı için Ana Konteyner tonu */
+        border-radius: 8px;
+    }
+    #typeDetails h4 {
+        color: #f1c40f; 
+        font-size: 1.3rem; 
+        margin-bottom: 10px;
+    }
+
+    /* Mobil Uyumlu Düzenleme */
+    @media (max-width: 800px) {
+        .instrument-info {
+            flex-direction: column;
+        }
+        .instrument-info img {
+            width: 100%;
+            max-width: none;
+            margin-bottom: 20px;
+        }
+        .detail-container {
+            margin: 20px 10px;
+            padding: 20px;
+        }
+    }
+  </style>
+</head>
+
+<body>
+  <header id="site-header"></header>
+
+  <main>
+    <div class="detail-container">
+      
+      <h1>Klavsen (Harpsichord)</h1>
+
+      <section class="instrument-info">
+        <img src="assets/images/instruments/klavsen-ana.jpg" alt="Klavsen Ana Görseli">
+        
+        <div class="instrument-text">
+          <h2>Klavsen Nedir?</h2>
+          <p>
+            **Klavsen**, tuşlu bir çalgıdır. Tuşa basıldığında, teli bir çekiçle vurmak yerine, teli özel bir pena (mızrap) ile **çekerek (plucking)** ses üretir. 16. ve 17. yüzyıllarda, Barok dönemin en önemli klavyeli enstrümanıdır.
+          </p>
+          <p>
+            Piyanodan farklı olarak, ses şiddeti tuşa basma kuvvetine bağlı değildir (Dinamik aralığı yoktur). Ancak, farklı klavyeler ve kayıt mekanizmaları sayesinde farklı tınılar üretilebilir.
+          </p>
+        </div>
+      </section>
+      
+      <div class="detail-sections">
+        <h3>Klavsen Mekanizması ve Çeşitleri</h3>
+        
+        <button id="toggleTypesButton" class="toggle-button">
+            Klavsen Mekanizmasını ve Çeşitlerini Keşfet! ⬇️
+        </button>
+        
+        <div id="instrumentTypesSection" class="hidden-section"> 
+            
+            <div class="types-grid">
+                
+                <button class="type-button" data-type="plectrum">
+                    <img src="assets/images/instruments/klavsen-plectrum.jpg" alt="Klavsen Mızrap Görseli">
+                    <h4>Plectrum (Teli Çeken Parça)</h4>
+                </button>
+                
+                <button class="type-button" data-type="jack">
+                    <img src="assets/images/instruments/klavsen-jack.jpg" alt="Klavsen Jack Mekanizması Görseli">
+                    <h4>Jack Mekanizması</h4>
+                </button>
+                
+                <button class="type-button" data-type="klavyeler">
+                    <img src="assets/images/instruments/klavsen-klavye.jpg" alt="Klavsen Klavyeleri Görseli">
+                    <h4>İkili Klavyeler (Manuals)</h4>
+                </button>
+                 
+                <button class="type-button" data-type="spinet">
+                    <img src="assets/images/instruments/klavsen-spinet.jpg" alt="Spinet/Virginal Görseli">
+                    <h4>Spinet ve Virginal Çeşitleri</h4>
+                </button>
+                
+            </div>
+            
+            <div id="typeDetails">
+                <p style="text-align: center; color: #d4af37;">Yukarıdaki Klavsen bileşenlerinden veya çeşitlerinden birine tıklayarak detaylı bilgi alabilirsiniz.</p>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="fixed-footer"></footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+  
+  <script>
+    const typeData = {
+        plectrum: {
+            title: "Plectrum (Teli Çeken Parça)",
+            info: "Klavsende teli titreten mızrap görevi gören parçadır. Geleneksel olarak kuş tüyünden (tünek) yapılır, ancak modern Klavsenlerde plastik veya deri gibi malzemeler de kullanılır. Bu, Klavsenin metalik, keskin tınısını verir."
+        },
+        jack: {
+            title: "Jack Mekanizması",
+            info: "Tuşa basıldığında yukarı doğru hareket eden ve plectrum'u teli çekmeye iten dikey bir tahta parçasıdır. Teli çektikten sonra, Jack hemen geri düşer ve sesin kesilmesini sağlayan bir susturucu (damper) devreye girer."
+        },
+        klavyeler: {
+            title: "İkili Klavyeler (Manuals)",
+            info: "Büyük Klavsenler genellikle iki klavyeye sahiptir. Bu klavyeler, farklı telleri veya farklı tınıları (kayıtları) kontrol ederek, dinamik olmasa da ses renginde zenginlik yaratmaya olanak tanır."
+        },
+        spinet: {
+            title: "Spinet ve Virginal Çeşitleri",
+            info: "Bunlar daha küçük, evde kullanılan Klavsen türleridir. Spinetler açılı tellere sahiptir, Virginal'in telleri ise klavyeye paraleldir. Genellikle tek klavyeli ve daha az güçlü sese sahiptirler."
+        }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Header ve Footer yükle
+      fetch("partials/header.html").then(res => res.text()).then(data => {
+          const header = document.getElementById("site-header");
+          if(header) header.innerHTML = data;
+      });
+
+      fetch("partials/footer.html").then(res => res.text()).then(data => {
+          const footer = document.getElementById("site-footer");
+          if(footer) footer.innerHTML = data;
+      });
+        
+      // Ana Toggle Butonu Fonksiyonu
+      const toggleButton = document.getElementById('toggleTypesButton');
+      const typesSection = document.getElementById('instrumentTypesSection');
+
+      if (toggleButton && typesSection) {
+          toggleButton.addEventListener('click', function() {
+              const isVisible = typesSection.classList.toggle('visible');
+              
+              if (isVisible) {
+                  toggleButton.innerHTML = 'Mekanizmayı ve Çeşitleri Gizle ⬆️';
+                  setTimeout(() => {
+                      typesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }, 100); 
+              } else {
+                  toggleButton.innerHTML = 'Klavsen Mekanizmasını ve Çeşitlerini Keşfet! ⬇️';
+              }
+          });
+      }
+
+      // Tip Butonlarına Tıklama İşlemi
+      const typeButtons = document.querySelectorAll('.type-button');
+      const detailsArea = document.getElementById('typeDetails');
+      
+      typeButtons.forEach(button => {
+          button.addEventListener('click', function() {
+              // 1. Tüm butonlardaki aktif vurguyu kaldır
+              typeButtons.forEach(btn => btn.classList.remove('active'));
+              
+              // 2. Tıklanan butonu aktif yap
+              this.classList.add('active'); 
+
+              // 3. Veriyi Yükle
+              const type = this.getAttribute('data-type');
+              const data = typeData[type];
+              
+              detailsArea.innerHTML = `
+                  <h4 style="color: #f1c40f; font-size: 1.3rem; margin-bottom: 10px;">${data.title}</h4>
+                  <p>${data.info}</p>
+              `;
+
+              // 4. Detay Alanına Kaydır
+              detailsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+      });
+    });
+  </script>
+</body>
+</html>

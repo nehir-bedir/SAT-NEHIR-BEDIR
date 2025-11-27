@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Müzik ve Ruh Hâli | Detay</title>
+  
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/header.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+  <link rel="stylesheet" href="css/components/detail-page.css" /> 
+</head>
+
+<body>
+  <header id="site-header"></header>
+
+  <main>
+    <div class="detail-container">
+      
+        <h1>Müziğin Ruh Hâli ve Beyin Üzerindeki Etkisi</h1>
+
+        <section class="emotion-content-wrapper">
+
+            <div class="emotion-intro-section" style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-size: 1.8rem; color: #d4af37; margin-bottom: 20px;">Duygusal ve Bilişsel Bağlantı</h2>
+
+                <div class="intro-content" style="text-align: left; max-width: 800px; margin: 0 auto; padding-bottom: 30px;">
+                    <p>Müzik, beynimizin neredeyse tüm bölgelerini aktive eden güçlü bir uyarıcıdır. İnsanların neden müzik dinlediği konusunda yapılan araştırmalar, müziğin stresi azaltma, motivasyonu artırma ve duygusal düzenleme yeteneğine sahip olduğunu göstermektedir. Detaylı etkileri aşağıdan inceleyebilirsiniz.</p>
+                </div>
+            </div>
+
+            <div class="period-buttons-container" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;">
+                <button class="btn period-button active" data-period="dopamin">Dopamin Salınımı</button>
+                <button class="btn period-button" data-period="hafiza">Hafıza ve Konsantrasyon</button>
+                <button class="btn period-button" data-period="hizenerji">Hız ve Enerji Seviyesi</button>
+            </div>
+
+            <div id="periodDetailsArea" class="info-detail-content" style="min-height: 200px;">
+
+                <div id="dopamin-detail" class="period-content" data-period="dopamin" style="display: block;">
+                    <h3>Dopamin Salınımı</h3>
+                    <p>Hoşumuza giden bir müzik dinlediğimizde, beynimiz mutluluk hormonu olarak bilinen **dopamin** salgılar. Bu durum, müziği bir ödül sistemi gibi deneyimlememizi sağlar ve bağımlılık yapıcı, olumlu bir etki yaratarak ruh halimizi anında iyileştirir.</p>
+                </div>
+
+                <div id="hafiza-detail" class="period-content" data-period="hafiza" style="display: none;">
+                    <h3>Hafıza ve Konsantrasyon</h3>
+                    <p>Müzik, hafıza ve öğrenme süreçleriyle de yakından ilişkilidir. Özellikle sözsüz veya Barok döneme ait bazı müzikler, beynin odaklanma yeteneğini artırarak çalışma verimini yükseltmeye yardımcı olabilir ve güçlü anıları tetikleyebilir.</p>
+                </div>
+
+                <div id="hizenerji-detail" class="period-content" data-period="hizenerji" style="display: none;">
+                    <h3>Hız ve Enerji</h3>
+                    <p>Müziğin temposu, kalp atış hızımızı ve enerji seviyemizi doğrudan etkiler. Hızlı ve yüksek tempolu parçalar enerjimizi yükseltirken, yavaş ve yumuşak tınılar rahatlama ve sakinleşme sağlayarak vücudumuzun ritmini düzenler.</p>
+                </div>
+
+            </div>
+        </section>
+        
+    </div>
+  </main>
+
+  <footer id="site-footer" class="fixed-footer"></footer>
+
+  <script src="js/ui.js"></script>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // ETKİ BUTONLARINA TIKLAMA İŞLEMİ
+      const periodButtons = document.querySelectorAll('.period-button');
+      const periodContents = document.querySelectorAll('.period-content');
+
+      periodButtons.forEach(button => {
+          button.addEventListener('click', function() {
+              // 1. Tüm butonlardaki aktif vurguyu kaldır
+              periodButtons.forEach(btn => btn.classList.remove('active'));
+
+              // 2. Tıklanan butonu aktif yap
+              this.classList.add('active');
+
+              // 3. Tüm içerikleri gizle
+              periodContents.forEach(content => {
+                  content.style.display = 'none';
+              });
+
+              // 4. İstenen içeriği göster
+              const period = this.getAttribute('data-period');
+              const contentToShow = document.getElementById(`${period}-detail`);
+
+              if (contentToShow) {
+                  contentToShow.style.display = 'block';
+
+                  // İçeriğe kaydır (isteğe bağlı)
+                  contentToShow.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+          });
+      });
+    });
+  </script>
+
+</body>
+</html>

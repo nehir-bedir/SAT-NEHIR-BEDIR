@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Müzik Türleri | Detay</title>
+  
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/header.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+  <link rel="stylesheet" href="css/components/detail-page.css" /> 
+</head>
+
+<body>
+  <header id="site-header"></header>
+
+  <main>
+    <div class="detail-container">
+      
+        <h1>Müzik Türlerinin Zenginliği</h1>
+
+        <section class="genre-content-wrapper">
+
+            <div class="genre-intro-section" style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-size: 1.8rem; color: #d4af37; margin-bottom: 20px;">Başlıca Müzik Türleri</h2>
+
+                <div class="intro-content" style="text-align: left; max-width: 800px; margin: 0 auto; padding-bottom: 30px;">
+                    <p>Müzik, kültürel kökenlerine, ritmine, enstrüman kullanımına ve duygusal atmosferine göre yüzlerce farklı türe ayrılır. Aşağıdaki butonlardan başlıca türleri detaylı inceleyebilirsiniz.</p>
+                </div>
+            </div>
+
+            <div class="period-buttons-container" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;">
+                <button class="btn period-button active" data-period="klasik">Klasik Müzik</button>
+                <button class="btn period-button" data-period="caz">Caz (Jazz)</button>
+                <button class="btn period-button" data-period="rockpop">Rock ve Pop</button>
+                <button class="btn period-button" data-period="elektronik">Elektronik Müzik</button>
+            </div>
+
+            <div id="periodDetailsArea" class="info-detail-content" style="min-height: 200px;">
+
+                <div id="klasik-detail" class="period-content" data-period="klasik" style="display: block;">
+                    <h3>Klasik Müzik</h3>
+                    <p>Genellikle Batı müziği geleneklerini takip eden, karmaşık yapıya sahip ve orkestra tarafından icra edilen müziktir. Dinginlik ve zihinsel odaklanma sağlar, genellikle Barok, Klasik ve Romantik dönemleri kapsar.</p>
+                </div>
+
+                <div id="caz-detail" class="period-content" data-period="caz" style="display: none;">
+                    <h3>Caz (Jazz)</h3>
+                    <p>19. yüzyılın sonlarında Afrika kökenli Amerikalılar tarafından geliştirilen, doğaçlama ve swing ritmi ile karakterize edilen, özgürlükçü bir türdür. Duygusallığı ve karmaşık armonileri ile bilinir.</p>
+                </div>
+
+                <div id="rockpop-detail" class="period-content" data-period="rockpop" style="display: none;">
+                    <h3>Rock ve Pop</h3>
+                    <p>Rock, genellikle gitar, bas ve davulun ön planda olduğu, yüksek enerjili bir türdür ve isyan duygusunu barındırır. Pop müzik ise popülerliği hedefleyen, kolay akılda kalan melodiler içeren geniş bir kategoriye sahiptir.</p>
+                </div>
+
+                <div id="elektronik-detail" class="period-content" data-period="elektronik" style="display: none;">
+                    <h3>Elektronik Müzik</h3>
+                    <p>Synthesizer, sampler ve bilgisayarlar gibi elektronik araçlarla üretilen ve dans müziği, ambiyans veya deneysel alt türleri içeren modern bir daldır. Genellikle enerji ve hareket hissi verir.</p>
+                </div>
+
+            </div>
+        </section>
+        
+    </div>
+  </main>
+
+  <footer id="site-footer" class="fixed-footer"></footer>
+
+  <script src="js/ui.js"></script>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // TÜR BUTONLARINA TIKLAMA İŞLEMİ
+      const periodButtons = document.querySelectorAll('.period-button');
+      const periodContents = document.querySelectorAll('.period-content');
+
+      periodButtons.forEach(button => {
+          button.addEventListener('click', function() {
+              // 1. Tüm butonlardaki aktif vurguyu kaldır
+              periodButtons.forEach(btn => btn.classList.remove('active'));
+
+              // 2. Tıklanan butonu aktif yap
+              this.classList.add('active');
+
+              // 3. Tüm içerikleri gizle
+              periodContents.forEach(content => {
+                  content.style.display = 'none';
+              });
+
+              // 4. İstenen içeriği göster
+              const period = this.getAttribute('data-period');
+              const contentToShow = document.getElementById(`${period}-detail`);
+
+              if (contentToShow) {
+                  contentToShow.style.display = 'block';
+
+                  // İçeriğe kaydır (isteğe bağlı)
+                  contentToShow.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+          });
+      });
+    });
+  </script>
+
+</body>
+</html>

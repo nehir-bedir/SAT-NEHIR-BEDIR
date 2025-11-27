@@ -1,104 +1,104 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Müziğin tarihçesi, türleri ve ruh hâline etkisi. Enstrümanları keşfedin." />
-  <title>Müzik Aletleri | Ana Sayfa</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Müziğin tarihçesi, türleri ve ruh hâline etkisi. Enstrümanları keşfedin." />
+  <title>Müzik Aletleri | Ana Sayfa</title>
 
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/components/header.css">
-  <link rel="stylesheet" href="css/components/footer.css">
-  
-  <link rel="stylesheet" href="css/components/hero.css"> 
-  <link rel="stylesheet" href="css/components/info-card.css"> 
-    <link rel="stylesheet" href="css/homepage-toggle.css"> 
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components/header.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  
+  <link rel="stylesheet" href="css/components/hero.css"> 
+  <link rel="stylesheet" href="css/components/info-card.css"> 
+    <link rel="stylesheet" href="css/homepage-toggle.css"> 
 </head>
 
 <body>
-  <header id="site-header"></header>
+  <header id="site-header"></header>
 
-  <main class="main-content">
-    
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1>Müzik Dünyasını Keşfet</h1>
-            <p>Enstrümanları, tarihçelerini ve ruh hâline etkilerini detaylıca inceleyin.</p>
-            <a href="#infoSections" class="cta-button">Keşfetmeye Başla ⬇️</a> 
-        </div>
-    </section>
-
-        <div class="info-sections" id="infoSections">
-        
-        <div class="info-grid">
-            
-            <a href="history.html" class="info-card">
-                <img src="assets/images/history.jpg" alt="Müziğin Tarihçesi">
-                <div class="info-text">
-                    <h2>Müziğin Tarihçesi</h2>
-                    <p>Müziğin ilk çağlardan günümüze kadar olan evrimini inceleyin.</p>
-                </div>
-            </a>
-
-            <a href="genres.html" class="info-card">
-                <img src="assets/images/genres.jpg" alt="Müzik Türleri">
-                <div class="info-text">
-                    <h2>Müzik Türleri</h2>
-                    <p>Klasik, caz, rock, pop, elektronik, halk müziği... Her tür farklı bir ruh hâlini yansıtır.</p>
-                </div>
-            </a>
-
-            <a href="emotion.html" class="info-card">
-                <img src="assets/images/brain-music.jpg" alt="Beyin ve Müzik">
-                <div class="info-text">
-                    <h2>Müziğin Ruh Hâline Etkisi</h2>
-                    <p>Müziğin stresi azalttığını, mutluluğu artıran dopamin salgılanmasına yardımcı olduğunu keşfedin.</p>
-                </div>
-            </a>
-        </div>
+  <main class="main-content">
     
-    </div>
-          </main>
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Müzik Dünyasını Keşfet</h1>
+            <p>Enstrümanları, tarihçelerini ve ruh hâline etkilerini detaylıca inceleyin.</p>
+            <a href="#infoSections" class="cta-button">Keşfetmeye Başla ⬇️</a> 
+        </div>
+    </section>
 
-  <footer id="site-footer" class="fixed-footer"></footer>
+        <div class="info-sections" id="infoSections">
+        
+        <div class="info-grid">
+            
+            <a href="history.html" class="info-card">
+                <img src="assets/images/history.jpg" alt="Müziğin Tarihçesi">
+                <div class="info-text">
+                    <h2>Müziğin Tarihçesi</h2>
+                    <p>Müziğin ilk çağlardan günümüze kadar olan evrimini inceleyin.</p>
+                </div>
+            </a>
 
-  <script src="js/ui.js"></script>
-  <script src="js/main.js"></script>
-  
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Header ve Footer yükleme fonksiyonları
-      fetch("partials/header.html")
-        .then(res => res.text())
-        .then(data => {
-            const header = document.getElementById("site-header");
-            if(header) header.innerHTML = data;
-        });
+            <a href="genres.html" class="info-card">
+                <img src="assets/images/genres.jpg" alt="Müzik Türleri">
+                <div class="info-text">
+                    <h2>Müzik Türleri</h2>
+                    <p>Klasik, caz, rock, pop, elektronik, halk müziği... Her tür farklı bir ruh hâlini yansıtır.</p>
+                </div>
+            </a>
 
-      fetch("partials/footer.html")
-        .then(res => res.text())
-        .then(data => {
-            const footer = document.getElementById("site-footer");
-            if(footer) footer.innerHTML = data;
-        });
+            <a href="emotion.html" class="info-card">
+                <img src="assets/images/brain-music.jpg" alt="Beyin ve Müzik">
+                <div class="info-text">
+                    <h2>Müziğin Ruh Hâline Etkisi</h2>
+                    <p>Müziğin stresi azalttığını, mutluluğu artıran dopamin salgılanmasına yardımcı olduğunu keşfedin.</p>
+                </div>
+            </a>
+        </div>
+    
+    </div>
+          </main>
 
-      // KRİTİK: Açma ve Kaydırma Fonksiyonu
-      const ctaButton = document.querySelector('.cta-button');
-      const infoSections = document.getElementById('infoSections');
+  <footer id="site-footer" class="fixed-footer"></footer>
 
-      if (ctaButton && infoSections) {
-          ctaButton.addEventListener('click', function(event) {
-              event.preventDefault(); 
-              
-              // info-sections bölümüne 'visible' sınıfını ekle
-              infoSections.classList.add('visible');
-              
-              // Sayfayı yeni açılan bölüme yumuşak bir şekilde kaydır
-              infoSections.scrollIntoView({ behavior: 'smooth' });
-          });
-      }
-    });
-  </script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Header ve Footer yükleme fonksiyonları
+      fetch("partials/header.html")
+        .then(res => res.text())
+        .then(data => {
+            const header = document.getElementById("site-header");
+            if(header) header.innerHTML = data;
+        });
+
+      fetch("partials/footer.html")
+        .then(res => res.text())
+        .then(data => {
+            const footer = document.getElementById("site-footer");
+            if(footer) footer.innerHTML = data;
+        });
+
+      // KRİTİK: Açma ve Kaydırma Fonksiyonu
+      const ctaButton = document.querySelector('.cta-button');
+      const infoSections = document.getElementById('infoSections');
+
+      if (ctaButton && infoSections) {
+          ctaButton.addEventListener('click', function(event) {
+              event.preventDefault(); 
+              
+              // info-sections bölümüne 'visible' sınıfını ekle
+              infoSections.classList.add('visible');
+              
+              // Sayfayı yeni açılan bölüme yumuşak bir şekilde kaydır
+              infoSections.scrollIntoView({ behavior: 'smooth' });
+          });
+      }
+    });
+  </script>
 </body>
 </html>

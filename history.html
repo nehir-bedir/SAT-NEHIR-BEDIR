@@ -10,7 +10,43 @@
   <link rel="stylesheet" href="css/components/header.css" />
   <link rel="stylesheet" href="css/components/footer.css" />
   <link rel="stylesheet" href="css/components/detail-page.css" /> 
-</head>
+  
+  <style>
+    /* Ana Arka Plan Rengi: Koyu Deniz Mavisi */
+    body {
+        background-color: #183040 !important; 
+        color: #eee;
+    }
+
+    /* Genel Kontayner Ayarları */
+    .detail-container {
+        max-width: 1100px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #204055; /* İç konteyner biraz daha açık */
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* GİZLENECEK KISIM İÇİN KRİTİK STİLLER */
+    .hidden-content {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        /* Yumuşak geçiş için animasyon */
+        transition: all 0.7s ease-in-out;
+    }
+
+    .hidden-content.visible {
+        max-height: 4000px; /* İçerik boyutu ne olursa olsun görünmesi için yeterince büyük bir değer */
+        opacity: 1;
+        padding-top: 20px; 
+        padding-bottom: 20px;
+    }
+  </style>
+  </head>
 
 <body>
   <header id="site-header"></header>
@@ -20,31 +56,70 @@
       
       <h1>Müziğin Tarihsel Yolculuğu</h1>
 
-      <section class="info-detail-content">
-        <h2>İlk Çağlardan Günümüze Müzik</h2>
-        <p>Müziğin tarihi, insanlık tarihi kadar eskidir. İlk insanlar, ritim ve sesleri iletişim, ritüeller ve eğlence amacıyla kullanmışlardır. Taştan, kemikten veya hayvan derilerinden yapılan ilk enstrümanlar, müziğin temelini oluşturmuştur.</p>
+      <p style="text-align: center; font-size: 1.15rem; margin-bottom: 30px; line-height: 1.8;">
+        **Müziğin tarihi, insanlığın varoluşu kadar eskidir ve medeniyetlerin gelişimine paralel bir yol izlemiştir. Ritim ve melodinin keşfi, bir zamanlar basit bir iletişim biçimiyken, günümüzde karmaşık bir sanat formuna dönüşmüştür.**
+      </p>
 
-        <h3>Antik Çağ ve Medeniyetler</h3>
-        <p>Antik Mısır, Mezopotamya, Yunan ve Roma medeniyetleri, müzik teorisi ve enstrüman gelişimine büyük katkılarda bulunmuştur. Özellikle Yunan felsefesinde müziğin evren ve ruh üzerindeki etkileri detaylıca incelenmiştir.</p>
+      <div style="text-align: center; margin-bottom: 40px;">
+          <button id="toggleHistoryDetails" class="btn" style="border: none; background-color: #f1c40f; color: #111; padding: 12px 30px; font-weight: bold;">
+              Tarihsel Dönemleri ve Ayrıntıları Keşfet! ⬇️
+          </button>
+      </div>
+      <div id="historyDetailsSection" class="hidden-content">
+          
+          <section class="info-detail-content">
+              <h2>İlk Çağlardan Günümüze Müzik</h2>
+              <p>Müziğin tarihi, insanlık tarihi kadar eskidir. İlk insanlar, ritim ve sesleri iletişim, ritüeller ve eğlence amacıyla kullanmışlardır. Taştan, kemikten veya hayvan derilerinden yapılan ilk enstrümanlar, müziğin temelini oluşturmuştur.</p>
 
-        <h3>Orta Çağ ve Rönesans</h3>
-        <p>Orta Çağ'da kilise müziği (Gregorian İlahileri) baskınken, Rönesans dönemi polifoni (çok seslilik) ve insan odaklı sanatın yükselişini beraberinde getirmiştir.</p>
-        
-        <h3>Barok, Klasik ve Romantik Dönemler</h3>
-        <p>Bach, Mozart, Beethoven gibi devlerin eser verdiği bu dönemler, orkestra, opera ve senfoninin altın çağlarıdır. Her dönem, kendi içinde yeni armoni ve form kurallarını oluşturmuştur.</p>
-      </section>
-      
-    </div>
+              <h3>Antik Çağ ve Medeniyetler</h3>
+              <p>Antik Mısır, Mezopotamya, Yunan ve Roma medeniyetleri, müzik teorisi ve enstrüman gelişimine büyük katkılarda bulunmuştur. Özellikle Yunan felsefesinde müziğin evren ve ruh üzerindeki etkileri detaylıca incelenmiştir.</p>
+
+              <h3>Orta Çağ ve Rönesans</h3>
+              <p>Orta Çağ'da kilise müziği (Gregorian İlahileri) baskınken, Rönesans dönemi polifoni (çok seslilik) ve insan odaklı sanatın yükselişini beraberinde getirmiştir.</p>
+              
+              <h3>Barok, Klasik ve Romantik Dönemler</h3>
+              <p>Bach, Mozart, Beethoven gibi devlerin eser verdiği bu dönemler, orkestra, opera ve senfoninin altın çağlarıdır. Her dönem, kendi içinde yeni armoni ve form kurallarını oluşturmuştur.</p>
+              
+              </section>
+
+      </div>
+      </div>
   </main>
 
   <footer id="site-footer" class="fixed-footer"></footer>
 
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+  
   <script>
-    // Header ve Footer yükle (Tüm sayfalarda aynı)
     document.addEventListener("DOMContentLoaded", () => {
-      fetch("partials/header.html").then(res => res.text()).then(data => document.getElementById("site-header").innerHTML = data);
-      fetch("partials/footer.html").then(res => res.text()).then(data => document.getElementById("site-footer").innerHTML = data);
+      // Bu sayfada header/footer yükleme UI.js tarafından yapılır, burada sadece toggle fonksiyonu olmalı.
+        
+      // Yeni Toggle Butonu Fonksiyonu
+      const toggleButton = document.getElementById('toggleHistoryDetails');
+      const historySection = document.getElementById('historyDetailsSection');
+
+      if (toggleButton && historySection) {
+          toggleButton.addEventListener('click', function() {
+              // "visible" sınıfını ekle/kaldır
+              const isVisible = historySection.classList.toggle('visible');
+              
+              if (isVisible) {
+                  // Açılırsa
+                  toggleButton.innerHTML = 'Ayrıntıları Gizle ⬆️';
+                  // Açıldıktan sonra içeriğe yumuşakça kaydır
+                  setTimeout(() => {
+                      historySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }, 100); 
+              } else {
+                  // Kapanırsa
+                  toggleButton.innerHTML = 'Tarihsel Dönemleri ve Ayrıntıları Keşfet! ⬇️';
+                  // Tekrar butona kaydır (isteğe bağlı)
+                  toggleButton.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+          });
+      }
     });
   </script>
-</body>
+  </body>
 </html>
