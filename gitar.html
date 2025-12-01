@@ -1,314 +1,362 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gitar | Detaylı İnceleme</title>
-  
-  <link rel="stylesheet" href="css/reset.css" />
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/components/header.css" />
-  <link rel="stylesheet" href="css/components/footer.css" />
-  
-  <link rel="stylesheet" href="css/components/detail-page.css" /> 
-
-  <style>
-    /* ----------------------------------------------------------------- */
-    /* 💥 KRİTİK GÖMÜLÜ STİLLER: KOYU DENİZ MAVİSİ TEMA VE SARI BUTON VURGUSU */
-    /* ----------------------------------------------------------------- */
-
-    /* Ana Arka Plan Rengi: Koyu Deniz Mavisi (Resimdeki Ton) */
-    body {
-        background-color: #183040 !important; 
-        color: #eee;
-    }
-
-    /* Genel Kontayner Ayarları */
-    .detail-container {
-        max-width: 1100px;
-        margin: 50px auto;
-        padding: 30px;
-        background-color: #204055; /* İç konteyner biraz daha açık mavi */
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        color: #eee;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gitar | Detaylı İnceleme</title>
     
-    /* Başlıklar ve Vurgu Renkleri (Sarı/Altın kalır) */
-    .detail-container h1 {
-        font-size: 2.5rem;
-        color: #d4af37; /* Sarı/Altın */
-        text-align: center;
-        margin-bottom: 40px;
-        border-bottom: 3px solid #f1c40f; 
-        padding-bottom: 10px;
-    }
-    .instrument-text h2 {
-        color: #f1c40f; /* Parlak Sarı Başlık */
-        border-left: 5px solid #d4af37;
-        padding-left: 10px;
-    }
-
-    /* Detaylar ve Butonlar Bölümü (Arka Plan) */
-    .detail-sections {
-        margin-top: 40px;
-        padding: 30px;
-        background-color: #2A516C; /* Orta mavi tonu */
-        border-radius: 10px;
-        color: #eee;
-    }
-    .detail-sections h3 {
-        color: #d4af37;
-        border-bottom: 1px dashed #666;
-        padding-bottom: 5px;
-    }
-
-    /* Ana Toggle Buton Stili (SARI VURGU) */
-    .toggle-button {
-        display: inline-block;
-        background-color: #f1c40f; /* Sarı Buton Rengi */
-        color: #183040; /* Koyu Mavi Metin */
-        padding: 12px 25px;
-        border-radius: 30px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.2s;
-        text-decoration: none;
-        margin-top: 20px;
-        text-align: center;
-        border: none;
-    }
-    .toggle-button:hover {
-        background-color: #d4af37; /* Hover için daha koyu sarı */
-        transform: translateY(-2px);
-    }
-    
-    /* YENİ: GİTAR ÇEŞİTLERİ İÇİN YAN YANA GÖRSEL BUTON YAPISI */
-    .guitar-types-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-        gap: 20px;
-        padding: 20px 0;
-    }
-
-    .type-button {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 15px;
-        background-color: #2A516C; /* .detail-sections ile aynı ton */
-        border: 2px solid transparent;
-        border-radius: 10px;
-        transition: 0.3s;
-        cursor: pointer;
-    }
-
-    .type-button:hover {
-        background-color: #386485; 
-        border-color: #f1c40f; /* Sarı çerçeve vurgusu */
-        transform: translateY(-3px);
-    }
-
-    /* Tıklanan butonu sürekli vurgulama stili (SARI VURGU) */
-    .type-button.active {
-        border-color: #f1c40f !important; /* Aktif sarı çerçeve */
-        background-color: #386485;
-    }
-
-    .type-button img {
-        width: 100%;
-        height: auto;
-        max-height: 150px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 10px;
-    }
-    .type-button h4 {
-        color: #d4af37;
-    }
-
-    /* Açılır Kapanır Alanın CSS'i (Animasyon) */
-    .hidden-section {
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        transition: max-height 0.7s ease-in-out, opacity 0.5s;
-        padding: 0 10px; 
-    }
-    .hidden-section.visible {
-        max-height: 1500px; 
-        opacity: 1;
-        padding: 20px 10px; 
-    }
-    /* Detay alanı içindeki stil */
-    #typeDetails {
-        margin-top: 30px; 
-        padding: 20px; 
-        background-color: #204055 !important; /* Detay alanı için Ana Konteyner tonu */
-        border-radius: 8px;
-    }
-    #typeDetails h4 {
-        color: #f1c40f; 
-        font-size: 1.3rem; 
-        margin-bottom: 10px;
-    }
-
-    /* Mobil Uyumlu Düzenleme */
-    @media (max-width: 800px) {
-        .instrument-info {
-            flex-direction: column;
+    <style>
+       
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #183040; 
+            color: #eee; 
+            margin: 0; 
+            padding: 0; 
         }
-        .instrument-info img {
-            width: 100%;
-            max-width: none;
-            margin-bottom: 20px;
-        }
+
         .detail-container {
-            margin: 20px 10px;
-            padding: 20px;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #204055; 
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
-    }
-  </style>
+
+        .detail-container h1 {
+            font-size: 2.8rem;
+            color: #f1c40f; 
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 4px solid #f1c40f;
+            padding-bottom: 15px;
+        }
+
+        .content-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+            flex-wrap: wrap; 
+        }
+
+        .content-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .section-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .section-text h2 {
+            color: #d4af37; 
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            border-left: 6px solid #d4af37;
+            padding-left: 15px;
+        }
+
+        .section-text p {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .section-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .section-image img, .main-instrument-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .main-instrument-image {
+            max-width: 700px;
+            display: block;
+            margin: 30px auto;
+        }
+
+        .gitar-buttons { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            margin-bottom: 40px; 
+            flex-wrap: wrap; 
+        }
+
+        .gitar-type-button { 
+            background-color: #d4af37; 
+            color: #183040; 
+            border: none; 
+            padding: 12px 25px; 
+            border-radius: 25px; 
+            font-size: 1.1rem; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 15px rgba(241, 196, 15, 0.3); 
+        }
+        .gitar-type-button:hover { 
+            background-color: #f1c40f; 
+            transform: translateY(-2px); 
+        }
+        .gitar-type-button.active { 
+            background-color: #e67e22; 
+            color: #fff; 
+            transform: scale(1.05); 
+        }
+
+        #gitarTypeDetails {
+            margin-top: 30px; 
+            padding: 30px; 
+            background-color: #2a4a60;
+            border-radius: 12px;
+            display: none; 
+            animation: fadeIn 0.5s ease-out; 
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        #gitarTypeDetails.visible {
+            display: block; 
+        }
+
+        .type-content-section { 
+            display: flex; 
+            gap: 30px; 
+            align-items: flex-start; 
+            flex-wrap: wrap; 
+        }
+        .type-info { 
+            flex: 1; 
+            min-width: 300px;
+        }
+        .type-info h3 { 
+            color: #f1c40f; 
+            font-size: 2rem; 
+            margin-bottom: 15px; 
+            border-left: 5px solid #f1c40f; 
+            padding-left: 10px;
+        }
+        .type-image-container { 
+            flex: 1; 
+            min-width: 300px; 
+            text-align: center;
+        }
+        .type-image-container img { 
+            width: 100%; 
+            max-width: 450px; 
+            height: auto; 
+            border-radius: 8px; 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+  
+        .instrument-details {
+            margin-top: 50px;
+            padding: 25px;
+            background-color: #2a4a60;
+            border-radius: 12px;
+        }
+
+        .toggle-button {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 30px;
+            background-color: #f1c40f;
+            color: #183040;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(241, 196, 15, 0.3);
+        }
+
+        .toggle-button:hover {
+            background-color: #d4af37;
+            transform: translateY(-2px);
+        }
+
+        .types-section {
+            display: none; 
+            margin-top: 25px;
+            padding: 25px;
+            background-color: #2a4a60;
+            border-radius: 12px;
+        }
+        
+        #typeDetails {
+            background-color: #183040;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .content-section,
+            .content-section.reverse,
+            .type-content-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .section-image, .type-image-container {
+                min-width: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <header id="site-header"></header>
+    <main>
+        <div class="detail-container">
+            <h1>Gitar Detaylı İnceleme</h1>
 
-  <main>
-    <div class="detail-container">
-      
-      <h1>Gitar</h1>
+            <img src="https://via.placeholder.com/700x350?text=Gitar+-+Akustik+ve+Elektro" alt="Gitar" class="main-instrument-image">
 
-      <section class="instrument-info">
-        <img src="assets/images/instruments/gitar-ana.jpg" alt="Gitar Ana Görseli">
-        
-        <div class="instrument-text">
-          <h2>Gitar Nedir ve Tarihçesi?</h2>
-          <p>
-            Gitar, telli bir çalgıdır. Genellikle **altı teli** bulunur ve telleri parmakla veya pena (mızrap) ile titreştirilerek çalınır. Perdelere basılarak farklı notalar elde edilir. Modern müziğin en temel ve vazgeçilmez enstrümanlarından biridir.
-          </p>
-          <p>
-            İlk gitar benzeri çalgıların kökeni antik uygarlıklara kadar uzanır. Modern gitarın atası olan **Viheula** ve sonrasında **Barok Gitar**, 17. yüzyıl İspanya'sında popülerlik kazanmıştır. Günümüzdeki haliyle altı telli modern gitar, 19. yüzyılda Antonio de Torres Jurado tarafından şekillendirilmiştir.
-          </p>
-        </div>
-      </section>
-      
-      <div class="detail-sections">
-        <h3>Gitar Çeşitleri ve Kullanım Alanları</h3>
-        
-        <button id="toggleTypesButton" class="toggle-button">
-            Gitar Çeşitlerinin Özelliklerini Gör ⬇️
-        </button>
-        
-        <div id="guitarTypesSection" class="hidden-section"> 
-            
-            <div class="guitar-types-grid">
-                
-                <button class="type-button" data-type="klasik">
-                    <img src="assets/images/instruments/gitar-klasik.jpg" alt="Klasik Gitar Görseli">
-                    <h4>Klasik Gitar</h4>
-                </button>
-                
-                <button class="type-button" data-type="akustik">
-                    <img src="assets/images/instruments/gitar-akustik.jpg" alt="Akustik Gitar Görseli">
-                    <h4>Akustik Gitar</h4>
-                </button>
-                
-                <button class="type-button" data-type="elektro">
-                    <img src="assets/images/instruments/gitar-elektro.jpg" alt="Elektro Gitar Görseli">
-                    <h4>Elektro Gitar</h4>
-                </button>
-                
+            <div class="content-section">
+                <div class="section-text">
+                    <h2>Gitar Tanımı ve Özellikleri</h2>
+                    <p>
+                        **Gitar**, dünyanın en yaygın ve popüler telli, perdeli çalgılarından biridir. Genellikle **altı telli** olup, tellere parmaklar veya bir **pena** (mızrap) ile vurularak ses elde edilir. Müzik türlerine göre kullanılan ana türlerini incelemek için aşağıdaki butonları kullanın.
+                    </p>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/instruments/gitar-cesitleri.jpg" alt="Gitar Çeşitleri">
+                </div>
+            </div>
+
+            <div class="gitar-buttons">
+                <button class="gitar-type-button" data-type="klasik">🎸 Klasik Gitar</button>
+                <button class="gitar-type-button" data-type="akustik">🎵 Akustik Gitar</button>
+                <button class="gitar-type-button" data-type="elektro">⚡ Elektro Gitar</button>
             </div>
             
-            <div id="typeDetails">
-                <p style="text-align: center; color: #d4af37;">Yukarıdaki gitar çeşitlerinden birine tıklayarak detaylı bilgi alabilirsiniz.</p>
+            <div id="gitarTypeDetails">
+                <div class="type-content-section">
+                    <div class="type-info">
+                        </div>
+                    <div class="type-image-container">
+                        </div>
+                </div>
             </div>
-            
+            <div class="content-section reverse">
+                <div class="section-text">
+                    <h2>Akort Düzeni ve Yapısal Özellikler</h2>
+                    <p>
+                        Gitarın standart akort düzeni (en kalın telden en ince tele doğru) şöyledir: **Mi-La-Re-Sol-Si-Mi (E-A-D-G-B-E)**. Bu düzen, gitarı Batı müziğindeki armoni ve akor sistemine mükemmel şekilde uyarlar.
+                    </p>
+                    <p>
+                        **Akustik ve Klasik** gitarlar sesin gövdedeki rezonansla yükselmesini sağlarken; **Elektro Gitar**'da tellerin titreşimi, manyetikler tarafından elektrik sinyaline dönüştürülür ve amfi sayesinde duyulur hale gelir. Elektro gitarın gövdesi genellikle daha düz ve incedir.
+                    </p>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/instruments/gitar-klavyesi.jpg" alt="Gitar Klavyesi">
+                </div>
+            </div>
+
+            <div class="instrument-details">
+                <button id="toggleTypesButton" class="toggle-button">Gitar Çalma Tekniklerini İncele</button>
+                
+                <div id="typesSection" class="types-section">
+                    <h2>Temel Gitar Çalma Teknikleri</h2>
+                    <div id="typeDetails">
+                        <p>
+                            **Strumming (Akor Çalma):** Ritim oluşturmak için penayla tellere hızlıca vurma. Rock, Pop, Folk müziklerinde yaygındır.
+                        </p>
+                        <hr style="border-color: #f1c40f55;">
+                        <p>
+                            **Fingerpicking (Parmak Tekniği):** Özellikle klasik ve folk müzikte, her bir teli parmakla ayrı ayrı çekerek melodi ve bas hattını eş zamanlı çalma.
+                        </p>
+                        <hr style="border-color: #f1c40f55;">
+                        <p>
+                            **Tapping (Vurma):** Elektro gitarda parmakları klavye üzerine vurarak ses çıkarma. İleri seviye Rock ve Metal tekniklerinden biridir.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </main>
+    </main>
 
-  <footer id="site-footer" class="fixed-footer"></footer>
+    <script>
+     
+        const gitarTypes = {
+            klasik: {
+                title: "Klasik Gitar (Naylon Telli)",
+                info: "Klasik gitar, yumuşak ve yuvarlak sesiyle bilinir. **Naylon teller** kullanır ve daha geniş, düz bir sapa sahiptir. Klasik müzik, Flamenko ve fingerstyle (parmakla çalma) için idealdir.",
+                image: "assets/images/klasik-gitar.jpg"
+            },
+            akustik: {
+                title: "Akustik Gitar (Çelik Telli)",
+                info: "Akustik gitar, daha parlak, keskin ve yüksek bir sese sahiptir. **Çelik teller** kullanılır ve genellikle pop, rock, country ve folk müzik türlerinde akor (strumming) çalmak için tercih edilir.",
+                image: "assets/images/akustik-gitar.jpg"
+            },
+            elektro: {
+                title: "Elektro Gitar (Amplifikatörlü)",
+                info: "Elektro gitarlar, sesi bir manyetik (pickup) aracılığıyla **amplifikatöre** aktarır. Tonları efekt pedalları ile sonsuz çeşitlilikte değiştirilebilir. Rock, Metal, Blues ve Caz'ın ana enstrümanıdır.",
+                image: "assets/images/elektro-gitar.jpg"
+            }
+        };
 
-  <script src="js/ui.js"></script>
-  <script src="js/main.js"></script>
-  
-  <script>
-    const typeData = {
-        klasik: {
-            title: "Klasik Gitar (Naylon Telli)",
-            info: "Daha yumuşak, sıcak bir tınıya sahiptir. Naylon telli olduğu için parmakları yormaz. Klasik müzik, flamenko ve parmak stili (fingerstyle) çalmak için idealdir."
-        },
-        akustik: {
-            title: "Akustik Gitar (Çelik Telli)",
-            info: "Daha parlak ve güçlü bir sese sahiptir. Çelik telleri sayesinde sesi daha yüksektir. Folk, pop, rock ve country müzikte yaygın olarak kullanılır."
-        },
-        elektro: {
-            title: "Elektro Gitar",
-            info: "Manyetikler aracılığıyla sesi alır ve amfiye iletir. Rock, metal, caz ve blues gibi ton çeşitliliğinin önemli olduğu türlerin vazgeçilmezidir. Amfi olmadan sesi çok az çıkar."
-        }
-    };
+        document.addEventListener('DOMContentLoaded', function() {
+            const typeButtons = document.querySelectorAll('.gitar-type-button');
+            const detailSection = document.getElementById('gitarTypeDetails');
+            const detailInfo = detailSection.querySelector('.type-info');
+            const detailImageContainer = detailSection.querySelector('.type-image-container');
 
-    document.addEventListener("DOMContentLoaded", () => {
-      // Header ve Footer yükle
-      fetch("partials/header.html").then(res => res.text()).then(data => {
-          const header = document.getElementById("site-header");
-          if(header) header.innerHTML = data;
-      });
+    
+            typeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const type = this.getAttribute('data-type');
+                    const data = gitarTypes[type];
 
-      fetch("partials/footer.html").then(res => res.text()).then(data => {
-          const footer = document.getElementById("site-footer");
-          if(footer) footer.innerHTML = data;
-      });
-        
-      // Ana Toggle Butonu Fonksiyonu
-      const toggleButton = document.getElementById('toggleTypesButton');
-      const typesSection = document.getElementById('guitarTypesSection');
+                    typeButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    this.classList.add('active');
 
-      if (toggleButton && typesSection) {
-          toggleButton.addEventListener('click', function() {
-              const isVisible = typesSection.classList.toggle('visible');
+                    detailInfo.innerHTML = `
+                        <h3>${data.title}</h3>
+                        <p>${data.info}</p>
+                    `;
+                    detailImageContainer.innerHTML = `
+                        <img src="${data.image}" alt="${data.title}">
+                    `;
+
+                    detailSection.classList.remove('visible');
               
-              if (isVisible) {
-                  toggleButton.innerHTML = 'Çeşitleri Gizle ⬆️';
-                  setTimeout(() => {
-                      typesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }, 100); 
-              } else {
-                  toggleButton.innerHTML = 'Gitar Çeşitlerinin Özelliklerini Gör ⬇️';
-              }
-          });
-      }
+                    setTimeout(() => {
+                        detailSection.classList.add('visible');
+                        detailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 50); 
+                });
+            });
 
-      // Yeni: Tip Butonlarına Tıklama İşlemi
-      const typeButtons = document.querySelectorAll('.type-button');
-      const detailsArea = document.getElementById('typeDetails');
-      
-      typeButtons.forEach(button => {
-          button.addEventListener('click', function() {
-              // 1. Tüm butonlardaki aktif vurguyu kaldır
-              typeButtons.forEach(btn => btn.classList.remove('active'));
-              
-              // 2. Tıklanan butonu aktif yap
-              this.classList.add('active'); 
-
-              // 3. Veriyi Yükle
-              const type = this.getAttribute('data-type');
-              const data = typeData[type];
-              
-              detailsArea.innerHTML = `
-                  <h4 style="color: #f1c40f; font-size: 1.3rem; margin-bottom: 10px;">${data.title}</h4>
-                  <p>${data.info}</p>
-              `;
-
-              // 4. Detay Alanına Kaydır
-              detailsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          });
-      });
-    });
-  </script>
+            const toggleButton = document.getElementById('toggleTypesButton');
+            const typesSection = document.getElementById('typesSection');
+            
+            toggleButton.addEventListener('click', () => {
+                const isVisible = typesSection.style.display === 'block';
+                
+                if (isVisible) {
+                    typesSection.style.display = 'none';
+                    toggleButton.textContent = 'Gitar Çalma Tekniklerini İncele';
+                } else {
+                    typesSection.style.display = 'block';
+                    toggleButton.textContent = 'Teknikleri Gizle';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

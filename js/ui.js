@@ -1,5 +1,5 @@
-// js/ui.js
-// Header/Footer yükleme ve Ana Sayfa CTA (Keşfetmeye Başla) mantığını içerir.
+
+// Header/Footer yükleme işlevini içerir. Ana Sayfa CTA kodu bu dosyadan KALDIRILMIŞTIR.
 
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -24,18 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
     loadPartial("site-header", "header.html");
     loadPartial("site-footer", "footer.html");
 
+});
+// Tema değiştirici
+const themeToggle = document.createElement('button');
+themeToggle.innerHTML = '🌙';
+themeToggle.style = 'position:fixed; bottom:20px; right:20px; z-index:999; background:#f1c40f; color:#183040; border:none; border-radius:50%; width:50px; height:50px; font-size:1.5rem; cursor:pointer;';
+document.body.appendChild(themeToggle);
 
-    // Ana Sayfa (index.html) CTA Buton Toggle Fonksiyonu
-    const ctaButton = document.querySelector('.cta-button');
-    const infoSections = document.getElementById('infoSections');
-
-    if (ctaButton && infoSections) {
-        ctaButton.addEventListener('click', function(event) {
-            event.preventDefault(); 
-            infoSections.classList.add('show'); 
-            setTimeout(() => {
-                infoSections.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 500); 
-        });
-    }
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light-theme');
+  themeToggle.innerHTML = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
 });

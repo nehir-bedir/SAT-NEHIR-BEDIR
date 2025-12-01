@@ -1,0 +1,86 @@
+/* css/components/hero.css */
+
+.hero-section {
+    position: relative; /* İçindeki içeriğin mutlak konumlanması için gerekli */
+    min-height: 90vh; /* Viewport'un yaklaşık %90'ını kaplasın */
+    width: 100%;
+    
+    /* Hero bölümünün arka plan ve genel stili */
+    background-color: #1a1a1a; 
+    color: #fff; 
+    text-align: center;
+    
+    /* Animasyon için temel geçiş ayarları */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease, visibility 0.5s ease, height 0.5s ease;
+}
+
+.hero-content {
+    /* **TAM ORTALAMA: Mutlak Konumlandırma** */
+    position: absolute; 
+    top: 50%;         
+    left: 50%;        
+    transform: translate(-50%, -50%); 
+    
+    padding: 20px;
+    max-width: 700px;
+    text-align: center;
+}
+
+/* ---------------------------------------------------- */
+/* **YENİ STİL: Butona Tıklandığında Hero'yu Gizle** */
+/* ---------------------------------------------------- */
+.hero-section.hidden {
+    opacity: 0; /* Saydamlık 0 yap */
+    visibility: hidden; /* Erişilebilirliği engelle */
+    height: 0; /* Yüksekliğini sıfırla (altındaki içeriğin yukarı kaymasını sağlar) */
+    padding: 0;
+    margin: 0;
+    
+    /* visibility 0s 0.5s: Geçiş bittikten hemen sonra elemanı gizle */
+    transition: opacity 0.5s ease, visibility 0s 0.5s, height 0.5s ease; 
+}
+
+
+/* Başlık ve Buton Stilleri (Değişmedi) */
+.hero-content h1 {
+    font-size: 3.5rem; 
+    color: #f1c40f; 
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #f1c40f, #e67e22);
+    color: #1a1a1a; 
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 6px 15px rgba(241, 196, 15, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(241, 196, 15, 0.6);
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}

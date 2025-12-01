@@ -1,314 +1,344 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ud | Detaylı İnceleme</title>
-  
-  <link rel="stylesheet" href="css/reset.css" />
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/components/header.css" />
-  <link rel="stylesheet" href="css/components/footer.css" />
-  
-  <link rel="stylesheet" href="css/components/detail-page.css" /> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ud | Detaylı İnceleme</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/footer.css">
 
-  <style>
-    /* ----------------------------------------------------------------- */
-    /* 💥 KRİTİK GÖMÜLÜ STİLLER: KOYU DENİZ MAVİSİ TEMA VE SARI BUTON VURGUSU */
-    /* ----------------------------------------------------------------- */
-
-    /* Ana Arka Plan Rengi: Koyu Deniz Mavisi */
-    body {
-        background-color: #183040 !important; 
-        color: #eee;
-    }
-
-    /* Genel Kontayner Ayarları */
-    .detail-container {
-        max-width: 1100px;
-        margin: 50px auto;
-        padding: 30px;
-        background-color: #204055; /* İç konteyner biraz daha açık mavi */
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        color: #eee;
-    }
-    
-    /* Başlıklar ve Vurgu Renkleri (Sarı/Altın kalır) */
-    .detail-container h1 {
-        font-size: 2.5rem;
-        color: #d4af37; /* Sarı/Altın */
-        text-align: center;
-        margin-bottom: 40px;
-        border-bottom: 3px solid #f1c40f; 
-        padding-bottom: 10px;
-    }
-    .instrument-text h2 {
-        color: #f1c40f; /* Parlak Sarı Başlık */
-        border-left: 5px solid #d4af37;
-        padding-left: 10px;
-    }
-
-    /* Detaylar ve Butonlar Bölümü (Arka Plan) */
-    .detail-sections {
-        margin-top: 40px;
-        padding: 30px;
-        background-color: #2A516C; /* Orta mavi tonu */
-        border-radius: 10px;
-        color: #eee;
-    }
-    .detail-sections h3 {
-        color: #d4af37;
-        border-bottom: 1px dashed #666;
-        padding-bottom: 5px;
-    }
-
-    /* Ana Toggle Buton Stili (SARI VURGU) */
-    .toggle-button {
-        display: inline-block;
-        background-color: #f1c40f; /* Sarı Buton Rengi */
-        color: #183040; /* Koyu Mavi Metin */
-        padding: 12px 25px;
-        border-radius: 30px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.2s;
-        text-decoration: none;
-        margin-top: 20px;
-        text-align: center;
-        border: none;
-    }
-    .toggle-button:hover {
-        background-color: #d4af37; /* Hover için daha koyu sarı */
-        transform: translateY(-2px);
-    }
-    
-    /* YENİ: ÇEŞİTLER İÇİN YAN YANA GÖRSEL BUTON YAPISI */
-    .types-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-        gap: 20px;
-        padding: 20px 0;
-    }
-
-    .type-button {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 15px;
-        background-color: #2A516C; /* .detail-sections ile aynı ton */
-        border: 2px solid transparent;
-        border-radius: 10px;
-        transition: 0.3s;
-        cursor: pointer;
-    }
-
-    .type-button:hover {
-        background-color: #386485; 
-        border-color: #f1c40f; /* Sarı çerçeve vurgusu */
-        transform: translateY(-3px);
-    }
-
-    /* Tıklanan butonu sürekli vurgulama stili (SARI VURGU) */
-    .type-button.active {
-        border-color: #f1c40f !important; /* Aktif sarı çerçeve */
-        background-color: #386485;
-    }
-
-    .type-button img {
-        width: 100%;
-        height: auto;
-        max-height: 150px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 10px;
-    }
-    .type-button h4 {
-        color: #d4af37;
-    }
-
-    /* Açılır Kapanır Alanın CSS'i (Animasyon) */
-    .hidden-section {
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        transition: max-height 0.7s ease-in-out, opacity 0.5s;
-        padding: 0 10px; 
-    }
-    .hidden-section.visible {
-        max-height: 1500px; 
-        opacity: 1;
-        padding: 20px 10px; 
-    }
-    /* Detay alanı içindeki stil */
-    #typeDetails {
-        margin-top: 30px; 
-        padding: 20px; 
-        background-color: #204055 !important; /* Detay alanı için Ana Konteyner tonu */
-        border-radius: 8px;
-    }
-    #typeDetails h4 {
-        color: #f1c40f; 
-        font-size: 1.3rem; 
-        margin-bottom: 10px;
-    }
-
-    /* Mobil Uyumlu Düzenleme */
-    @media (max-width: 800px) {
-        .instrument-info {
-            flex-direction: column;
+    <style>
+       
+        body {
+            background-color: #183040;
+            color: #eee;
         }
-        .instrument-info img {
-            width: 100%;
-            max-width: none;
-            margin-bottom: 20px;
-        }
+
         .detail-container {
-            margin: 20px 10px;
-            padding: 20px;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #204055;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
-    }
-  </style>
+
+        .detail-container h1 {
+            font-size: 2.8rem;
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 4px solid #f1c40f;
+            padding-bottom: 15px;
+        }
+
+        .content-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .content-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .section-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .section-text h2 {
+            color: #f1c40f;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            border-left: 6px solid #d4af37;
+            padding-left: 15px;
+        }
+
+        .section-text p {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .section-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .section-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .main-instrument-image {
+            width: 100%;
+            max-width: 700px;
+            display: block;
+            margin: 30px auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .instrument-details {
+            margin-top: 50px;
+            padding: 25px;
+            background-color: #2a4a60;
+            border-radius: 12px;
+        }
+
+        .toggle-button {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 30px;
+            background-color: #f1c40f;
+            color: #183040;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(241, 196, 15, 0.3);
+        }
+
+        .toggle-button:hover {
+            background-color: #d4af37;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(241, 196, 15, 0.4);
+        }
+
+        .types-section {
+            display: none;
+            margin-top: 25px;
+            padding: 25px;
+            background-color: #2a4a60;
+            border-radius: 12px;
+        }
+
+        .types-section.visible {
+            display: block;
+        }
+
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .type-card {
+            background-color: #183040;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .type-card:hover, .type-card.active {
+            border-color: #f1c40f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(241, 196, 15, 0.2);
+        }
+
+        .type-card img {
+            width: 100%;
+            max-width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .type-card h4 {
+            color: #f1c40f;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        #typeDetails {
+            background-color: #183040;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 25px;
+            display: none;
+        }
+
+        #typeDetails.visible {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .content-section,
+            .content-section.reverse {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .section-image {
+                min-width: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <header id="site-header"></header>
+    <header id="site-header"></header>
 
-  <main>
-    <div class="detail-container">
-      
-      <h1>Ud</h1>
+    <main>
+        <div class="detail-container">
+            <h1>Ud</h1>
 
-      <section class="instrument-info">
-        <img src="assets/images/instruments/ud-ana.jpg" alt="Ud Ana Görseli">
-        
-        <div class="instrument-text">
-          <h2>Ud Nedir ve Tarihçesi?</h2>
-          <p>
-            Ud, perdesiz telli bir çalgıdır. Armut şeklindeki geniş gövdesi ve kısa sapıyla tanınır. Mızrap (genellikle plastik veya özel tüyden yapılır) kullanılarak çalınır. Orta Doğu, Kuzey Afrika ve Türk Sanat Müziği'nin en temel enstrümanlarından biridir.
-          </p>
-          <p>
-            Perdesiz olması sayesinde Ud, makam müziğinin ince ses aralıklarını (komaları) tam olarak verebilme yeteneğine sahiptir. Kökenleri Mezopotamya'ya kadar uzanır ve tarihi 4000 yıl öncesine dayanır.
-          </p>
-        </div>
-      </section>
-      
-      <div class="detail-sections">
-        <h3>Ud Çeşitleri ve Kullanım Alanları</h3>
-        
-        <button id="toggleTypesButton" class="toggle-button">
-            Ud Çeşitlerinin Özelliklerini Gör ⬇️
-        </button>
-        
-        <div id="instrumentTypesSection" class="hidden-section"> 
-            
-            <div class="types-grid">
-                
-                <button class="type-button" data-type="arap_ud">
-                    <img src="assets/images/instruments/ud-arap.jpg" alt="Arap Ud'u Görseli">
-                    <h4>Arap Ud'u</h4>
-                </button>
-                
-                <button class="type-button" data-type="turk_ud">
-                    <img src="assets/images/instruments/ud-turk.jpg" alt="Türk Ud'u Görseli">
-                    <h4>Türk Ud'u</h4>
-                </button>
-                
-                <button class="type-button" data-type="iran_ud">
-                    <img src="assets/images/instruments/ud-iran.jpg" alt="İran Ud'u Görseli">
-                    <h4>İran Ud'u (Barbat)</h4>
-                </button>
-                
+            <img src="assets/images/ud.jpg" alt="Ud" class="main-instrument-image"> 
+
+            <div class="content-section">
+                <div class="section-text">
+                    <h2>Tanım ve Genel Özellikler</h2>
+                    <p>
+                        **Ud**, yayvan, yarım armut biçiminde gövdeye sahip, perdesiz ve telli bir çalgıdır. Arap, Türk, Fars, Yunan ve Kuzey Afrika müziğinin en önemli enstrümanlarından biridir ve modern gitarın atası olarak kabul edilir. Genellikle 11 (5 çift ve 1 tek bas) veya 12 teli bulunur ve mızrap (Rişe) ile çalınır.
+                    </p>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/ud-yapisi.jpg" alt="Ud Yapısı">
+                </div>
             </div>
-            
-            <div id="typeDetails">
-                <p style="text-align: center; color: #d4af37;">Yukarıdaki ud çeşitlerinden birine tıklayarak detaylı bilgi alabilirsiniz.</p>
+
+            <div class="content-section reverse">
+                <div class="section-text">
+                    <h2>Tarihsel Gelişimi</h2>
+                    <p>
+                        Ud'un kökenleri yaklaşık 3500 yıl öncesine, Mezopotamya ve Mısır'a dayanır. Arapçada "ağaç" anlamına gelen **'al-'ūd** kelimesinden türemiştir. İslami Altın Çağ boyunca popülerleşmiş ve İspanya'daki Endülüs Emevi Devleti aracılığıyla Avrupa'ya yayılarak, oradaki telli çalgıların (örneğin Lavta) gelişimini etkilemiştir. Türk müziği repertuarında yüzlerce yıldır yer almaktadır.
+                    </p>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/ud-tarih.jpg" alt="Ud Tarihçesi">
+                </div>
             </div>
-            
+
+            <div class="content-section">
+                <div class="section-text">
+                    <h2>Yapısal Özellikleri: Perdesizlik</h2>
+                    <p>
+                        Ud'un en belirgin yapısal özelliği **perdesiz** olmasıdır. Perdesiz sap, icracının sesi tam olarak basma becerisini ve **makam müziğine özgü** ince ses aralıklarını (koma) hatasız çalabilme yeteneğini gerektirir. Armut şeklindeki **teknesi** genellikle maun, ceviz veya akçaağaç gibi farklı ağaç dilimlerinin birleştirilmesiyle yapılır.
+                    </p>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/ud-perdesiz.jpg" alt="Ud Perdesiz Sap">
+                </div>
+            </div>
+
+            <div class="content-section reverse">
+                <div class="section-text">
+                    <h2>Çalma Teknikleri</h2>
+                    <p>
+                        Ud, **Rişe** adı verilen, genellikle ince ve uzun plastik bir mızrap kullanılarak çalınır. Temel teknikler arasında tellere tek tek veya çift vurarak melodi üretmek, **tremo** (hızlı tekrarlanan vuruşlar) ve akor basarak eşlik etme yer alır. Perdesiz yapısı sayesinde parmakların tel üzerindeki hafif kaydırma hareketleri ile **glissando** gibi ifadeli teknikler kolayca uygulanabilir.
+                    </p>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/ud-calma.jpg" alt="Ud Çalma Teknikleri">
+                </div>
+            </div>
+
+            <div class="instrument-details">
+                <button id="toggleTypesButton" class="toggle-button">Ud Çeşitlerini ve Akortlarını Keşfet</button>
+                
+                <div id="typesSection" class="types-section">
+                    <h2>Ud Çeşitleri ve Akort Düzenleri</h2>
+                    <div class="types-grid" id="typesGrid">
+                        </div>
+                    <div id="typeDetails">
+                        </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </main>
+    </main>
 
-  <footer id="site-footer" class="fixed-footer"></footer>
+    <footer id="site-footer"></footer>
 
-  <script src="js/ui.js"></script>
-  <script src="js/main.js"></script>
-  
-  <script>
-    const typeData = {
-        arap_ud: {
-            title: "Arap Ud'u",
-            info: "Daha büyük gövdeli ve daha uzun telli bir yapıya sahiptir. Bu sayede sesi daha dolgun ve bas tonludur. Kuzey Afrika ve Levant bölgelerinde yaygındır."
-        },
-        turk_ud: {
-            title: "Türk Ud'u",
-            info: "Arap Ud'undan daha küçük gövdeli ve daha kısadır. Tiz sesleri daha belirgin ve keskindir. Türk Sanat Müziği icrasında sıklıkla tercih edilir."
-        },
-        iran_ud: {
-            title: "İran Ud'u (Barbat)",
-            info: "Ud ailesinin daha eski bir formu olarak kabul edilir. Geleneksel olarak daha uzun bir sapı ve daha küçük bir kasası vardır. İran klasik müziğinin temel çalgılarındandır."
-        }
-    };
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const typeData = {
+                turk_udu: {
+                    title: 'Türk Ud\'u',
+                    shortInfo: 'Daha parlak tınılı, ince gövdeli ve 5 çift, 1 tek bas telli.',
+                    image: 'assets/images/turk-ud.jpg', 
+                    detailedInfo: 'Türk Ud\'u, Arap Ud\'una göre biraz daha küçük bir tekneye sahiptir ve genellikle daha gergindir. Bu durum, daha parlak ve tiz bir tınıya yol açar. Temel akort düzeni (kalın telden inceye): Do-Sol-Re-La-Mi-La\'dır (Bazı icracılar Fa yerine Do kullanır).'
+                },
+                arap_udu: {
+                    title: 'Arap Ud\'u',
+                    shortInfo: 'Daha büyük gövdeli, kalın ve tok sesli, genellikle sabit burgulu.',
+                    image: 'assets/images/types/arap-udu.jpg', 
+                    detailedInfo: 'Arap Ud\'u daha büyük bir gövdeye sahiptir, bu da daha kalın ve daha tok bir sese neden olur. Sapı Türk Ud\'una göre biraz daha kısadır. Akort düzeni Türk Ud\'una yakındır, ancak genellikle daha pes seslere akort edilir.'
+                },
+                iran_udu: {
+                    title: 'Barbat (Fars Ud\'u)',
+                    shortInfo: 'Daha derin gövde ve uzun sap ile karakterize edilir.',
+                    image: 'assets/images/types/iran-udu.jpg', 
+                    detailedInfo: 'Fars Ud\'u veya Barbat, diğer udlardan daha derin ve uzun bir gövdeye sahiptir, bu da daha dolgun bir tona neden olur. Geleneksel Fars müziği (Dastgah) icrasında kullanılır.'
+                }
+            };
 
-    document.addEventListener("DOMContentLoaded", () => {
-      // Header ve Footer yükle
-      fetch("partials/header.html").then(res => res.text()).then(data => {
-          const header = document.getElementById("site-header");
-          if(header) header.innerHTML = data;
-      });
+            const toggleButton = document.getElementById('toggleTypesButton');
+            const typesSection = document.getElementById('typesSection');
+            const typesGrid = document.getElementById('typesGrid');
+            const typeDetails = document.getElementById('typeDetails');
 
-      fetch("partials/footer.html").then(res => res.text()).then(data => {
-          const footer = document.getElementById("site-footer");
-          if(footer) footer.innerHTML = data;
-      });
-        
-      // Ana Toggle Butonu Fonksiyonu
-      const toggleButton = document.getElementById('toggleTypesButton');
-      const typesSection = document.getElementById('instrumentTypesSection');
+            function createTypeCards() {
+                typesGrid.innerHTML = ''; 
+                Object.keys(typeData).forEach(key => {
+                    const data = typeData[key];
+                    const card = document.createElement('div');
+                    card.className = 'type-card';
+                    card.dataset.type = key;
+                    card.innerHTML = `
+                        <img src="${data.image}" alt="${data.title}">
+                        <h4>${data.title}</h4>
+                        <p>${data.shortInfo}</p>
+                    `;
+                    card.addEventListener('click', () => showTypeDetails(key, card));
+                    typesGrid.appendChild(card);
+                });
+            }
 
-      if (toggleButton && typesSection) {
-          toggleButton.addEventListener('click', function() {
-              const isVisible = typesSection.classList.toggle('visible');
-              
-              if (isVisible) {
-                  toggleButton.innerHTML = 'Çeşitleri Gizle ⬆️';
-                  setTimeout(() => {
-                      typesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }, 100); 
-              } else {
-                  toggleButton.innerHTML = 'Ud Çeşitlerinin Özelliklerini Gör ⬇️';
-              }
-          });
-      }
+            function showTypeDetails(typeKey, clickedCard) {
+                const data = typeData[typeKey];
 
-      // Yeni: Tip Butonlarına Tıklama İşlemi
-      const typeButtons = document.querySelectorAll('.type-button');
-      const detailsArea = document.getElementById('typeDetails');
-      
-      typeButtons.forEach(button => {
-          button.addEventListener('click', function() {
-              // 1. Tüm butonlardaki aktif vurguyu kaldır
-              typeButtons.forEach(btn => btn.classList.remove('active'));
-              
-              // 2. Tıklanan butonu aktif yap
-              this.classList.add('active'); 
+                document.querySelectorAll('.type-card').forEach(card => {
+                    card.classList.remove('active');
+                });
 
-              // 3. Veriyi Yükle
-              const type = this.getAttribute('data-type');
-              const data = typeData[type];
-              
-              detailsArea.innerHTML = `
-                  <h4 style="color: #f1c40f; font-size: 1.3rem; margin-bottom: 10px;">${data.title}</h4>
-                  <p>${data.info}</p>
-              `;
+                if (clickedCard) {
+                    clickedCard.classList.add('active');
+                }
 
-              // 4. Detay Alanına Kaydır
-              detailsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          });
-      });
-    });
-  </script>
+                typeDetails.innerHTML = `
+                    <h3>${data.title} Özellikleri</h3>
+                    <p>${data.detailedInfo}</p>
+                `;
+
+                typeDetails.classList.add('visible');
+            }
+
+            toggleButton.addEventListener('click', () => {
+                const isVisible = typesSection.classList.toggle('visible');
+                toggleButton.textContent = isVisible ? 'Ud Çeşitlerini Gizle' : 'Ud Çeşitlerini ve Akortlarını Keşfet';
+                if (isVisible) {
+                    createTypeCards();
+                    typeDetails.classList.remove('visible');
+                    typeDetails.innerHTML = '';
+                }
+            });
+
+        });
+    </script>
 </body>
 </html>

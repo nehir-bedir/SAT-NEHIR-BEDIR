@@ -1,34 +1,39 @@
 // js/homepage-toggle.js
 
 document.addEventListener("DOMContentLoaded", () => {
-    const heroSection = document.querySelector('.hero');
+    // 1. Gerekli elementleri yakala
+    const ctaButton = document.querySelector('.cta-button'); 
+    const heroSection = document.querySelector('.hero-section');
     const infoSections = document.getElementById('infoSections');
-    const exploreButton = heroSection ? heroSection.querySelector('.btn') : null;
+    const body = document.body; // body elementini yakala
 
-    if (!heroSection || !infoSections || !exploreButton) {
-        // Gerekli elemanlar yoksa (diğer sayfalardaysak) çalışmayı durdur.
-        return;
+    if (ctaButton && heroSection && infoSections) {
+        // Kartlar bölümünün başlangıçta sayfadan kaymasını engellemek için gerekli olabilir
+        // Eğer kartlar görünmüyorsa: body.classList.add('hide-info-sections'); 
+
+        // 2. Butona tıklama olayını dinle
+        ctaButton.addEventListener('click', function(e) {
+            e.preventDefault(); 
+
+            // 3. Hero bölümüne "hidden" sınıfını ekle (Bu gizleme ve akıştan kaldırma yapar)
+            heroSection.classList.add('hidden');
+            
+            // 4. ***YENİ EKLENEN KISIM:***
+            // Sayfanın genelini kontrol etmek için body'ye bir sınıf ekleyelim.
+            // Bu, Header'ın hemen altında kartların görünmesini sağlamalı.
+            body.classList.add('homepage-content-visible');
+
+            // 5. Kaydırma animasyonunun tamamlanmasını bekleyip sayfayı kartlara kaydır.
+            setTimeout(() => {
+                 infoSections.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 550); // CSS geçiş süresinden (0.5s) biraz daha uzun
+        });
     }
-
-    // Başlangıçta info-sections görünür olmamalı
-    infoSections.classList.remove('visible'); 
-
-    // Butona tıklandığında geçişi yap
-    exploreButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        
-        // 1. Hero alanını küçült (CSS'teki .hero-minimized sınıfını kullanır)
-        heroSection.classList.add('hero-minimized');
-        
-        // 2. Info Sections içeriğini göster
-        infoSections.classList.add('visible');
-
-        // 3. Kullanıcıyı gösterilen içeriğe kaydır
-        setTimeout(() => {
-            infoSections.scrollIntoView({ behavior: 'smooth' });
-        }, 500); // CSS animasyon süresiyle senkronize et
-
-        // 4. Butonu devre dışı bırak/gizle (isteğe bağlı)
-        exploreButton.style.display = 'none';
-    });
+    
+    // Sayfa zaten kaydırılmış durumdaysa, Hero'yu gizle (Yenileme sonrası konumunu koruma)
+    // Bu, tarayıcıda geri gelindiğinde tam ekran siyah ekran görmeyi engeller.
+    if (window.scrollY > 50) { 
+        heroSection.classList.add('hidden');
+        body.classList.add('homepage-content-visible');
+    }
 });

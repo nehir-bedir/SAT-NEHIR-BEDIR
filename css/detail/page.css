@@ -1,134 +1,89 @@
-/* css/components/detail-page.css - MAKSİMUM CANLILIK VE ETKİLEŞİM İÇİN GÜNCELLENDİ */
+/* css/components/detail-page.css */
 
-/* Genel Detay Sayfası Düzeni */
+/* 1. Genel Kontayner Ayarları */
 .detail-container {
-    padding: 30px 0;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 40px; /* İç boşluğu artırdık */
+    background-color: #1c3345; /* Daha koyu, daha zengin bir iç konteyner rengi */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Derin ve koyu gölge */
 }
 
-/* Ana Enstrüman Bilgisi Bölümü (Canlılık Artışı) */
-.instrument-info {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
-    margin-bottom: 60px;
-    background-color: var(--content-bg);
-    padding: 30px;
-    border-radius: 10px;
-    /* GÖLGE CANLILIĞI ARTIRILDI */
-    box-shadow: 0 4px 30px rgba(255, 204, 0, 0.35); /* Belirgin sarı glow */
-    border: 2px solid rgba(255, 204, 0, 0.6); /* Daha belirgin sarı kenarlık */
-}
-
-.instrument-info img {
-    width: 40%;
-    max-width: 400px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.4s ease;
-    /* Görsele hafif bir parlaklık efekti */
-    box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
-}
-
-.instrument-info img:hover {
-    transform: scale(1.05); /* Daha belirgin büyüme */
-}
-
-.instrument-text {
-    width: 60%;
-}
-
-.instrument-text h2 {
-    color: var(--primary-color);
-    font-size: 2.2rem;
-    margin-top: 0;
-    border-bottom: 3px solid var(--primary-color); 
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    /* Başlığa Canlılık Katma */
-    text-shadow: 0 0 10px rgba(255, 204, 0, 0.7); 
-}
-
-.instrument-text p {
-    line-height: 1.7;
-    color: var(--light-text-color);
-    margin-bottom: 15px;
-}
-
-/* YENİ VE CANLI CTA Butonunun Detay Sayfası Versiyonu */
-.detail-cta-button {
-    display: block;
-    width: 100%;
-    padding: 22px; /* Biraz daha büyük */
-    margin: 40px 0 20px 0;
-    background-color: var(--primary-color); /* Sarı arkaplan */
-    color: #111; /* Koyu yazı */
-    font-size: 1.8rem; /* Daha büyük */
-    font-weight: 900; /* Ekstra kalın yazı */
+/* 2. Sayfa Başlığı (h1) */
+.detail-container h1 {
+    font-size: 2.8rem;
+    color: #f1c40f; /* Sarı Vurgu */
     text-align: center;
-    border: none;
-    border-radius: 10px; 
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    /* ÇOK DAHA CANLI GÖLGE */
-    box-shadow: 0 8px 30px rgba(255, 204, 0, 0.7); 
-    text-transform: uppercase;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-bottom: 3px solid rgba(241, 196, 15, 0.5); /* Sarı alt çizgi */
+    padding-bottom: 15px;
 }
 
-.detail-cta-button:hover {
-    background-color: #ffd700;
-    /* Hover'da daha da parlama ve sıçrama efekti */
-    box-shadow: 0 15px 40px rgba(255, 204, 0, 1), 0 0 50px rgba(255, 204, 0, 0.8); 
-    transform: translateY(-5px) scale(1.005); 
+/* 3. Ana İçerik Bölümü (section) */
+.info-detail-content {
+    margin-top: 30px;
 }
 
-/* Çeşitler/Türler Bölümü (Açılır Kapanır Animasyon) */
-.type-section {
-    margin-top: 20px;
-    overflow: hidden; 
-    max-height: 0; 
-    opacity: 0;
-    transition: max-height 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.7s ease; /* Daha yumuşak geçiş */
+/* 4. Alt Başlıklar (h2 ve h3) */
+.info-detail-content h2 {
+    font-size: 2rem;
+    color: #3498db; /* Açık Mavi Bölüm Başlığı */
+    margin-top: 35px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(52, 152, 219, 0.4);
+    font-weight: 600;
 }
 
-.type-section.visible {
-    max-height: 2000px; 
-    opacity: 1;
-    padding-bottom: 40px; 
+.info-detail-content h3 {
+    font-size: 1.5rem;
+    color: #f39c12; /* Turuncu-Sarı Vurgu */
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-weight: 500;
 }
 
-.type-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    padding-top: 20px;
+/* 5. Paragraf Stilleri */
+.info-detail-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ddd; /* Açık Gri metin rengi */
+    margin-bottom: 20px;
+    text-align: justify;
 }
 
-.type-card {
-    background-color: #222;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* 6. Vurgulanan Metinler (Örn: strong, b etiketleri) */
+.info-detail-content strong {
+    color: #f1c40f; /* Paragraf içindeki vurgulu kelimeler için Sarı */
+    font-weight: 700;
 }
 
-.type-card:hover {
-    transform: translateY(-8px); /* Daha belirgin sıçrama */
-    /* Kartların da canlanması */
-    box-shadow: 0 0 25px rgba(255, 204, 0, 0.8), 0 5px 15px rgba(0, 0, 0, 0.5); 
-    background-color: #282828; 
-}
-
-/* Mobil Düzenleme */
-@media (max-width: 992px) {
-    .instrument-info {
-        flex-direction: column;
-        align-items: center;
+/* 7. Mobil Cihazlar için Düzenleme (Responsive) */
+@media (max-width: 768px) {
+    .detail-container {
+        margin: 20px 5%;
         padding: 20px;
     }
-    .instrument-info img,
-    .instrument-text {
-        width: 100%;
-        max-width: none;
+
+    .detail-container h1 {
+        font-size: 2.2rem;
+        margin-bottom: 25px;
+    }
+
+    .info-detail-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .info-detail-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .info-detail-content p {
+        font-size: 1rem;
     }
 }
+.audio-player { text-align: center; margin: 20px 0; }
+.audio-player audio { width: 100%; max-width: 400px; }

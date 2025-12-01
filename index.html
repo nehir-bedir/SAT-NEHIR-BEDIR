@@ -1,103 +1,288 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Müziğin tarihçesi, türleri ve ruh hâline etkisi. Enstrümanları keşfedin." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Müzik Aletleri | Ana Sayfa</title>
-
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/components/header.css">
   <link rel="stylesheet" href="css/components/footer.css">
-  
-  <link rel="stylesheet" href="css/components/hero.css"> 
-  <link rel="stylesheet" href="css/components/info-card.css"> 
-    <link rel="stylesheet" href="css/homepage-toggle.css"> 
-</head>
+  <style>
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 20px;
+    }
+    
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 60px;
+    }
 
+    .hero {
+      background: linear-gradient(rgba(24,48,64,0.85), rgba(24,48,64,0.95));
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hidden-content { 
+      max-height: 0; 
+      overflow: hidden; 
+      transition: max-height 0.7s ease-in-out; 
+      opacity: 0; 
+    }
+
+    .hidden-content.visible { 
+      max-height: 4000px; 
+      opacity: 1; 
+      padding: 40px 20px; 
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .content-card {
+      background: #204055;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .content-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .content-card:hover { 
+      transform: translateY(-10px); 
+    }
+
+    .content-card h3 { 
+      color: #d4af37; 
+      font-size: 1.8rem; 
+      margin-bottom: 15px;
+    }
+
+    .content-card p {
+      color: #eee;
+      line-height: 1.6;
+    }
+
+    .btn {
+      background: #f1c40f;
+      color: #183040;
+      padding: 15px 35px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #d4af37;
+      transform: translateY(-2px);
+    }
+
+    .instruments-section {
+      max-width: 1400px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .instruments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .instrument-card {
+      background: #2A516C;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .instrument-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    }
+
+    .instrument-card h3 {
+      color: #f1c40f;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .instrument-card p {
+      color: #e0e0e0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .search-bar input {
+      width: 60%;
+      max-width: 500px;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 30px;
+      background: #1c1c1c;
+      color: #fff;
+      font-size: 1rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .search-bar input::placeholder {
+      color: #999;
+    }
+  </style>
+</head>
 <body>
   <header id="site-header"></header>
 
-  <main class="main-content">
-    
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1>Müzik Dünyasını Keşfet</h1>
-            <p>Enstrümanları, tarihçelerini ve ruh hâline etkilerini detaylıca inceleyin.</p>
-            <a href="#infoSections" class="cta-button">Keşfetmeye Başla ⬇️</a> 
-        </div>
-    </section>
+  <div class="hero">
+    <h1>Hoş Geldiniz!</h1>
+    <p>Dünyanın en güzel müzik aletlerini keşfedin, tarihçelerini öğrenin, ruh haline göre müzik türlerini inceleyin ve kendi yorumlarınızı paylaşın.</p>
+    <button id="discoverBtn" class="btn">Keşfetmeye Başla</button>
+  </div>
 
-        <div class="info-sections" id="infoSections">
+  <main>
+    <div id="discoverContent" class="hidden-content">
+      <div class="content-grid">
+        <a href="history.html" class="content-card">
+          <img src="assets/images/history.jpg" alt="Müziğin Tarihçesi">
+          <h3>Müziğin Tarihçesi</h3>
+          <p>Müziğin ilk çağlardan günümüze kadar olan yolculuğunu keşfedin.</p>
+        </a>
         
-        <div class="info-grid">
-            
-            <a href="history.html" class="info-card">
-                <img src="assets/images/history.jpg" alt="Müziğin Tarihçesi">
-                <div class="info-text">
-                    <h2>Müziğin Tarihçesi</h2>
-                    <p>Müziğin ilk çağlardan günümüze kadar olan evrimini inceleyin.</p>
-                </div>
-            </a>
-
-            <a href="genres.html" class="info-card">
-                <img src="assets/images/genres.jpg" alt="Müzik Türleri">
-                <div class="info-text">
-                    <h2>Müzik Türleri</h2>
-                    <p>Klasik, caz, rock, pop, elektronik, halk müziği... Her tür farklı bir ruh hâlini yansıtır.</p>
-                </div>
-            </a>
-
-            <a href="emotion.html" class="info-card">
-                <img src="assets/images/brain-music.jpg" alt="Beyin ve Müzik">
-                <div class="info-text">
-                    <h2>Müziğin Ruh Hâline Etkisi</h2>
-                    <p>Müziğin stresi azalttığını, mutluluğu artıran dopamin salgılanmasına yardımcı olduğunu keşfedin.</p>
-                </div>
-            </a>
-        </div>
-    
+        <a href="genres.html" class="content-card">
+          <img src="assets/images/genres.jpg" alt="Müzik Türleri">
+          <h3>Müzik Türleri</h3>
+          <p>Klasik, caz, rock, pop, elektronik ve daha birçok müzik türünü inceleyin.</p>
+        </a>
+        
+        <a href="emotion.html" class="content-card">
+          <img src="assets/images/emotion.jpg" alt="Müziğin Ruh Hâline Etkisi">
+          <h3>Müziğin Ruh Hâline Etkisi</h3>
+          <p>Müziğin stresi azalttığı, motivasyonu artırdığı ve duygusal etkilerini inceleyin.</p>
+        </a>
+      </div>
     </div>
-          </main>
 
-  <footer id="site-footer" class="fixed-footer"></footer>
+    <div class="instruments-section">
+      <h2 style="text-align: center; color: #f1c40f; font-size: 2.5rem; margin: 60px 0 30px;">En Popüler Enstrümanlar</h2>
+      
+      <div class="search-bar">
+        <input type="text" id="instrumentSearch" placeholder="Enstrüman ara (örneğin: bağlama, gitar, keman...)">
+      </div>
+      
+      <div id="instrumentsGrid" class="instruments-grid">
+        <a href="gitar.html" class="instrument-card" data-name="gitar">
+          <h3>Gitar</h3>
+          <p>Modern müziğin vazgeçilmez telli çalgısı</p>
+        </a>
+        <a href="piyano.html" class="instrument-card" data-name="piyano">
+          <h3>Piyano</h3>
+          <p>Melodi ve armoniyi birleştiren tuşlu çalgı</p>
+        </a>
+        <a href="keman.html" class="instrument-card" data-name="keman">
+          <h3>Keman</h3>
+          <p>Duygusal ve zarif yaylı çalgı</p>
+        </a>
+        <a href="bateri.html" class="instrument-card" data-name="bateri">
+          <h3>Bateri</h3>
+          <p>Ritmin temelini oluşturan vurmalı set</p>
+        </a>
+        <a href="flut.html" class="instrument-card" data-name="flut">
+          <h3>Flüt</h3>
+          <p>Hafif ve melodik nefesli çalgı</p>
+        </a>
+        <a href="baglama.html" class="instrument-card" data-name="baglama">
+          <h3>Bağlama</h3>
+          <p>Türk halk müziğinin temel çalgısı</p>
+        </a>
+        <a href="akordeon.html" class="instrument-card" data-name="akordeon">
+          <h3>Akordeon</h3>
+          <p>Körükle çalışan çok telli çalgı</p>
+        </a>
+        <a href="darbuka.html" class="instrument-card" data-name="darbuka">
+          <h3>Darbuka</h3>
+          <p>Oryantal ritimlerin yıldız çalgısı</p>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
 
   <script src="js/ui.js"></script>
-  <script src="js/main.js"></script>
-  
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Header ve Footer yükleme fonksiyonları
-      fetch("partials/header.html")
-        .then(res => res.text())
-        .then(data => {
-            const header = document.getElementById("site-header");
-            if(header) header.innerHTML = data;
-        });
-
-      fetch("partials/footer.html")
-        .then(res => res.text())
-        .then(data => {
-            const footer = document.getElementById("site-footer");
-            if(footer) footer.innerHTML = data;
-        });
-
-      // KRİTİK: Açma ve Kaydırma Fonksiyonu
-      const ctaButton = document.querySelector('.cta-button');
-      const infoSections = document.getElementById('infoSections');
-
-      if (ctaButton && infoSections) {
-          ctaButton.addEventListener('click', function(event) {
-              event.preventDefault(); 
-              
-              // info-sections bölümüne 'visible' sınıfını ekle
-              infoSections.classList.add('visible');
-              
-              // Sayfayı yeni açılan bölüme yumuşak bir şekilde kaydır
-              infoSections.scrollIntoView({ behavior: 'smooth' });
-          });
+    const discoverBtn = document.getElementById('discoverBtn');
+    const discoverContent = document.getElementById('discoverContent');
+    
+    discoverBtn.addEventListener('click', () => {
+      discoverContent.classList.toggle('visible');
+      if (discoverContent.classList.contains('visible')) {
+        discoverBtn.innerHTML = 'Keşfetmeyi Gizle';
+      } else {
+        discoverBtn.innerHTML = 'Keşfetmeye Başla';
       }
+    });
+
+    const searchInput = document.getElementById('instrumentSearch');
+    const grid = document.getElementById('instrumentsGrid');
+    const cards = grid.querySelectorAll('.instrument-card');
+    
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase().trim();
+      
+      cards.forEach(card => {
+        const name = card.getAttribute('data-name').toLowerCase();
+        if (name.includes(query) || query === '') {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
     });
   </script>
 </body>

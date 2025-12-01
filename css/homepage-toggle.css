@@ -2,81 +2,81 @@
 
 /* 1. Açılır/Kapanır Bölümün Temel Ayarları (MAVİ ARKA PLAN) */
 #infoSections {
-  /* Gizlenme/açılma animasyonu için ayarlar */
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1); 
-  padding: 0 10%;
- 
-  /* KOYU MAVİ ARKA PLAN */
-  background: linear-gradient(to bottom, #0f3460, #16213e); 
-  color: #eee;
+  /* Gizlenme/açılma animasyonu için ayarlar */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1); 
+  padding: 0 10%;
+ 
+  /* KOYU MAVİ ARKA PLAN */
+  background: linear-gradient(to bottom, #0f3460, #16213e); 
+  color: #eee;
 }
 
 /* 2. Bölüm Açıldığında Uygulanan Stiller */
 #infoSections.visible {
-  max-height: 3500px;
-  opacity: 1;
-  padding: 80px 10%;
+  max-height: 3500px;
+  opacity: 1;
+  padding: 80px 10%;
 }
 
 /* 3. Buton (cta-button) Stilleri (SARI) */
 .cta-button {
-  background-color: #d4af37;
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 30px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-  text-decoration: none;
-  display: inline-block; 
+  background-color: #d4af37;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  display: inline-block; 
 }
 
 .cta-button:hover {
-  background-color: #b8962f;
+  background-color: #b8962f;
 }
 
 /* 4. Ana Kartlar için Konteyner (Yan yana görünüm) */
 .info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-bottom: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
 }
 
 /* 5. Bilgi Kartı Stilleri (Transparan) */
 .info-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s;
-  display: flex; 
-  flex-direction: column;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+  display: flex; 
+  flex-direction: column;
 }
 
 .info-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 
 .info-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 .info-text {
-  padding: 20px;
-  flex-grow: 1; 
+  padding: 20px;
+  flex-grow: 1; 
 }
 
 .info-text h2 {
-  color: #f1c40f;
-  margin-bottom: 10px;
+  color: #f1c40f;
+  margin-bottom: 10px;
 }
 
 /* ---------------------------------------------------- */
