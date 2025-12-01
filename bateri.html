@@ -1,323 +1,365 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bateri | Detaylı İnceleme</title>
-  
-  <link rel="stylesheet" href="css/reset.css" />
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/components/header.css" />
-  <link rel="stylesheet" href="css/components/footer.css" />
-  
-  <link rel="stylesheet" href="css/components/detail-page.css" /> 
-
-  <style>
-    /* ----------------------------------------------------------------- */
-    /* 💥 KRİTİK GÖMÜLÜ STİLLER: KOYU DENİZ MAVİSİ TEMA VE SARI BUTON VURGUSU */
-    /* ----------------------------------------------------------------- */
-
-    /* Ana Arka Plan Rengi: Koyu Deniz Mavisi */
-    body {
-        background-color: #183040 !important; 
-        color: #eee;
-    }
-
-    /* Genel Kontayner Ayarları */
-    .detail-container {
-        max-width: 1100px;
-        margin: 50px auto;
-        padding: 30px;
-        background-color: #204055; /* İç konteyner biraz daha açık mavi */
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        color: #eee;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bateri (Davul Seti) | Detaylı İnceleme</title>
     
-    /* Başlıklar ve Vurgu Renkleri (Sarı/Altın kalır) */
-    .detail-container h1 {
-        font-size: 2.5rem;
-        color: #d4af37; /* Sarı/Altın */
-        text-align: center;
-        margin-bottom: 40px;
-        border-bottom: 3px solid #f1c40f; 
-        padding-bottom: 10px;
-    }
-    .instrument-text h2 {
-        color: #f1c40f; /* Parlak Sarı Başlık */
-        border-left: 5px solid #d4af37;
-        padding-left: 10px;
-    }
-
-    /* Detaylar ve Butonlar Bölümü (Arka Plan) */
-    .detail-sections {
-        margin-top: 40px;
-        padding: 30px;
-        background-color: #2A516C; /* Orta mavi tonu */
-        border-radius: 10px;
-        color: #eee;
-    }
-    .detail-sections h3 {
-        color: #d4af37;
-        border-bottom: 1px dashed #666;
-        padding-bottom: 5px;
-    }
-
-    /* Ana Toggle Buton Stili (SARI VURGU) */
-    .toggle-button {
-        display: inline-block;
-        background-color: #f1c40f; /* Sarı Buton Rengi */
-        color: #183040; /* Koyu Mavi Metin */
-        padding: 12px 25px;
-        border-radius: 30px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.2s;
-        text-decoration: none;
-        margin-top: 20px;
-        text-align: center;
-        border: none;
-    }
-    .toggle-button:hover {
-        background-color: #d4af37; /* Hover için daha koyu sarı */
-        transform: translateY(-2px);
-    }
-    
-    /* YENİ: ÇEŞİTLER İÇİN YAN YANA GÖRSEL BUTON YAPISI */
-    .types-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-        gap: 20px;
-        padding: 20px 0;
-    }
-
-    .type-button {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 15px;
-        background-color: #2A516C; /* .detail-sections ile aynı ton */
-        border: 2px solid transparent;
-        border-radius: 10px;
-        transition: 0.3s;
-        cursor: pointer;
-    }
-
-    .type-button:hover {
-        background-color: #386485; 
-        border-color: #f1c40f; /* Sarı çerçeve vurgusu */
-        transform: translateY(-3px);
-    }
-
-    /* Tıklanan butonu sürekli vurgulama stili (SARI VURGU) */
-    .type-button.active {
-        border-color: #f1c40f !important; /* Aktif sarı çerçeve */
-        background-color: #386485;
-    }
-
-    .type-button img {
-        width: 100%;
-        height: auto;
-        max-height: 150px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 10px;
-    }
-    .type-button h4 {
-        color: #d4af37;
-    }
-
-    /* Açılır Kapanır Alanın CSS'i (Animasyon) */
-    .hidden-section {
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        transition: max-height 0.7s ease-in-out, opacity 0.5s;
-        padding: 0 10px; 
-    }
-    .hidden-section.visible {
-        max-height: 1500px; 
-        opacity: 1;
-        padding: 20px 10px; 
-    }
-    /* Detay alanı içindeki stil */
-    #typeDetails {
-        margin-top: 30px; 
-        padding: 20px; 
-        background-color: #204055 !important; /* Detay alanı için Ana Konteyner tonu */
-        border-radius: 8px;
-    }
-    #typeDetails h4 {
-        color: #f1c40f; 
-        font-size: 1.3rem; 
-        margin-bottom: 10px;
-    }
-
-    /* Mobil Uyumlu Düzenleme */
-    @media (max-width: 800px) {
-        .instrument-info {
-            flex-direction: column;
+    <style>
+        
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #183040; 
+            color: #eee; 
+            margin: 0; 
+            padding: 0; 
         }
-        .instrument-info img {
-            width: 100%;
-            max-width: none;
-            margin-bottom: 20px;
-        }
+
         .detail-container {
-            margin: 20px 10px;
-            padding: 20px;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #204055; 
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
-    }
-  </style>
+
+        .detail-container h1 {
+            font-size: 2.8rem;
+            color: #f1c40f; 
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 4px solid #f1c40f;
+            padding-bottom: 15px;
+        }
+
+        .content-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+            flex-wrap: wrap; 
+        }
+
+        .content-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .section-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .section-text h2 {
+            color: #d4af37; 
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            border-left: 6px solid #d4af37;
+            padding-left: 15px;
+        }
+
+        .section-text p {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .section-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .section-image img, .main-instrument-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .main-instrument-image {
+            max-width: 700px;
+            display: block;
+            margin: 30px auto;
+        }
+
+        .bateri-buttons { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            margin-bottom: 40px; 
+            flex-wrap: wrap; 
+        }
+
+        .bateri-type-button { 
+            background-color: #d4af37; 
+            color: #183040; 
+            border: none; 
+            padding: 12px 25px; 
+            border-radius: 25px; 
+            font-size: 1.1rem; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 15px rgba(241, 196, 15, 0.3); 
+        }
+        .bateri-type-button:hover { 
+            background-color: #f1c40f; 
+            transform: translateY(-2px); 
+        }
+        .bateri-type-button.active { 
+            background-color: #e67e22; 
+            color: #fff; 
+            transform: scale(1.05); 
+        }
+
+        #bateriTypeDetails {
+            margin-top: 30px; 
+            padding: 30px; 
+            background-color: #2a4a60; 
+            border-radius: 12px;
+            display: none; 
+            animation: fadeIn 0.5s ease-out; 
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        #bateriTypeDetails.visible {
+            display: block; 
+        }
+
+        .type-content-section { 
+            display: flex; 
+            gap: 30px; 
+            align-items: flex-start; 
+            flex-wrap: wrap; 
+        }
+        .type-info { 
+            flex: 1; 
+            min-width: 300px;
+        }
+        .type-info h3 { 
+            color: #f1c40f; 
+            font-size: 2rem; 
+            margin-bottom: 15px; 
+            border-left: 5px solid #f1c40f; 
+            padding-left: 10px;
+        }
+        .type-image-container { 
+            flex: 1; 
+            min-width: 300px; 
+            text-align: center;
+        }
+        .type-image-container img { 
+            width: 100%; 
+            max-width: 450px; 
+            height: auto; 
+            border-radius: 8px; 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .instrument-details {
+            margin-top: 50px;
+            padding: 25px;
+            background-color: #2a4a60;
+            border-radius: 12px;
+        }
+
+        .toggle-button {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 30px;
+            background-color: #f1c40f;
+            color: #183040;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(241, 196, 15, 0.3);
+        }
+
+        .toggle-button:hover {
+            background-color: #d4af37;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(241, 196, 15, 0.4);
+        }
+
+        .types-section {
+            display: none; 
+            margin-top: 25px;
+            padding: 25px;
+            background-color: #2a4a60;
+            border-radius: 12px;
+        }
+        
+        #typeDetails {
+            background-color: #183040;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .content-section,
+            .content-section.reverse,
+            .type-content-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .section-image, .type-image-container {
+                min-width: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <header id="site-header"></header>
-
-  <main>
     <div class="detail-container">
-      
-      <h1>Bateri (Davul Seti)</h1>
+        <h1>Bateri (Davul Seti) Detaylı İnceleme</h1>
 
-      <section class="instrument-info">
-        <img src="assets/images/instruments/bateri-ana.jpg" alt="Bateri Ana Görseli">
-        
-        <div class="instrument-text">
-          <h2>Bateri Nedir?</h2>
-          <p>
-            **Bateri (Davul Seti)**, modern müziğin ritim ve temposunu oluşturan, davullar, ziller ve pedallardan oluşan bir vurmalı çalgılar bütünüdür. Her bir parça farklı bir tını ve rol üstlenir.
-          </p>
-          <p>
-            **Jazz, rock, pop ve metal** gibi popüler müzik türlerinin tamamında temel ritmik yapıyı sağlar. Vurmalı çalgılar ailesinde en çok koordinasyon gerektiren enstrümanlardan biridir.
-          </p>
-        </div>
-      </section>
-      
-      <div class="detail-sections">
-        <h3>Bateri Bileşenleri ve Türleri</h3>
-        
-        <button id="toggleTypesButton" class="toggle-button">
-            Bateri Bileşenlerini ve Türlerini Keşfet! ⬇️
-        </button>
-        
-        <div id="instrumentTypesSection" class="hidden-section"> 
-            
-            <div class="types-grid">
-                
-                <button class="type-button" data-type="bas_davul">
-                    <img src="assets/images/instruments/bateri-kick.jpg" alt="Bas Davul Görseli">
-                    <h4>Bas Davul (Kick Drum)</h4>
-                </button>
-                
-                <button class="type-button" data-type="trampet">
-                    <img src="assets/images/instruments/bateri-snare.jpg" alt="Trampet Görseli">
-                    <h4>Trampet (Snare Drum)</h4>
-                </button>
-                
-                <button class="type-button" data-type="tom_tomlar">
-                    <img src="assets/images/instruments/bateri-tom.jpg" alt="Tom Tomlar Görseli">
-                    <h4>Tom Tomlar</h4>
-                </button>
-                 
-                <button class="type-button" data-type="ziller">
-                    <img src="assets/images/instruments/bateri-cymbals.jpg" alt="Ziller Görseli">
-                    <h4>Ziller (Hi-Hat, Crash, Ride)</h4>
-                </button>
-                
+        <div class="content-section">
+            <div class="section-text">
+                <h2>Bateri Tanımı ve Özellikleri</h2>
+                <p>
+                    **Bateri**, vurmalı çalgılar grubu içinde yer alan bir davul setidir. Çeşitli davullar, ziller ve pedallardan oluşur. Ritim, tempo ve vurgu oluşturmak için kullanılır. Modern müziklerin temel unsuru olup, farklı türlerde (rock, jazz, metal) uyarlanabilir.
+                </p>
             </div>
-            
-            <div id="typeDetails">
-                <p style="text-align: center; color: #d4af37;">Yukarıdaki davul seti bileşenlerinden birine tıklayarak detaylı bilgi alabilirsiniz.</p>
+            <div class="section-image">
+                <img src="assets/images/bateri-yapisi.jpg" alt="Bateri Seti Yapısı">
             </div>
-            
         </div>
-      </div>
+
+        <div class="bateri-buttons">
+            <button class="bateri-type-button" data-type="trampet">Trampet</button>
+            <button class="bateri-type-button" data-type="bas">Bas Davul</button>
+            <button class="bateri-type-button" data-type="tom">Tom Davullar</button>
+            <button class="bateri-type-button" data-type="zil">Ziller</button>
+        </div>
+        
+        <div id="bateriTypeDetails">
+            <div class="type-content-section">
+                <div class="type-info">
+                </div>
+                <div class="type-image-container">
+                </div>
+            </div>
+        </div>
+        <div class="content-section reverse">
+            <div class="section-text">
+                <h2>Akort Düzeni ve Yapısal Özellikler</h2>
+                <p>
+                    Bateri setinde her davul ayrı ayrı akort edilir. Bas davul düşük frekans, trampet yüksek frekans için ayarlanır. Yapısal olarak metal veya ahşap kasnaklar, deriler ve pedallar içerir. Deriler sentetik veya doğal olabilir.
+                </p>
+                <p>
+                    Standart set: 1 bas davul, 1 trampet, 2-3 tom, hi-hat, ride ve crash zilleri içerir. Kurulum, çalıcının tercihine göre değişir.
+                </p>
+            </div>
+            <div class="section-image">
+               <img src="assets/images/bateri-seti.jpg" alt="Bateri Seti Yapısı">
+            </div>
+        </div>
+
+        <div class="instrument-details">
+            <button id="toggleTypesButton" class="toggle-button">Bateri Çalma Tekniklerini İncele</button>
+            
+            <div id="typesSection" class="types-section">
+                <h2>Temel Bateri Çalma Teknikleri</h2>
+                <div id="typeDetails">
+                    <p>
+                        **Rudiments (Temel Vuruşlar):** Single stroke, double stroke, paradiddle gibi temel vuruş desenleri ritim gelişimi için esastır.
+                    </p>
+                    <hr style="border-color: #f1c40f55;">
+                    <p>
+                        **Independence (Bağımsızlık):** Eller ve ayakların bağımsız hareket etmesi, komplex ritimler için şarttır.
+                    </p>
+                    <hr style="border-color: #f1c40f55;">
+                    <p>
+                        **Ghost Notes:** Hafif vuruşlar, ritme derinlik katar, özellikle funk ve jazz'da kullanılır.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-  </main>
 
-  <footer id="site-footer" class="fixed-footer"></footer>
-
-  <script src="js/ui.js"></script>
-  <script src="js/main.js"></script>
-  
-  <script>
-    const typeData = {
-        bas_davul: {
-            title: "Bas Davul (Kick Drum)",
-            info: "Baterinin en büyük ve en kalın sesli davuludur. Ayak pedalı ile çalınır ve müziğin temel temposunu (nabzını) oluşturur. Derin ve tok bir 'boom' sesi çıkarır."
-        },
-        trampet: {
-            title: "Trampet (Snare Drum)",
-            info: "Davul setinin en karakteristik bileşenidir. Alt derisine gerilmiş teller (snare) sayesinde vurulduğunda keskin, cızırtılı ve vurucu bir 'çıtırtı' sesi çıkarır. Genellikle ritimdeki 2. ve 4. vuruşları vurgular."
-        },
-        tom_tomlar: {
-            title: "Tom Tomlar",
-            info: "Farklı boyutlarda ve akortlarda olabilen, tizden basa doğru sıralanan davullardır. Ritimler arasındaki geçişleri ve dolguları ('fill'leri) atmak için kullanılır."
-        },
-        ziller: {
-            title: "Ziller (Cymbals)",
-            info: "Bakır alaşımdan yapılmış, ritmik süsleme ve dinamik vurgu için kullanılan bileşenlerdir. Ana türleri: **Hi-Hat** (ayak pedalıyla açılıp kapanan ritim zili), **Ride** (sürekli ritim zili) ve **Crash** (güçlü vurgu zili)."
-        }
-    };
-
-    document.addEventListener("DOMContentLoaded", () => {
-      // Header ve Footer yükle
-      fetch("partials/header.html").then(res => res.text()).then(data => {
-          const header = document.getElementById("site-header");
-          if(header) header.innerHTML = data;
-      });
-
-      fetch("partials/footer.html").then(res => res.text()).then(data => {
-          const footer = document.getElementById("site-footer");
-          if(footer) footer.innerHTML = data;
-      });
+    <script>
         
-      // Ana Toggle Butonu Fonksiyonu (Çalışma garantisi)
-      const toggleButton = document.getElementById('toggleTypesButton');
-      const typesSection = document.getElementById('instrumentTypesSection');
+        const bateriTypes = {
+            trampet: {
+                title: "Trampet (Snare Drum)",
+                info: "Bateri setinin kalbi, keskin ve çatırdayan sesiyle ritim verir. Alt tarafında teller (snare wires) bulunur.",
+                image: "assets/images/bateri-trampet.jpg"   
+            },
+            bas: {
+                title: "Bas Davul (Kick Drum)",
+                info: "Derin bas sesler üretir, pedal ile çalınır. Ritimlerin temel vuruşunu sağlar.",
+                image: "assets/images/bas-davul.jpg"  
+            },
+            tom: {
+                title: "Tom Davullar",
+                info: "Farklı boyutlardaki tom'lar (high, mid, floor tom) fill'ler ve geçişler için kullanılır.",
+                image: "assets/images/tom-davullar.jpg" 
+            },
+            zil: {
+                title: "Ziller (Cymbals)",
+                info: "Hi-hat, ride, crash gibi ziller, vurgu ve sürekli ritim için esastır.",
+                image: "assets/images/bateri-ziller.jpg"  
+            }
+        };
 
-      if (toggleButton && typesSection) {
-          toggleButton.addEventListener('click', function() {
-              const isVisible = typesSection.classList.toggle('visible');
-              
-              if (isVisible) {
-                  toggleButton.innerHTML = 'Bileşenleri Gizle ⬆️';
-                  setTimeout(() => {
-                      typesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }, 100); 
-              } else {
-                  toggleButton.innerHTML = 'Bateri Bileşenlerini ve Türlerini Keşfet! ⬇️';
-              }
-          });
-      }
+        document.addEventListener('DOMContentLoaded', function() {
+            const typeButtons = document.querySelectorAll('.bateri-type-button');
+            const detailSection = document.getElementById('bateriTypeDetails');
+            const detailInfo = detailSection.querySelector('.type-info');
+            const detailImageContainer = detailSection.querySelector('.type-image-container');
 
-      // Tip Butonlarına Tıklama İşlemi (Çalışma garantisi)
-      const typeButtons = document.querySelectorAll('.type-button');
-      const detailsArea = document.getElementById('typeDetails');
-      
-      typeButtons.forEach(button => {
-          button.addEventListener('click', function() {
-              // 1. Tüm butonlardaki aktif vurguyu kaldır
-              typeButtons.forEach(btn => btn.classList.remove('active'));
-              
-              // 2. Tıklanan butonu aktif yap
-              this.classList.add('active'); 
+           
+            typeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const type = this.getAttribute('data-type');
+                    const data = bateriTypes[type];
 
-              // 3. Veriyi Yükle
-              const type = this.getAttribute('data-type');
-              const data = typeData[type];
-              
-              detailsArea.innerHTML = `
-                  <h4 style="color: #f1c40f; font-size: 1.3rem; margin-bottom: 10px;">${data.title}</h4>
-                  <p>${data.info}</p>
-              `;
+                    typeButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    this.classList.add('active');
 
-              // 4. Detay Alanına Kaydır
-              detailsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          });
-      });
-    });
-  </script>
+                    detailInfo.innerHTML = `
+                        <h3>${data.title}</h3>
+                        <p>${data.info}</p>
+                    `;
+                    detailImageContainer.innerHTML = `
+                        <img src="${data.image}" alt="${data.title}">
+                    `;
+
+                    detailSection.classList.remove('visible');
+                    setTimeout(() => {
+                        detailSection.classList.add('visible');
+                        detailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 50); 
+                });
+            });
+
+        
+            const toggleButton = document.getElementById('toggleTypesButton');
+            const typesSection = document.getElementById('typesSection');
+            
+            toggleButton.addEventListener('click', () => {
+                const isVisible = typesSection.style.display === 'block';
+                
+                if (isVisible) {
+                    typesSection.style.display = 'none';
+                    toggleButton.textContent = 'Bateri Çalma Tekniklerini İncele';
+                } else {
+                    typesSection.style.display = 'block';
+                    toggleButton.textContent = 'Teknikleri Gizle';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

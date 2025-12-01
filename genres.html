@@ -71,31 +71,27 @@
   
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // TÜR BUTONLARINA TIKLAMA İŞLEMİ
+
       const periodButtons = document.querySelectorAll('.period-button');
       const periodContents = document.querySelectorAll('.period-content');
 
       periodButtons.forEach(button => {
           button.addEventListener('click', function() {
-              // 1. Tüm butonlardaki aktif vurguyu kaldır
+  
               periodButtons.forEach(btn => btn.classList.remove('active'));
 
-              // 2. Tıklanan butonu aktif yap
               this.classList.add('active');
 
-              // 3. Tüm içerikleri gizle
               periodContents.forEach(content => {
                   content.style.display = 'none';
               });
 
-              // 4. İstenen içeriği göster
               const period = this.getAttribute('data-period');
               const contentToShow = document.getElementById(`${period}-detail`);
 
               if (contentToShow) {
                   contentToShow.style.display = 'block';
 
-                  // İçeriğe kaydır (isteğe bağlı)
                   contentToShow.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }
           });
