@@ -9,10 +9,25 @@
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/components/header.css" />
   <link rel="stylesheet" href="css/components/footer.css" />
-  
   <link rel="stylesheet" href="css/components/wide-card.css" /> 
   
-  </head>
+  <style>
+    body { background-color: var(--background-dark, #111); color: var(--text-light, #fff); }
+
+    .category-search-container { max-width: 600px; margin: 40px auto; padding: 0 20px; text-align: center; }
+    .category-search {
+      width: 100%; padding: 18px 28px; font-size: 1.1rem; background-color: #1e1e1e;
+      border: 2px solid transparent; border-radius: 50px; color: #fff; outline: none;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); transition: all 0.4s ease;
+    }
+    .category-search:focus {
+      border-color: #d4af37; background-color: #2a2a2a;
+      box-shadow: 0 12px 35px rgba(212, 175, 55, 0.25); transform: translateY(-2px);
+    }
+    .category-search::placeholder { color: #999; font-style: italic; }
+    @media (max-width: 768px) { .category-search { padding: 16px 24px; font-size: 1rem; } }
+  </style>
+</head>
 
 <body>
   <header id="site-header"></header>
@@ -20,47 +35,32 @@
   <main>
     <h1>Üflemeli Çalgılar</h1>
 
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Bir enstrüman ara...">
+    <div class="category-search-container">
+      <input type="text" id="searchInput" class="category-search" placeholder="Bir enstrüman ara...">
     </div>
 
     <div class="instruments-grid" id="instrumentsGrid">
       
       <a href="flut.html" class="instrument-card" data-name="Flüt">
-        <div>
-          <h3>Flüt</h3>
-          <p>Yan üflemeli, metal veya tahtadan yapılabilen, zarif tınılı bir orkestra çalgısıdır.</p>
-        </div>
+        <div><h3>Flüt</h3><p>Yan üflemeli, metal veya tahtadan yapılabilen, zarif tınılı bir orkestra çalgısıdır.</p></div>
       </a>
 
       <a href="klarnet.html" class="instrument-card" data-name="Klarnet">
-        <div>
-          <h3>Klarnet</h3>
-          <p>Tek kamışlı, silindir gövdeli, geniş ses aralığına sahip popüler bir nefesli çalgıdır.</p>
-        </div>
+        <div><h3>Klarnet</h3><p>Tek kamışlı, silindir gövdeli, geniş ses aralığına sahip popüler bir nefesli çalgıdır.</p></div>
       </a>
 
       <a href="saksafon.html" class="instrument-card" data-name="Saksafon">
-        <div>
-          <h3>Saksafon</h3>
-          <p>Konik gövdeli, metalden yapılmış, caz müziği ile özdeşleşmiş bir çalgıdır.</p>
-        </div>
+        <div><h3>Saksafon</h3><p>Konik gövdeli, metalden yapılmış, caz müziği ile özdeşleşmiş bir çalgıdır.</p></div>
       </a>
 
       <a href="trompet.html" class="instrument-card" data-name="Trompet">
-        <div>
-          <h3>Trompet</h3>
-          <p>Bakır üflemeliler grubunun en tiz sesli çalgısıdır, parlak ve keskin bir sese sahiptir.</p>
-        </div>
+        <div><h3>Trompet</h3><p>Bakır üflemeliler grubunun en tiz sesli çalgısıdır, parlak ve keskin bir sese sahiptir.</p></div>
       </a>
 
       <a href="ney.html" class="instrument-card" data-name="Ney">
-        <div>
-          <h3>Ney</h3>
-          <p>Türk ve Ortadoğu müziğinde kullanılan, kamıştan yapılan, mistik bir sese sahip çalgıdır.</p>
-        </div>
+        <div><h3>Ney</h3><p>Türk ve Ortadoğu müziğinde kullanılan, kamıştan yapılan, mistik bir sese sahip çalgıdır.</p></div>
       </a>
-
+      
     </div>
   </main>
 
@@ -68,22 +68,26 @@
 
   <script src="js/ui.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    // Header ve Footer yükle (Tüm sayfalarda olmalı)
-    document.addEventListener("DOMContentLoaded", () => {
-      fetch("partials/header.html")
-        .then(res => res.text())
-        .then(data => {
-            const header = document.getElementById("site-header");
-            if(header) header.innerHTML = data;
-        });
 
-      fetch("partials/footer.html")
-        .then(res => res.text())
-        .then(data => {
-            const footer = document.getElementById("site-footer");
-            if(footer) footer.innerHTML = data;
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const searchInput = document.getElementById("searchInput");
+      const cards = document.querySelectorAll(".instrument-card");
+
+      searchInput.addEventListener("input", function () {
+        const query = searchInput.value.toLowerCase().trim();
+
+        cards.forEach(card => {
+          const name = card.getAttribute("data-name")?.toLowerCase() || "";
+          const text = card.textContent.toLowerCase();
+
+          if (name.includes(query) || text.includes(query) || query === "") {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
         });
+      });
     });
   </script>
 </body>

@@ -1,45 +1,141 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vurmalı Çalgılar | Müzik Aletleri</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/components/header.css">
-    <link rel="stylesheet" href="css/components/footer.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vurmalı Çalgılar | Müzik Aletleri</title>
+  
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/header.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+  <link rel="stylesheet" href="css/components/wide-card.css" /> 
+  
+  <style>
+    body {
+      background-color: var(--background-dark, #111);
+      color: var(--text-light, #fff);
+    }
+
+    /* Kategori sayfaları için şık arama çubuğu */
+    .category-search-container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .category-search {
+      width: 100%;
+      padding: 18px 28px;
+      font-size: 1.1rem;
+      background-color: #1e1e1e;
+      border: 2px solid transparent;
+      border-radius: 50px;
+      color: #fff;
+      outline: none;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease;
+    }
+
+    .category-search:focus {
+      border-color: #d4af37;
+      background-color: #2a2a2a;
+      box-shadow: 0 12px 35px rgba(212, 175, 55, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .category-search::placeholder {
+      color: #999;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .category-search {
+        padding: 16px 24px;
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header id="site-header"></header>
+  <header id="site-header"></header>
 
-    <main style="max-width: 1400px; margin: 0 auto; padding: 40px 20px;">
-        <h1 style="text-align: center; color: #f1c40f; font-size: 3rem; margin-bottom: 40px;">Vurmalı Çalgılar</h1>
-        
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px;">
-    <a href="bateri.html" class="instrument-card" data-name="bateri">
-        <h3>Bateri</h3>
-        <p>Ritim seti oluşturan çeşitli vurmalı çalgılardan meydana gelir</p>
-    </a>
-    <a href="darbuka.html" class="instrument-card" data-name="darbuka">
-        <h3>Darbuka</h3>
-        <p>Türk müziğinin karakteristik el vurmalı çalgısı</p>
-    </a>
-    <a href="davul.html" class="instrument-card" data-name="davul">
-        <h3>Davul</h3>
-        <p>İki tarafı da vurulan geleneksel ritim çalgısı</p>
-    </a>
-    <a href="nakkare.html" class="instrument-card" data-name="nakkare">
-        <h3>Nakkare</h3>
-        <p>İki adet küçük davuldan oluşan klasik Türk müziği çalgısı</p>
-    </a>
-    <a href="handpan.html" class="instrument-card" data-name="handpan">
-        <h3>Handpan</h3>
-        <p>Modern dönemde geliştirilen melodik vurmalı çalgı</p>
-    </a>
-</div>
-    </main>
+  <main>
+    <h1>Vurmalı Çalgılar</h1>
 
-    <footer id="site-footer"></footer>
-    <script src="js/ui.js"></script>
+    <!-- Şık arama çubuğu -->
+    <div class="category-search-container">
+      <input type="text" id="searchInput" class="category-search" placeholder="Bir enstrüman ara...">
+    </div>
+
+    <div class="instruments-grid" id="instrumentsGrid">
+      
+      <a href="bateri.html" class="instrument-card" data-name="Bateri">
+        <div>
+          <h3>Bateri</h3>
+          <p>Ritim seti oluşturan çeşitli vurmalı çalgılardan meydana gelir</p>
+        </div>
+      </a>
+
+      <a href="darbuka.html" class="instrument-card" data-name="Darbuka">
+        <div>
+          <h3>Darbuka</h3>
+          <p>Türk müziğinin karakteristik el vurmalı çalgısı</p>
+        </div>
+      </a>
+
+      <a href="davul.html" class="instrument-card" data-name="Davul">
+        <div>
+          <h3>Davul</h3>
+          <p>İki tarafı da vurulan geleneksel ritim çalgısı</p>
+        </div>
+      </a>
+
+      <a href="nakkare.html" class="instrument-card" data-name="Nakkare">
+        <div>
+          <h3>Nakkare</h3>
+          <p>İki adet küçük davuldan oluşan klasik Türk müziği çalgısı</p>
+        </div>
+      </a>
+
+      <a href="handpan.html" class="instrument-card" data-name="Handpan">
+        <div>
+          <h3>Handpan</h3>
+          <p>Modern dönemde geliştirilen melodik vurmalı çalgı</p>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer id="site-footer" class="fixed-footer"></footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Arama işlevi (Vurmalı Çalgılar için) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const searchInput = document.getElementById("searchInput");
+      const cards = document.querySelectorAll(".instrument-card");
+
+      searchInput.addEventListener("input", function () {
+        const query = searchInput.value.toLowerCase().trim();
+
+        cards.forEach(card => {
+          const name = card.getAttribute("data-name")?.toLowerCase() || "";
+          const text = card.textContent.toLowerCase();
+
+          if (name.includes(query) || text.includes(query) || query === "") {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

@@ -12,13 +12,47 @@
   <link rel="stylesheet" href="css/components/wide-card.css" /> 
   
   <style>
-
     body {
       background-color: var(--background-dark, #111);
       color: var(--text-light, #fff);
     }
+
+    .category-search-container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .category-search {
+      width: 100%;
+      padding: 18px 28px;
+      font-size: 1.1rem;
+      background-color: #1e1e1e;
+      border: 2px solid transparent;
+      border-radius: 50px;
+      color: #fff;
+      outline: none;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease;
+    }
+
+    .category-search:focus {
+      border-color: #d4af37;
+      background-color: #2a2a2a;
+      box-shadow: 0 12px 35px rgba(212, 175, 55, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .category-search::placeholder {
+      color: #999;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .category-search { padding: 16px 24px; font-size: 1rem; }
+    }
   </style>
-  
 </head>
 
 <body>
@@ -27,52 +61,60 @@
   <main>
     <h1>Telli Çalgılar</h1>
 
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Bir enstrüman ara...">
+    <div class="category-search-container">
+      <input type="text" id="searchInput" class="category-search" placeholder="Bir enstrüman ara...">
     </div>
 
     <div class="instruments-grid" id="instrumentsGrid">
       
-      <a href="gitar.html" class="instrument-card" data-name="Gitar"> 
-        <div>
-            <h3>Gitar</h3>
-            <p>Modern ve klasik müziğin en temel telli çalgısıdır.</p>
-        </div>
+      <a href="gitar.html" class="instrument-card" data-name="Gitar">
+        <div><h3>Gitar</h3><p>Modern ve klasik müziğin en temel telli çalgısıdır.</p></div>
       </a>
-      <a href="tambur.html" class="instrument-card" data-name="tambur">
-    <h3>Tambur</h3>
-    <p>Uzun saplı, perdesiz ve zengin tınıya sahip klasik Türk müziği çalgısı</p>
-</a>
+
+      <a href="tambur.html" class="instrument-card" data-name="Tambur">
+        <div><h3>Tambur</h3><p>Uzun saplı, perdesiz ve zengin tınıya sahip klasik Türk müziği çalgısı</p></div>
+      </a>
 
       <a href="baglama.html" class="instrument-card" data-name="Bağlama">
-        <div>
-            <h3>Bağlama</h3>
-            <p>Türk halk müziğinin temel taşı olan, telli ve mızrapla çalınan çalgıdır.</p>
-        </div>
+        <div><h3>Bağlama</h3><p>Türk halk müziğinin temel taşı olan, telli ve mızrapla çalınan çalgıdır.</p></div>
       </a>
-      
+
       <a href="ud.html" class="instrument-card" data-name="Ud">
-        <div>
-            <h3>Ud</h3>
-            <p>Perdesiz, armut biçimli, mızrapla çalınan, Orta Doğu müziğinde kullanılan çalgıdır.</p>
-        </div>
+        <div><h3>Ud</h3><p>Perdesiz, armut biçimli, mızrapla çalınan, Orta Doğu müziğinde kullanılan çalgıdır.</p></div>
       </a>
-      
+
       <a href="kanun.html" class="instrument-card" data-name="Kanun">
-        <div>
-            <h3>Kanun</h3>
-            <p>Geleneksel Türk müziğinde yaygın olan, diz üstünde çalınan çok telli çalgıdır.</p>
-        </div>
+        <div><h3>Kanun</h3><p>Geleneksel Türk müziğinde yaygın olan, diz üstünde çalınan çok telli çalgıdır.</p></div>
       </a>
 
-
-
-      </div>
+    </div>
   </main>
 
   <footer id="site-footer" class="fixed-footer"></footer>
 
   <script src="js/ui.js"></script>
   <script src="js/main.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const searchInput = document.getElementById("searchInput");
+      const cards = document.querySelectorAll(".instrument-card");
+
+      searchInput.addEventListener("input", function () {
+        const query = searchInput.value.toLowerCase().trim();
+
+        cards.forEach(card => {
+          const name = card.getAttribute("data-name")?.toLowerCase() || "";
+          const text = card.textContent.toLowerCase();
+
+          if (name.includes(query) || text.includes(query) || query === "") {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
