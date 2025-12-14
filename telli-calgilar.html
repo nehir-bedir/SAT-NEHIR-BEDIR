@@ -12,11 +12,28 @@
   <link rel="stylesheet" href="css/components/wide-card.css" /> 
   
   <style>
+    /* ARKA PLAN - TELLI ÇALGILAR */
     body {
-      background-color: var(--background-dark, #111);
-      color: var(--text-light, #fff);
+         background: linear-gradient(rgba(12,30,43,0.85), rgba(12,30,43,0.95)), 
+            url('assets/images/backgrounds/telli-bg.jpg') center/cover fixed no-repeat;
+      color: #eee;
+      min-height: 100vh;
     }
 
+    /* Okunurluk için kart ve arama çubuğu */
+    .category-search-container,
+    .instruments-grid .instrument-card {
+      background: rgba(32,64,85,0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 15px;
+      padding: 20px;
+    }
+
+    .instrument-card:hover {
+      background: rgba(32,64,85,0.9);
+      transform: translateY(-10px);
+    }
+  
     .category-search-container {
       max-width: 600px;
       margin: 40px auto;
@@ -49,8 +66,17 @@
       font-style: italic;
     }
 
+    h1 {
+      text-align: center;
+      color: #f1c40f;
+      font-size: 3rem;
+      margin: 40px 0;
+      text-shadow: 0 0 20px rgba(241,196,15,0.5);
+    }
+
     @media (max-width: 768px) {
       .category-search { padding: 16px 24px; font-size: 1rem; }
+      h1 { font-size: 2.5rem; }
     }
   </style>
 </head>
@@ -66,7 +92,6 @@
     </div>
 
     <div class="instruments-grid" id="instrumentsGrid">
-      
       <a href="gitar.html" class="instrument-card" data-name="Gitar">
         <div><h3>Gitar</h3><p>Modern ve klasik müziğin en temel telli çalgısıdır.</p></div>
       </a>
@@ -86,7 +111,6 @@
       <a href="kanun.html" class="instrument-card" data-name="Kanun">
         <div><h3>Kanun</h3><p>Geleneksel Türk müziğinde yaygın olan, diz üstünde çalınan çok telli çalgıdır.</p></div>
       </a>
-
     </div>
   </main>
 

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viyola | Detaylı İnceleme</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+
+    <style>
+        
+        body { background-color: #183040; color: #eee; }
+        .detail-container { max-width: 1200px; margin: 30px auto; padding: 30px; background-color: #204055; border-radius: 15px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
+        .detail-container h1 { font-size: 2.8rem; color: #d4af37; text-align: center; margin-bottom: 40px; border-bottom: 4px solid #f1c40f; padding-bottom: 15px; }
+        .content-section { display: flex; align-items: center; gap: 40px; margin-bottom: 50px; flex-wrap: wrap; }
+        .content-section.reverse { flex-direction: row-reverse; }
+        .section-text { flex: 1; min-width: 300px; }
+        .section-text h2 { color: #f1c40f; font-size: 1.6rem; margin-bottom: 20px; border-left: 6px solid #d4af37; padding-left: 15px; }
+        .section-text p { line-height: 1.8; font-size: 1.05rem; }
+        .section-image { flex: 1; min-width: 300px; }
+        .section-image img { width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
+        .main-instrument-image { width: 100%; max-width: 700px; display: block; margin: 30px auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
+        .instrument-details { margin-top: 50px; padding: 25px; background-color: #2a4a60; border-radius: 12px; }
+        .toggle-button { display: block; width: fit-content; margin: 0 auto 30px; background-color: #f1c40f; color: #183040; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(241, 196, 15, 0.3); }
+        .toggle-button:hover { background-color: #d4af37; transform: translateY(-2px); box-shadow: 0 10px 25px rgba(241, 196, 15, 0.4); }
+        .types-section { display: none; margin-top: 25px; padding: 25px; background-color: #2a4a60; border-radius: 12px; }
+        .types-section.visible { display: block; }
+        #typeDetails { background-color: #183040; border-radius: 10px; padding: 25px; margin-top: 25px; display: none; }
+        #typeDetails.visible { display: block; }
+        @media (max-width: 768px) { .content-section, .content-section.reverse { flex-direction: column; text-align: center; } .section-image { min-width: auto; } }
+    </style>
+</head>
+
+<body>
+    <header id="site-header"></header>
+
+    <main>
+        <div class="detail-container">
+            <h1>Viyola (Viola)</h1>
+
+            <div class="content-section">
+                <div class="section-text">
+                    <h2>Tanım ve Genel Özellikler</h2>
+                    <p>
+                        Viyola, kemandan büyük, çellodan küçük olan ve keman gibi omuzda çalınan yaylı bir çalgıdır. Keman ailesinin alto sesine karşılık gelir. Genellikle dört teli bulunur ve daha uzun gövdesi sayesinde kemandan daha derin, daha koyu ve daha kadifemsi bir tınıya sahiptir.
+                    </p>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/viyola-keman-fark.jpg" alt="Viyola ve Keman Karşılaştırması">
+                </div>
+            </div>
+
+            <div class="content-section reverse">
+                <div class="section-text">
+                    <h2>Akort ve Nota Yazılımı</h2>
+                    <p>
+                        Viyola, kemana göre bir beşli daha pes akort edilir. Telleri kalın telden inceye doğru Do-Sol-Re-La (C-G-D-A) seslerine akort edilir. Nota yazılımında kemanların kullandığı Sol anahtarı yerine, orkestrada orta seslerin temsilcisi olarak Alto (Do) anahtarını kullanır.
+                    </p>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/viyola-akort.jpg" alt="Viyola Akort Düzeni">
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="section-text">
+                    <h2>Orkestradaki Rolü</h2>
+                    <p>
+                        Viyola, bir orkestranın veya oda müziği topluluğunun temelini oluşturan orta sesleri sağlar. Sıklıkla melodiyi taşıyan kemanlar ile bası sağlayan çellolar arasındaki harmonik boşluğu doldurur. Derin sesi, armoniye sıcaklık ve zenginlik katar, bu nedenle genellikle "orkestranın sesi" olarak adlandırılır.
+                    </p>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/viyola-orkestra.jpg" alt="Orkestrada Viyola Bölümü">
+                </div>
+            </div>
+
+            <div class="instrument-details">
+                <button id="toggleTypesButton" class="toggle-button">Viyolanın Standart Boyutlarını İncele</button>
+                
+                <div id="typesSection" class="types-section">
+                    <h2>Viyola Boyutları</h2>
+                    <div id="typeDetails">
+                        <h3>Viyola Boyut Çeşitliliği</h3>
+                        <p>
+                            Kemanların aksine, viyolanın standart bir boyutu yoktur. Profesyonel enstrümanlar genellikle 15.5 inç (yaklaşık 39 cm) ile 17 inç (yaklaşık 43 cm) arasında değişir. İcracı, kendi fiziksel yapısına ve tercih ettiği tınıya göre uygun boyutu seçer. Daha büyük bir gövde genellikle daha derin ve daha zengin bir ses üretir.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('toggleTypesButton');
+            const typesSection = document.getElementById('typesSection');
+            const typeDetails = document.getElementById('typeDetails');
+
+            toggleButton.addEventListener('click', () => {
+                const isVisible = typesSection.classList.toggle('visible');
+                typeDetails.classList.toggle('visible', isVisible);
+                toggleButton.textContent = isVisible ? 'Boyutları Gizle' : 'Viyolanın Standart Boyutlarını İncele';
+            });
+        });
+    </script>
+</body>
+</html>

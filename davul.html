@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davul (Silindir Davul) | Detaylı İnceleme</title>
+    
+    <style>
+       
+        body { font-family: Arial, sans-serif; background-color: #183040; color: #eee; margin: 0; padding: 0; }
+        .detail-container { max-width: 1200px; margin: 30px auto; padding: 30px; background-color: #204055; border-radius: 15px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
+        .detail-container h1 { font-size: 2.8rem; color: #f1c40f; text-align: center; margin-bottom: 40px; border-bottom: 4px solid #f1c40f; padding-bottom: 15px; }
+        .content-section { display: flex; align-items: center; gap: 40px; margin-bottom: 50px; flex-wrap: wrap; }
+        .content-section.reverse { flex-direction: row-reverse; }
+        .section-text { flex: 1; min-width: 300px; }
+        .section-text h2 { color: #d4af37; font-size: 1.6rem; margin-bottom: 20px; border-left: 6px solid #d4af37; padding-left: 15px; }
+        .section-text p { line-height: 1.8; font-size: 1.05rem; }
+        .section-image { flex: 1; min-width: 300px; text-align: center; }
+        .section-image img, .main-instrument-image { width: 100%; max-width: 400px; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
+        .main-instrument-image { max-width: 700px; display: block; margin: 30px auto; }
+        .instrument-details { margin-top: 50px; padding: 25px; background-color: #2a4a60; border-radius: 12px; }
+        .toggle-button { display: block; width: fit-content; margin: 0 auto 30px; background-color: #f1c40f; color: #183040; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(241, 196, 15, 0.3); }
+        .toggle-button:hover { background-color: #d4af37; transform: translateY(-2px); }
+        .types-section { display: none; margin-top: 25px; padding: 25px; background-color: #2a4a60; border-radius: 12px; }
+        #typeDetails { background-color: #183040; border-radius: 10px; padding: 25px; margin-top: 15px; }
+        @media (max-width: 768px) { .content-section, .content-section.reverse { flex-direction: column; text-align: center; } .section-image { min-width: auto; } }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="detail-container">
+            <h1>Davul (Çift Derili Silindir)</h1>
+
+            <div class="content-section">
+                <div class="section-text">
+                    <h2>Tanım ve Yapısal Özellikler</h2>
+                    <p>
+                        Davul, silindir şeklinde bir gövdeye sahip, iki tarafı gerilmiş derilerle kaplı vurmalı çalgıdır. Genellikle askerî bandolarda, halk müziğinde ve özellikle Türk geleneksel müziğinde (davul-zurna) ritim enstrümanı olarak kullanılır.
+                    </p>
+                    <p>
+                        Geleneksel Türk davulu, bir eldeki kalın çubukla (tokmak) derin bas sesleri, diğer eldeki ince çubukla (çubuk/sopa) ise tiz sesleri üretmek üzere tasarlanmıştır. Bu çift ses özelliği, enstrümanı hem melodi hem de ritim taşıyabilir hale getirir.
+                    </p>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/davul.jpg" alt="Davul ve Çubukları">
+                </div>
+            </div>
+
+            <div class="content-section reverse">
+                <div class="section-text">
+                    <h2>Kullanım ve İsimlendirme</h2>
+                    <p>
+                        Davul, farklı kültürlerde ve boyutlarda farklı isimlerle anılır:
+                    </p>
+                    <ul>
+                        <li>Türk Davulu / Köçekçe Davulu (Tapan / Daouli): Genellikle omuzda taşınır ve hem tokmak hem de ince sopa ile çalınır.</li>
+                        <li>Bas Davul (Bass Drum): Batı orkestralarında ve bandolarda kullanılan, daha büyük ve derin sesli silindir davuldur.</li>
+                        <li>Yöresel Davullar: Yöreden yöreye değişen davul ebatları ve tokmak şekilleri, farklı ritim ve tınılar yaratır.</li>
+                    </ul>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/davul.calma.jpg" alt="Davul Çalım Şekli">
+                </div>
+            </div>
+
+            <div class="instrument-details">
+                <button id="toggleTypesButton" class="toggle-button">Davul Derisi (Membran) Türlerini Keşfet</button>
+                
+                <div id="typesSection" class="types-section">
+                    <h2>Davul Derisi (Membran) Türleri</h2>
+                    <div id="typeDetails">
+                        <p>
+                            Hayvan Derisi (Geleneksel): Keçi veya dana derisinden yapılır. Sesi daha sıcak, organik ve otantiktir, ancak nemden etkilenir.
+                        </p>
+                        <hr style="border-color: #f1c40f55;">
+                        <p>
+                            Sentetik Deri (Modern): Plastik (Mylar) bazlı malzemelerden yapılır. Daha dayanıklı, akordu daha stabil ve hava koşullarından etkilenmez. Sesleri genellikle daha keskin ve yüksek projeksiyonludur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('toggleTypesButton');
+            const typesSection = document.getElementById('typesSection');
+            
+            toggleButton.addEventListener('click', () => {
+                const isVisible = typesSection.style.display === 'block';
+                
+                if (isVisible) {
+                    typesSection.style.display = 'none';
+                    toggleButton.textContent = 'Davul Derisi (Membran) Türlerini Keşfet';
+                } else {
+                    typesSection.style.display = 'block';
+                    toggleButton.textContent = 'Membran Türlerini Gizle';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

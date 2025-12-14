@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kemençe | Detaylı İnceleme</title>
+    
+    <style>
+    
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #183040; 
+            color: #eee; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        .detail-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #204055; 
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .detail-container h1 {
+            font-size: 2.8rem;
+            color: #f1c40f; 
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 4px solid #f1c40f;
+            padding-bottom: 15px;
+        }
+
+        .content-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+            flex-wrap: wrap; 
+        }
+
+        .content-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .section-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .section-text h2 {
+            color: #d4af37; 
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            border-left: 6px solid #d4af37;
+            padding-left: 15px;
+        }
+
+        .section-text p {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .section-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .section-image img, .main-instrument-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .main-instrument-image {
+            max-width: 700px;
+            display: block;
+            margin: 30px auto;
+        }
+
+        .instrument-details {
+            margin-top: 50px;
+            padding: 25px;
+            background-color: #2a4a60;
+            border-radius: 12px;
+        }
+
+        .toggle-button {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 30px;
+            background-color: #f1c40f;
+            color: #183040;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(241, 196, 15, 0.3);
+        }
+
+        .toggle-button:hover {
+            background-color: #d4af37;
+            transform: translateY(-2px);
+        }
+
+        .types-section {
+            display: none; 
+            margin-top: 25px;
+            padding: 25px;
+            background-color: #2a4a60;
+            border-radius: 12px;
+        }
+        
+        #typeDetails {
+            background-color: #183040;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .content-section,
+            .content-section.reverse {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .section-image {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="detail-container">
+            <h1>Kemençe (Pontus Liri)</h1>
+
+            <div class="content-section">
+                <div class="section-text">
+                    <h2>Tanım ve Köken</h2>
+                    <p>
+                        Kemençe, Türkiye'de Karadeniz Bölgesi başta olmak üzere farklı yörelerde kullanılan, yayılarak çalınan geleneksel bir yaylı çalgıdır. En bilinen türü olan Karadeniz Kemençesi, ince ve kaşık şeklindeki gövdesi ile dikkat çeker. Genellikle üç telli olup, perdesizdir.
+                    </p>
+                    <p>
+                        Kemençenin kökeni Antik Çağ'daki lirlere dayanır. Karadeniz Kemençesi, bölgenin enerjik ve kıvrak müzik karakteriyle özdeşleşmiştir.
+                    </p>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/kemence.jpg" alt="Karadeniz Kemençesi Çalınışı">
+                </div>
+            </div>
+
+            <div class="content-section reverse">
+                <div class="section-text">
+                    <h2>Çalma Tekniği ve Farkları</h2>
+                    <p>
+                        Kemençe, yaylı çalgılar ailesinin perdesiz enstrümanı olması nedeniyle mikrotonal (koma) sesleri çok rahatça icra etme imkanı sunar. Karadeniz Kemençesi'nde teller, keman ailesindeki gibi parmakların etiyle değil, tırnakla yanlardan itilerek basılır.
+                    </p>
+                    <p>
+                        Klasik Kemençe (İstanbul Kemençesi) ise daha şişkin ve armut şekilli bir gövdeye sahiptir ve yaylı Türk Sanat Müziği icrasında kullanılır. Tellerine parmakların etli kısımları ile basılır.
+                    </p>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/kemence-calinis.jpg" alt="Kemençe Tırnak Tekniği">
+                </div>
+            </div>
+
+            <div class="instrument-details">
+                <button id="toggleTypesButton" class="toggle-button">Kemençe Çeşitlerini ve Kullanım Alanlarını Keşfet</button>
+                
+                <div id="typesSection" class="types-section">
+                    <h2>Kemençe Çeşitlerinin Karşılaştırması</h2>
+                    <div id="typeDetails">
+                        <p>
+                            Karadeniz Kemençesi: <br> Gövde: İnce, uzun, kaşık biçimli. <br> Teknik: Teller tırnakla basılır. <br> Müzik Türü: Enerjik Karadeniz Halk Müziği ve Horon.
+                        </p>
+                        <hr style="border-color: #f1c40f55;">
+                        <p>
+                            Klasik Kemençe: <br> Gövde: Armut biçimli, daha şişkin. <br> Teknik: Teller parmak etiyle basılır. <br> Müzik Türü: Geleneksel Türk Sanat Müziği.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('toggleTypesButton');
+            const typesSection = document.getElementById('typesSection');
+            
+            toggleButton.addEventListener('click', () => {
+                const isVisible = typesSection.style.display === 'block';
+                
+                if (isVisible) {
+                    typesSection.style.display = 'none';
+                    toggleButton.textContent = 'Kemençe Çeşitlerini ve Kullanım Alanlarını Keşfet';
+                } else {
+                    typesSection.style.display = 'block';
+                    toggleButton.textContent = 'Kemençe Çeşitlerini Gizle';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

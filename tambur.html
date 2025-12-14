@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambur | Detaylı İnceleme</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+
+    <style>
+        body {
+            background-color: #183040;
+            color: #eee;
+        }
+
+        /* GERİ DÖN BUTONU */
+        .back-button-wrapper {
+            max-width: 1200px;
+            margin: 20px auto 10px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #f1c40f, #d4af37);
+            color: #183040;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(241,196,15,.35);
+            transition: .3s;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 10px 25px rgba(241,196,15,.55);
+        }
+
+        /* ANA KUTU */
+        .detail-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #204055;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,.3);
+        }
+
+        .detail-container h1 {
+            font-size: 2.8rem;
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 4px solid #f1c40f;
+            padding-bottom: 15px;
+        }
+
+        .content-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .content-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .section-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .section-text h2 {
+            color: #f1c40f;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            border-left: 6px solid #d4af37;
+            padding-left: 15px;
+        }
+
+        .section-text p {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .section-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .section-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,.4);
+        }
+
+        /* ÇEŞİTLER */
+        .instrument-details {
+            margin-top: 50px;
+            padding: 25px;
+            background-color: #2a4a60;
+            border-radius: 12px;
+        }
+
+        .toggle-button {
+            display: block;
+            margin: 0 auto 30px;
+            background-color: #f1c40f;
+            color: #183040;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .types-section {
+            display: none;
+            margin-top: 25px;
+        }
+
+        .types-section.visible {
+            display: block;
+        }
+
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+            gap: 25px;
+        }
+
+        .type-card {
+            background-color: #183040;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .type-card:hover,
+        .type-card.active {
+            border: 2px solid #f1c40f;
+            transform: translateY(-3px);
+        }
+
+        #typeDetails {
+            display: none;
+            margin-top: 25px;
+            padding: 25px;
+            background-color: #183040;
+            border-radius: 10px;
+        }
+
+        #typeDetails.visible {
+            display: block;
+        }
+
+        @media(max-width:768px) {
+            .content-section,
+            .content-section.reverse {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header id="site-header"></header>
+
+<div class="back-button-wrapper">
+    <button class="back-button" onclick="history.back()">← Geri Dön</button>
+</div>
+
+<main>
+    <div class="detail-container">
+        <h1>Tambur</h1>
+
+        <div class="content-section">
+            <div class="section-text">
+                <h2>Tanım ve Genel Özellikler</h2>
+                <p>
+                    Tambur, Türk klasik müziğinin en önemli telli çalgılarından biridir.
+                    Uzun saplı, perdeli ve mızrapla çalınır. Derin ve zarif tınısı ile
+                    makam müziğinin en güçlü ifade araçlarındandır.
+                </p>
+            </div>
+            <div class="section-image">
+                <img src="assets/images/tambur.jpg" alt="Tambur">
+            </div>
+        </div>
+
+        <div class="content-section reverse">
+            <div class="section-text">
+                <h2>Tarihsel Gelişimi</h2>
+                <p>
+                    Tamburun kökeni Orta Asya’ya dayanır. Osmanlı saray müziğinde gelişmiş,
+                    Tanburi Cemil Bey gibi ustalarla zirveye ulaşmıştır.
+                </p>
+            </div>
+            <div class="section-image">
+                <img src="assets/images/tambur-close.jpg" alt="Tambur Yakın Plan">
+            </div>
+        </div>
+
+        <div class="instrument-details">
+            <button id="toggleTypesButton" class="toggle-button">
+                Tambur Çeşitlerini Keşfet
+            </button>
+
+            <div id="typesSection" class="types-section">
+                <div class="types-grid" id="typesGrid"></div>
+                <div id="typeDetails"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="js/ui.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const data = {
+        klasik: {
+            title: "Klasik Tambur",
+            info: "Türk sanat müziğinde en yaygın kullanılan, derin tınılı tambur türüdür."
+        },
+        kisa: {
+            title: "Kısa Sap Tambur",
+            info: "Daha kompakt yapılı, taşınabilir ve parlak tınılı tambur."
+        },
+        elektro: {
+            title: "Elektro Tambur",
+            info: "Sahne performansları için manyetikli modern tambur."
+        }
+    };
+
+    const grid = document.getElementById("typesGrid");
+    const details = document.getElementById("typeDetails");
+    const toggle = document.getElementById("toggleTypesButton");
+    const section = document.getElementById("typesSection");
+
+    Object.keys(data).forEach(key => {
+        const card = document.createElement("div");
+        card.className = "type-card";
+        card.innerHTML = `<h4>${data[key].title}</h4>`;
+        card.onclick = () => {
+            details.innerHTML = `<h3>${data[key].title}</h3><p>${data[key].info}</p>`;
+            details.classList.add("visible");
+        };
+        grid.appendChild(card);
+    });
+
+    toggle.onclick = () => {
+        section.classList.toggle("visible");
+    };
+});
+</script>
+
+</body>
+</html>
