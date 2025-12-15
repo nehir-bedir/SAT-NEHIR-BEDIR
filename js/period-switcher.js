@@ -1,4 +1,4 @@
-// js/history-period-switcher.js
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const periodButtons = document.querySelectorAll('.period-button');

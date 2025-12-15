@@ -1,314 +1,190 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trompet | Detaylı İnceleme</title>
-  
-  <link rel="stylesheet" href="css/reset.css" />
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/components/header.css" />
-  <link rel="stylesheet" href="css/components/footer.css" />
-  
-  <link rel="stylesheet" href="css/components/detail-page.css" /> 
-
-  <style>
-    /* ----------------------------------------------------------------- */
-    /* 💥 KRİTİK GÖMÜLÜ STİLLER: KOYU DENİZ MAVİSİ TEMA VE SARI BUTON VURGUSU */
-    /* ----------------------------------------------------------------- */
-
-    /* Ana Arka Plan Rengi: Koyu Deniz Mavisi */
-    body {
-        background-color: #183040 !important; 
-        color: #eee;
-    }
-
-    /* Genel Kontayner Ayarları */
-    .detail-container {
-        max-width: 1100px;
-        margin: 50px auto;
-        padding: 30px;
-        background-color: #204055; /* İç konteyner biraz daha açık mavi */
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        color: #eee;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trompet | Detaylı İnceleme</title>
     
-    /* Başlıklar ve Vurgu Renkleri (Sarı/Altın kalır) */
-    .detail-container h1 {
-        font-size: 2.5rem;
-        color: #d4af37; /* Sarı/Altın */
-        text-align: center;
-        margin-bottom: 40px;
-        border-bottom: 3px solid #f1c40f; 
-        padding-bottom: 10px;
-    }
-    .instrument-text h2 {
-        color: #f1c40f; /* Parlak Sarı Başlık */
-        border-left: 5px solid #d4af37;
-        padding-left: 10px;
-    }
+    <style>
+       
+        body { font-family: Arial, sans-serif; background-color: #183040; color: #eee; margin: 0; padding: 0; }
+       
+           #site-header {
+           width: 100%;
+           background: linear-gradient(90deg, #000, #111);
+           padding: 18px 40px;
+           box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+           position: relative;
+           z-index: 999;
+         }
+       
+       
+         .back-button-wrapper {
+         width: 100%;
+         margin: 25px auto;
+         display: flex;
+         justify-content: center; 
+         }
 
-    /* Detaylar ve Butonlar Bölümü (Arka Plan) */
-    .detail-sections {
-        margin-top: 40px;
-        padding: 30px;
-        background-color: #2A516C; /* Orta mavi tonu */
-        border-radius: 10px;
-        color: #eee;
-    }
-    .detail-sections h3 {
-        color: #d4af37;
-        border-bottom: 1px dashed #666;
-        padding-bottom: 5px;
-    }
 
-    /* Ana Toggle Buton Stili (SARI VURGU) */
-    .toggle-button {
-        display: inline-block;
-        background-color: #f1c40f; /* Sarı Buton Rengi */
-        color: #183040; /* Koyu Mavi Metin */
-        padding: 12px 25px;
-        border-radius: 30px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.2s;
-        text-decoration: none;
-        margin-top: 20px;
-        text-align: center;
-        border: none;
-    }
-    .toggle-button:hover {
-        background-color: #d4af37; /* Hover için daha koyu sarı */
-        transform: translateY(-2px);
-    }
-    
-    /* YENİ: ÇEŞİTLER İÇİN YAN YANA GÖRSEL BUTON YAPISI */
-    .types-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-        gap: 20px;
-        padding: 20px 0;
-    }
-
-    .type-button {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 15px;
-        background-color: #2A516C; /* .detail-sections ile aynı ton */
-        border: 2px solid transparent;
-        border-radius: 10px;
-        transition: 0.3s;
-        cursor: pointer;
-    }
-
-    .type-button:hover {
-        background-color: #386485; 
-        border-color: #f1c40f; /* Sarı çerçeve vurgusu */
-        transform: translateY(-3px);
-    }
-
-    /* Tıklanan butonu sürekli vurgulama stili (SARI VURGU) */
-    .type-button.active {
-        border-color: #f1c40f !important; /* Aktif sarı çerçeve */
-        background-color: #386485;
-    }
-
-    .type-button img {
-        width: 100%;
-        height: auto;
-        max-height: 150px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 10px;
-    }
-    .type-button h4 {
-        color: #d4af37;
-    }
-
-    /* Açılır Kapanır Alanın CSS'i (Animasyon) */
-    .hidden-section {
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        transition: max-height 0.7s ease-in-out, opacity 0.5s;
-        padding: 0 10px; 
-    }
-    .hidden-section.visible {
-        max-height: 1500px; 
-        opacity: 1;
-        padding: 20px 10px; 
-    }
-    /* Detay alanı içindeki stil */
-    #typeDetails {
-        margin-top: 30px; 
-        padding: 20px; 
-        background-color: #204055 !important; /* Detay alanı için Ana Konteyner tonu */
-        border-radius: 8px;
-    }
-    #typeDetails h4 {
-        color: #f1c40f; 
-        font-size: 1.3rem; 
-        margin-bottom: 10px;
-    }
-
-    /* Mobil Uyumlu Düzenleme */
-    @media (max-width: 800px) {
-        .instrument-info {
-            flex-direction: column;
+        .back-button {
+            background: linear-gradient(135deg, #f1c40f, #d4af37);
+            color: #183040;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(241, 196, 15, 0.35);
+            transition: all 0.3s ease;
         }
-        .instrument-info img {
-            width: 100%;
-            max-width: none;
-            margin-bottom: 20px;
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 10px 25px rgba(241, 196, 15, 0.55);
         }
-        .detail-container {
-            margin: 20px 10px;
-            padding: 20px;
-        }
-    }
-  </style>
+       
+        .detail-container { max-width: 1200px; margin: 30px auto; padding: 30px; background-color: #204055; border-radius: 15px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
+        .detail-container h1 { font-size: 2.8rem; color: #f1c40f; text-align: center; margin-bottom: 40px; border-bottom: 4px solid #f1c40f; padding-bottom: 15px; }
+        .content-section { display: flex; align-items: center; gap: 40px; margin-bottom: 50px; flex-wrap: wrap; }
+        .content-section.reverse { flex-direction: row-reverse; }
+        .section-text { flex: 1; min-width: 300px; }
+        .section-text h2 { color: #d4af37; font-size: 1.6rem; margin-bottom: 20px; border-left: 6px solid #d4af37; padding-left: 15px; }
+        .section-text p { line-height: 1.8; font-size: 1.05rem; }
+        .section-image { flex: 1; min-width: 300px; text-align: center; }
+        .section-image img, .main-instrument-image { width: 100%; max-width: 400px; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
+        .main-instrument-image { max-width: 700px; display: block; margin: 30px auto; }
+        .instrument-details { margin-top: 50px; padding: 25px; background-color: #2a4a60; border-radius: 12px; }
+        .toggle-button { display: block; width: fit-content; margin: 0 auto 30px; background-color: #f1c40f; color: #183040; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(241, 196, 15, 0.3); }
+        .toggle-button:hover { background-color: #d4af37; transform: translateY(-2px); }
+        .types-section { display: none; margin-top: 25px; padding: 25px; background-color: #2a4a60; border-radius: 12px; }
+        #typeDetails { background-color: #183040; border-radius: 10px; padding: 25px; margin-top: 15px; }
+        @media (max-width: 768px) { .content-section, .content-section.reverse { flex-direction: column; text-align: center; } .section-image { min-width: auto; } }
+   
+   footer {
+    background-color: #000;
+    padding: 10px 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer p {
+    color: #fff;
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #f1c40f;
+    text-decoration: none;
+    margin: 0 6px;
+    font-size: 0.9rem;
+}
+   </style>
 </head>
 
 <body>
-  <header id="site-header"></header>
 
-  <main>
-    <div class="detail-container">
-      
-      <h1>Trompet</h1>
-
-      <section class="instrument-info">
-        <img src="assets/images/instruments/trompet-ana.jpg" alt="Trompet Ana Görseli">
+    <header id="site-header">
+    <div class="header-content-wrapper">
+        <a href="ana-sayfa.html" style="color: #d4af37; font-size: 1.5rem; font-weight: bold; text-decoration: none;">
+            <span style="font-size: 1.8rem;">🎶</span> Müzik Aletleri
+        </a>
         
-        <div class="instrument-text">
-          <h2>Trompet Nedir ve Mekanizması?</h2>
-          <p>
-            **Trompet**, bakır üflemeli çalgılar ailesinin en tanınan ve en tiz sesli üyesidir. Ağızlık kısmına hava üflenerek ve dudaklar titreştirilerek ses üretilir. Klasik orkestralardan caz gruplarına kadar geniş bir alanda kullanılır, **parlak ve keskin** bir tınıya sahiptir.
-          </p>
-          <p>
-            Genellikle **3 adet piston valfı** bulunur ve bu valfler boru uzunluğunu değiştirerek farklı notaların çalınmasını sağlar. Valflerin doğru kombinasyonu, trompetin geniş bir ses aralığında müzik yapmasına olanak tanır.
-          </p>
-        </div>
-      </section>
-      
-      <div class="detail-sections">
-        <h3>Trompet Türleri ve Kullanım Alanları</h3>
-        
-        <button id="toggleTypesButton" class="toggle-button">
-            Trompet Türlerini ve Mekanizmasını Gör ⬇️
-        </button>
-        
-        <div id="instrumentTypesSection" class="hidden-section"> 
-            
-            <div class="types-grid">
-                
-                <button class="type-button" data-type="sibemol_trompet">
-                    <img src="assets/images/instruments/trompet-sibemol.jpg" alt="Si Bemol Trompet Görseli">
-                    <h4>Si bemol (Bb) Trompet</h4>
-                </button>
-                
-                <button class="type-button" data-type="do_trompet">
-                    <img src="assets/images/instruments/trompet-do.jpg" alt="Do Trompet Görseli">
-                    <h4>Do (C) Trompet</h4>
-                </button>
-                
-                <button class="type-button" data-type="pikolo_trompet">
-                    <img src="assets/images/instruments/trompet-pikolo.jpg" alt="Pikolo Trompet Görseli">
-                    <h4>Pikolo Trompet</h4>
-                </button>
-                
-            </div>
-            
-            <div id="typeDetails">
-                <p style="text-align: center; color: #d4af37;">Yukarıdaki trompet türlerinden birine tıklayarak detaylı bilgi alabilirsiniz.</p>
-            </div>
-            
-        </div>
-      </div>
+        <nav style="margin-left: 550px;"> 
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px;">
+                <li><a href="ana-sayfa.html" style="color: #fff; text-decoration: none;">Ana Sayfa</a></li>
+                <li>
+                    <a href="#" style="color: #fff; text-decoration: none;">Kategoriler ▼</a>
+                </li>
+                <li><a href="hakkinda.html" style="color: #fff; text-decoration: none;">Hakkında</a></li>
+                <li><a href="iletisim.html" style="color: #fff; text-decoration: none;">İletişim</a></li>
+                <li><a href="kurslar.html" style="color: #fff; text-decoration: none;">Kurslar</a></li>
+            </ul>
+        </nav>
     </div>
-  </main>
+</header>
 
-  <footer id="site-footer" class="fixed-footer"></footer>
+<div class="back-button-wrapper">
+    <button class="back-button" onclick="history.back()">← Geri Dön</button>
+</div>
 
-  <script src="js/ui.js"></script>
-  <script src="js/main.js"></script>
-  
-  <script>
-    const typeData = {
-        sibemol_trompet: {
-            title: "Si bemol (Bb) Trompet",
-            info: "En standart ve yaygın kullanılan trompet türüdür. Caz, pop, bando ve orkestra müziğinde temel çalgıdır. Tınısı parlak ve güçlüdür."
-        },
-        do_trompet: {
-            title: "Do (C) Trompet",
-            info: "Si bemol trompetten biraz daha kısa olup, transpoze gerektirmeden notaların yazıldığı gibi çalınmasına izin verir. Özellikle orkestralarda tercih edilir."
-        },
-        pikolo_trompet: {
-            title: "Pikolo Trompet",
-            info: "Bakır ailesinin en küçüğüdür. Standart trompetin yarısı uzunluğundadır ve çok tiz, yüksek partileri çalmak için kullanılır. Genellikle barok müzikte yer alır."
-        }
-    };
+    <main>
+        <div class="detail-container">
+            <h1>Trompet (Trumpet)</h1>
 
-    document.addEventListener("DOMContentLoaded", () => {
-      // Header ve Footer yükle
-      fetch("partials/header.html").then(res => res.text()).then(data => {
-          const header = document.getElementById("site-header");
-          if(header) header.innerHTML = data;
-      });
+            <div class="content-section">
+                <div class="section-text">
+                    <h2>Tanım ve Ses Üretimi</h2>
+                    <p>
+                        Trompet, bakır üflemeli çalgılar ailesinin en tiz sesli ve en popüler üyesidir. Sesi, icracının ağızlığı dudağıyla titreterek ürettiği havanın, aletin borusunda rezonans yapmasıyla oluşur. Parlak ve güçlü tınısı sayesinde orkestra, bando ve caz müziklerinde melodiyi taşır.
+                    </p>
+                    <p>
+                        Modern trompetlerin boru uzunluğunu değiştiren ve farklı notalar üretmeye yarayan üç adet pistonu (valf) bulunur.
+                    </p>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/trompet.jpg"T alt="Trompet Pistonları">
+                </div>
+            </div>
 
-      fetch("partials/footer.html").then(res => res.text()).then(data => {
-          const footer = document.getElementById("site-footer");
-          if(footer) footer.innerHTML = data;
-      });
-        
-      // Ana Toggle Butonu Fonksiyonu
-      const toggleButton = document.getElementById('toggleTypesButton');
-      const typesSection = document.getElementById('instrumentTypesSection');
+            <div class="content-section reverse">
+                <div class="section-text">
+                    <h2>Çeşitleri ve Malzemeleri</h2>
+                    <p>
+                        En yaygın kullanılan tür Si bemol (B♭) Trompet'tir. Ancak orkestralarda Mi bemol (E♭) ve Do (C) trompetler de kullanılır.
+                    </p>
+                    <p>
+                        Trompetler genellikle pirinçten (brass) yapılır. Farklı pirinç alaşımları (sarı pirinç, kırmızı pirinç gibi) ve üzerindeki lak veya gümüş kaplama, enstrümanın tınısını etkileyebilir.
+                    </p>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/trompet-cesitleri.jpg" alt="Trompet Çeşitleri">
+                </div>
+            </div>
 
-      if (toggleButton && typesSection) {
-          toggleButton.addEventListener('click', function() {
-              const isVisible = typesSection.classList.toggle('visible');
-              
-              if (isVisible) {
-                  toggleButton.innerHTML = 'Çeşitleri Gizle ⬆️';
-                  setTimeout(() => {
-                      typesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }, 100); 
-              } else {
-                  toggleButton.innerHTML = 'Trompet Türlerini ve Mekanizmasını Gör ⬇️';
-              }
-          });
-      }
+            <div class="instrument-details">
+                <button id="toggleTypesButton" class="toggle-button">Trompet Susturucularını (Mute) Keşfet</button>
+                
+                <div id="typesSection" class="types-section">
+                    <h2>Trompet Susturucuları (Mute)</h2>
+                    <div id="typeDetails">
+                        <p>
+                            Trompetin kalak (bell) kısmına takılan susturucular, enstrümanın sesini kısmanın yanı sıra, tınısını tamamen değiştirerek farklı atmosferler yaratır. En yaygın susturucu türleri şunlardır:
+                        </p>
+                        <ul>
+                            <li>Straight Mute (Düz Susturucu): Sesin parlaklığını azaltır ve metalik bir ton verir.</li>
+                            <li>Cup Mute (Kupa Susturucu): Sesin keskinliğini alarak daha yumuşak ve boğuk bir ton yaratır.</li>
+                            <li>Harmon Mute: Caz müziğinde, özellikle Miles Davis'in imza sesi için kullanılan metalik ve vızıltılı bir ses üretir.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-      // Yeni: Tip Butonlarına Tıklama İşlemi
-      const typeButtons = document.querySelectorAll('.type-button');
-      const detailsArea = document.getElementById('typeDetails');
-      
-      typeButtons.forEach(button => {
-          button.addEventListener('click', function() {
-              // 1. Tüm butonlardaki aktif vurguyu kaldır
-              typeButtons.forEach(btn => btn.classList.remove('active'));
-              
-              // 2. Tıklanan butonu aktif yap
-              this.classList.add('active'); 
+     <footer id="site-footer"></footer>
 
-              // 3. Veriyi Yükle
-              const type = this.getAttribute('data-type');
-              const data = typeData[type];
-              
-              detailsArea.innerHTML = `
-                  <h4 style="color: #f1c40f; font-size: 1.3rem; margin-bottom: 10px;">${data.title}</h4>
-                  <p>${data.info}</p>
-              `;
+     <script src="js/ui.js"></script>
 
-              // 4. Detay Alanına Kaydır
-              detailsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          });
-      });
-    });
-  </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('toggleTypesButton');
+            const typesSection = document.getElementById('typesSection');
+            
+            toggleButton.addEventListener('click', () => {
+                const isVisible = typesSection.style.display === 'block';
+                
+                if (isVisible) {
+                    typesSection.style.display = 'none';
+                    toggleButton.textContent = 'Trompet Susturucularını (Mute) Keşfet';
+                } else {
+                    typesSection.style.display = 'block';
+                    toggleButton.textContent = 'Susturucuları Gizle';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

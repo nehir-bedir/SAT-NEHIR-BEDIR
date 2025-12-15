@@ -12,6 +12,34 @@
     <style>
     
         body { background-color: #183040; color: #eee; }
+
+
+        .back-button-wrapper {
+            max-width: 1200px;
+            margin: 20px auto 10px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center; 
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #f1c40f, #d4af37);
+            color: #183040;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(241, 196, 15, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 10px 25px rgba(241, 196, 15, 0.55);
+        }
+
         .detail-container { max-width: 1200px; margin: 30px auto; padding: 30px; background-color: #204055; border-radius: 15px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
         .detail-container h1 { font-size: 2.8rem; color: #d4af37; text-align: center; margin-bottom: 40px; border-bottom: 4px solid #f1c40f; padding-bottom: 15px; }
         .content-section { display: flex; align-items: center; gap: 40px; margin-bottom: 50px; flex-wrap: wrap; }
@@ -33,20 +61,39 @@
     </style>
 </head>
 
-<body>
-    <header id="site-header"></header>
+    <header id="site-header">
+    <div class="header-content-wrapper">
+        <a href="ana-sayfa.html" style="color: #d4af37; font-size: 1.5rem; font-weight: bold; text-decoration: none;">
+            <span style="font-size: 1.8rem;">🎶</span> Müzik Aletleri
+        </a>
+        
+        <nav style="margin-left: 550px;"> 
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px;">
+                <li><a href="ana-sayfa.html" style="color: #fff; text-decoration: none;">Ana Sayfa</a></li>
+                <li>
+                    <a href="#" style="color: #fff; text-decoration: none;">Kategoriler ▼</a>
+                </li>
+                <li><a href="hakkinda.html" style="color: #fff; text-decoration: none;">Hakkında</a></li>
+                <li><a href="iletisim.html" style="color: #fff; text-decoration: none;">İletişim</a></li>
+                <li><a href="kurslar.html" style="color: #fff; text-decoration: none;">Kurslar</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<div class="back-button-wrapper">
+    <button class="back-button" onclick="history.back()">← Geri Dön</button>
+</div>
 
     <main>
         <div class="detail-container">
             <h1>Keman (Violin)</h1>
 
-            <img src="assets/images/keman.jpg" alt="Keman" class="main-instrument-image">
 
             <div class="content-section">
                 <div class="section-text">
                     <h2>Tanım ve Genel Özellikler</h2>
                     <p>
-                        **Keman**, yaylı çalgılar ailesinin en küçük üyesi ve en tiz sesli enstrümanıdır. Genellikle dört teli bulunur ve **arşe** (yay) yardımıyla çalınır. Çok yönlülüğü sayesinde Klasik Batı Müziği'nden Halk Müziği'ne ve Jazz'a kadar geniş bir yelpazede hem solist hem de orkestra enstrümanı olarak kullanılır.
+                        Keman, yaylı çalgılar ailesinin en küçük üyesi ve en tiz sesli enstrümanıdır. Genellikle dört teli bulunur ve arşe (yay) yardımıyla çalınır. Çok yönlülüğü sayesinde Klasik Batı Müziği'nden Halk Müziği'ne ve Jazz'a kadar geniş bir yelpazede hem solist hem de orkestra enstrümanı olarak kullanılır.
                     </p>
                 </div>
                 <div class="section-image">
@@ -59,7 +106,7 @@
                 <div class="section-text">
                     <h2>Akort ve Ses Aralığı</h2>
                     <p>
-                        Keman, kalın telden inceye doğru **Sol-Re-La-Mi (G-D-A-E)** seslerine akort edilir. Bu akort düzeni, ardışık beşli aralıklarla düzenlenmiştir. Enstrümanın küçük gövdesi, parlak ve keskin tınılı, geniş bir ses aralığı üretmesini sağlar. Orkestralarda genellikle melodiyi taşıyan ana ses grubunu oluşturur.
+                        Keman, kalın telden inceye doğru Sol-Re-La-Mi (G-D-A-E) seslerine akort edilir. Bu akort düzeni, ardışık beşli aralıklarla düzenlenmiştir. Enstrümanın küçük gövdesi, parlak ve keskin tınılı, geniş bir ses aralığı üretmesini sağlar. Orkestralarda genellikle melodiyi taşıyan ana ses grubunu oluşturur.
                     </p>
                 </div>
                 <div class="section-image">
@@ -71,7 +118,7 @@
                 <div class="section-text">
                     <h2>Kullanılan Teknikler</h2>
                     <p>
-                        Keman çalarken kullanılan temel teknikler arasında, yayı çekme (**arco**), yayı tellere vurma (**col legno**) ve telleri parmakla çekme (**pizzicato**) bulunur. Ayrıca, parmakla titreşim (**vibrato**) ve birden fazla teli aynı anda çalma (akor) gibi ifade zenginliğini artıran birçok virtüözite tekniği mevcuttur.
+                        Keman çalarken kullanılan temel teknikler arasında, yayı çekme (arco), yayı tellere vurma (col legno) ve telleri parmakla çekme (pizzicato) bulunur. Ayrıca, parmakla titreşim (vibrato) ve birden fazla teli aynı anda çalma (akor) gibi ifade zenginliğini artıran birçok virtüözite tekniği mevcuttur.
                     </p>
                 </div>
                 <div class="section-image">
@@ -87,10 +134,10 @@
                     <div id="typeDetails">
                         <h3>Kemanın Temel Bileşenleri</h3>
                         <p>
-                            Keman; **sap** (neck), tellerin basıldığı **parmak tahtası** (fingerboard), teli tutan **kuyruk** (tailpiece), tellerin titreşimini gövdeye ileten **köprü** (bridge) ve sesi dışarı veren **f delikleri**nden oluşur. En önemlisi, perdesiz klavyesi sayesinde en hassas komaların çalınmasına izin verir.
+                            Keman; sap (neck), tellerin basıldığı parmak tahtası (fingerboard), teli tutan kuyruk (tailpiece), tellerin titreşimini gövdeye ileten köprü (bridge) ve sesi dışarı veren f deliklerinden oluşur. En önemlisi, perdesiz klavyesi sayesinde en hassas komaların çalınmasına izin verir.
                         </p>
                         <p>
-                            **Arşe (Yay):** Genellikle at kuyruğu kılından yapılan ve reçine sürülerek tellerle sürtünmeyi sağlayan çubuktur.
+                            Arşe (Yay): Genellikle at kuyruğu kılından yapılan ve reçine sürülerek tellerle sürtünmeyi sağlayan çubuktur.
                         </p>
                     </div>
                 </div>
@@ -99,6 +146,8 @@
     </main>
 
     <footer id="site-footer"></footer>
+
+   <script src="js/ui.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

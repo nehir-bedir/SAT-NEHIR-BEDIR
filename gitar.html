@@ -6,13 +6,51 @@
     <title>Gitar | Detaylı İnceleme</title>
     
     <style>
-       
+
+        /* HEADER ALANI */
+#site-header {
+    width: 100%;
+    background: linear-gradient(90deg, #000, #111);
+    padding: 0.85px 80px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    position: relative;
+    z-index: 999;
+}
+
+        
         body { 
             font-family: Arial, sans-serif; 
             background-color: #183040; 
             color: #eee; 
             margin: 0; 
             padding: 0; 
+        }
+
+    
+        .back-button-wrapper {
+            max-width: 1200px;
+            margin: 20px auto 10px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center; 
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #f1c40f, #d4af37);
+            color: #183040;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(241, 196, 15, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 10px 25px rgba(241, 196, 15, 0.55);
         }
 
         .detail-container {
@@ -76,6 +114,28 @@
             border-radius: 12px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
         }
+
+        footer {
+          background: #000;
+          padding: 10px 20px;
+          text-align: center;
+          margin-top: 20px;
+        }
+
+        footer p {
+            color: #fff;
+            margin: 0 0 4px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        footer a {
+            color: #f1c40f;
+            text-decoration: none;
+            margin: 0 6px;
+            font-size: 0.85rem;
+        }
+
         
         .main-instrument-image {
             max-width: 700px;
@@ -159,7 +219,7 @@
             border-radius: 8px; 
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
-  
+ 
         .instrument-details {
             margin-top: 50px;
             padding: 25px;
@@ -218,18 +278,39 @@
     </style>
 </head>
 
-<body>
+<header id="site-header">
+    <div class="header-content-wrapper">
+        <a href="ana-sayfa.html" style="color: #d4af37; font-size: 1.5rem; font-weight: bold; text-decoration: none;">
+            <span style="font-size: 1.8rem;">🎶</span> Müzik Aletleri
+        </a>
+        
+        <nav style="margin-left: 550px;"> 
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px;">
+                <li><a href="ana-sayfa.html" style="color: #fff; text-decoration: none;">Ana Sayfa</a></li>
+                <li>
+                    <a href="#" style="color: #fff; text-decoration: none;">Kategoriler ▼</a>
+                </li>
+                <li><a href="hakkinda.html" style="color: #fff; text-decoration: none;">Hakkında</a></li>
+                <li><a href="iletisim.html" style="color: #fff; text-decoration: none;">İletişim</a></li>
+                <li><a href="kurslar.html" style="color: #fff; text-decoration: none;">Kurslar</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="back-button-wrapper">
+    <button class="back-button" onclick="history.back()">← Geri Dön</button>
+</div>
+
     <main>
         <div class="detail-container">
             <h1>Gitar Detaylı İnceleme</h1>
-
-            <img src="https://via.placeholder.com/700x350?text=Gitar+-+Akustik+ve+Elektro" alt="Gitar" class="main-instrument-image">
 
             <div class="content-section">
                 <div class="section-text">
                     <h2>Gitar Tanımı ve Özellikleri</h2>
                     <p>
-                        **Gitar**, dünyanın en yaygın ve popüler telli, perdeli çalgılarından biridir. Genellikle **altı telli** olup, tellere parmaklar veya bir **pena** (mızrap) ile vurularak ses elde edilir. Müzik türlerine göre kullanılan ana türlerini incelemek için aşağıdaki butonları kullanın.
+                        Gitar, dünyanın en yaygın ve popüler telli, perdeli çalgılarından biridir. Genellikle altı telli olup, tellere parmaklar veya bir pena (mızrap) ile vurularak ses elde edilir. Müzik türlerine göre kullanılan ana türlerini incelemek için aşağıdaki butonları kullanın. 
                     </p>
                 </div>
                 <div class="section-image">
@@ -251,14 +332,15 @@
                         </div>
                 </div>
             </div>
+            
             <div class="content-section reverse">
                 <div class="section-text">
                     <h2>Akort Düzeni ve Yapısal Özellikler</h2>
                     <p>
-                        Gitarın standart akort düzeni (en kalın telden en ince tele doğru) şöyledir: **Mi-La-Re-Sol-Si-Mi (E-A-D-G-B-E)**. Bu düzen, gitarı Batı müziğindeki armoni ve akor sistemine mükemmel şekilde uyarlar.
+                        Gitarın standart akort düzeni (en kalın telden en ince tele doğru) şöyledir: Mi-La-Re-Sol-Si-Mi (E-A-D-G-B-E). Bu düzen, gitarı Batı müziğindeki armoni ve akor sistemine mükemmel şekilde uyarlar.
                     </p>
                     <p>
-                        **Akustik ve Klasik** gitarlar sesin gövdedeki rezonansla yükselmesini sağlarken; **Elektro Gitar**'da tellerin titreşimi, manyetikler tarafından elektrik sinyaline dönüştürülür ve amfi sayesinde duyulur hale gelir. Elektro gitarın gövdesi genellikle daha düz ve incedir.
+                        Akustik ve Klasik gitarlar sesin gövdedeki rezonansla yükselmesini sağlarken; Elektro Gitar'da tellerin titreşimi, manyetikler tarafından elektrik sinyaline dönüştürülür ve amfi sayesinde duyulur hale gelir. Elektro gitarın gövdesi genellikle daha düz ve incedir.
                     </p>
                 </div>
                 <div class="section-image">
@@ -273,38 +355,41 @@
                     <h2>Temel Gitar Çalma Teknikleri</h2>
                     <div id="typeDetails">
                         <p>
-                            **Strumming (Akor Çalma):** Ritim oluşturmak için penayla tellere hızlıca vurma. Rock, Pop, Folk müziklerinde yaygındır.
+                            Strumming (Akor Çalma): Ritim oluşturmak için penayla tellere hızlıca vurma. Rock, Pop, Folk müziklerinde yaygındır.
                         </p>
                         <hr style="border-color: #f1c40f55;">
                         <p>
-                            **Fingerpicking (Parmak Tekniği):** Özellikle klasik ve folk müzikte, her bir teli parmakla ayrı ayrı çekerek melodi ve bas hattını eş zamanlı çalma.
+                            Fingerpicking (Parmak Tekniği): Özellikle klasik ve folk müzikte, her bir teli parmakla ayrı ayrı çekerek melodi ve bas hattını eş zamanlı çalma. 
                         </p>
                         <hr style="border-color: #f1c40f55;">
                         <p>
-                            **Tapping (Vurma):** Elektro gitarda parmakları klavye üzerine vurarak ses çıkarma. İleri seviye Rock ve Metal tekniklerinden biridir.
+                            Tapping (Vurma): Elektro gitarda parmakları klavye üzerine vurarak ses çıkarma. İleri seviye Rock ve Metal tekniklerinden biridir.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+    
+   <footer id="site-footer"></footer>
 
+   <script src="js/ui.js"></script>
     <script>
-     
+      
         const gitarTypes = {
             klasik: {
                 title: "Klasik Gitar (Naylon Telli)",
-                info: "Klasik gitar, yumuşak ve yuvarlak sesiyle bilinir. **Naylon teller** kullanır ve daha geniş, düz bir sapa sahiptir. Klasik müzik, Flamenko ve fingerstyle (parmakla çalma) için idealdir.",
+                info: "Klasik gitar, yumuşak ve yuvarlak sesiyle bilinir. Naylon teller kullanır ve daha geniş, düz bir sapa sahiptir. Klasik müzik, Flamenko ve fingerstyle (parmakla çalma) için idealdir.Sağ elini kullanan bir gitarist için, geleneksel klasik gitar gövdeden 12 perde uzaktadır ve sol bacak tarafından düzgün bir şekilde yukarıda tutulur, böylece telleri çeken el ses deliğinin arkasına yakın bir yerde olur. Buna klasik veya sul ponticello pozisyonu denir. Ancak, sağ el farklı tonal nitelikler elde etmek için klavyeye daha yakın hareket edebilir, bu sul tasto pozisyonu olarak bilinir. Gitarist genellikle ayak dayanağı kullanarak sol bacağını daha yukarıda tutar . Öte yandan, modern çelik telli gitar genellikle gövdeden en az 14 perde uzaktadır (bkz. Dreadnought ) ve yaygın olarak sap ve omuz etrafında bir kayışla tutulur.",
                 image: "assets/images/klasik-gitar.jpg"
             },
             akustik: {
                 title: "Akustik Gitar (Çelik Telli)",
-                info: "Akustik gitar, daha parlak, keskin ve yüksek bir sese sahiptir. **Çelik teller** kullanılır ve genellikle pop, rock, country ve folk müzik türlerinde akor (strumming) çalmak için tercih edilir.",
+                info: "Akustik gitar, daha parlak, keskin ve yüksek bir sese sahiptir. Çelik teller kullanılır ve genellikle pop, rock, country ve folk müzik türlerinde akor (strumming) çalmak için tercih edilir.Tip bakımından elektro gitar tarzından farklı, fakat klasik gitara çok yakındır. Çoğu kişi tarafından klasik gitar ile karıştırılabilir. Klasik gitardan biraz daha şişman bir yapıya sahiptir, telleri daha keskindir çünkü tel cinsi çeliktir. Çelik tel olması, basınç sayesinde gerginliği artırır bu sayede daha yüksek ve net temiz ses çıkmasını sağlar. Genellikle 6 telli akustik gitar kullanılır, fakat 12 telli türleri de vardır. Akustik gitar partisyonları sol anahtarıyla yazılır ve tab sistemi de yaygın kullanılan nota biçimlerindendir. Daha çok solo veya ritim olarak çalınır diye bir şey demek yanlış olur çünkü ritimde de soloda da kendine özgü tarzlarını ortaya koymuşlardır. Akort sistemi bakımından klasik gitar ve elektro gitar ile aynıdır çünkü nota sistemleri de aynıdır.",
                 image: "assets/images/akustik-gitar.jpg"
             },
             elektro: {
                 title: "Elektro Gitar (Amplifikatörlü)",
-                info: "Elektro gitarlar, sesi bir manyetik (pickup) aracılığıyla **amplifikatöre** aktarır. Tonları efekt pedalları ile sonsuz çeşitlilikte değiştirilebilir. Rock, Metal, Blues ve Caz'ın ana enstrümanıdır.",
+                info: "Elektro gitarlar, sesi bir manyetik (pickup) aracılığıyla amplifikatöre aktarır. Tonları efekt pedalları ile sonsuz çeşitlilikte değiştirilebilir. Rock, Metal, Blues ve Caz'ın ana enstrümanıdır.Boş gövdeli gitarlar, aynı zamanda kıvrımlı üst yüzeyleri ile Archtop adını da alır, bir yükselticiye gereksinim duymadan, sesin gitardaki boşlukta yankılanarak zengin bir ton çıkarmasıyla çalınan gitarlardır. Her ne kadar bu özelliğe sahip olsalar dahi, bu gitarlar da manyetiklerle kullanılabilmektedir. Üst ve alt ağaç plakaları bir parçadan oyulmuş, yahut ısı ile preslenmiş ağaçlar olabilir. Bu tip gövdelerde keman ailesindeki gibi f delikleri bulunabilir. Bu tarz gövdeyi 1890'da tasarlayan ve dünyaya tanıtan Gibson firmasıdır. Tam olarak 60 hz -250 hz desibel ortaya çıkarabilir.",
                 image: "assets/images/elektro-gitar.jpg"
             }
         };
@@ -334,7 +419,7 @@
                     `;
 
                     detailSection.classList.remove('visible');
-              
+             
                     setTimeout(() => {
                         detailSection.classList.add('visible');
                         detailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -342,6 +427,7 @@
                 });
             });
 
+            // Teknikler bölümü açma/kapama işlevi
             const toggleButton = document.getElementById('toggleTypesButton');
             const typesSection = document.getElementById('typesSection');
             
@@ -356,6 +442,13 @@
                     toggleButton.textContent = 'Teknikleri Gizle';
                 }
             });
+            
+            // Sayfa yüklendiğinde otomatik olarak ilk tipi (Klasik Gitar) seç ve detayları göster (Eklenen kısım)
+            const defaultButton = document.querySelector('.gitar-type-button[data-type="klasik"]');
+            if (defaultButton) {
+                defaultButton.click();
+            }
+            
         });
     </script>
 </body>

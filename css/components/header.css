@@ -1,148 +1,290 @@
 /* css/components/header.css */
 
+
+
 /* Genel Header Kapsayıcısı */
+
 header {
+
     background-color: var(--background-dark); /* Genellikle #111 */
+
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+
     position: sticky;
+
     top: 0;
+
     z-index: 100;
+
 }
+
+
 
 /* Site Navigasyon Çubuğu (Logo ve Linklerin Kapsayıcısı) */
+
 .site-nav {
+
     max-width: 1200px;
+
     margin: 0 auto;
+
     display: flex;
+
     /* Öğeleri yatayda hizalama */
+
     justify-content: space-between; /* Logo sola, nav-links sağa yaslanır */
+
     align-items: center;
+
     padding: 10px var(--spacing-unit); /* Örn: 10px 20px */
+
 }
+
+
 
 /* Navigasyon Linklerinin Kapsayıcısı */
+
 .nav-links {
+
     display: flex;
+
     gap: 25px;
+
     /* *************************************************** */
+
     /* MENÜYÜ ORTALAMA İÇİN: */
+
     /* Eğer menüyü sitenin tam ortasına getirmek istiyorsanız: */
+
     /* margin-left: 200px; gibi manuel bir boşluk bırakılabilir, ancak bu responsive değildir. */
 
-    /* RESPONSIVE VE DENGELİ ORTALAMA: 
+
+
+    /* RESPONSIVE VE DENGELİ ORTALAMA:
+
        Bu, Nav Linklerini Logo'ya göre sağa iter ve menüyü merkeze yakınlaştırır. */
-    margin-right: auto; 
+
+    margin-right: auto;
+
     margin-left: 150px; /* Logo'dan sonra bir miktar boşluk vererek ortalamaya yardımcı olur */
+
     /* *************************************************** */
+
 }
+
+
 
 /* Logo Bağlantısı */
+
 .logo a {
+
     font-size: 1.8rem;
+
     font-weight: bold;
+
     color: var(--primary-color);
+
 }
+
+
 
 /* Tekil Navigasyon Bağlantıları */
+
 .nav-links a {
+
     color: #fff;
+
     font-weight: 500;
+
     padding: 5px 0;
+
     transition: color 0.2s, border-bottom 0.2s;
+
     border-bottom: 2px solid transparent;
+
 }
+
+
 
 /* Bağlantı Hover Stili */
+
 .nav-links a:hover {
+
     color: var(--primary-color);
+
     border-bottom: 2px solid var(--primary-color);
+
 }
 
 
+
+
+
 /* ========================================================= */
+
 /* DROP-DOWN MENÜ STİLLERİ */
+
 /* ========================================================= */
+
+
 
 /* Dropdown konteyneri */
+
 .dropdown {
+
     position: relative; /* Alt menüyü buna göre konumlandırır */
+
     display: inline-block;
+
 }
+
+
 
 /* Dropdown butonu (Kategoriler bağlantısı) */
+
 .dropbtn {
+
     padding-right: 25px; /* Ok (▼) için biraz boşluk bırakır */
+
     cursor: pointer;
+
 }
+
+
 
 /* Dropdown içerikleri (Alt menü) */
+
 .dropdown-content {
+
     display: none; /* Başlangıçta gizli */
+
     position: absolute;
+
     background-color: var(--background-dark); /* Koyu arkaplan */
+
     min-width: 180px;
+
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+
     z-index: 1;
+
     top: 100%; /* Dropdown'un ana bağlantının hemen altına düşmesini sağlar */
+
     left: 0;
+
     border-top: 3px solid var(--primary-color);
+
 }
+
+
 
 /* Dropdown içindeki bağlantılar */
+
 .dropdown-content a {
+
     color: #fff;
+
     padding: 12px 16px;
+
     text-decoration: none;
+
     display: block; /* Her bağlantıyı alt alta yerleştirir */
+
     border-bottom: 1px solid #222;
+
 }
+
+
 
 /* Dropdown bağlantı hover stili */
+
 .dropdown-content a:hover {
+
     background-color: var(--secondary-color); /* Hover'da arka planı koyulaştır */
+
     color: var(--primary-color);
-    border-bottom: 1px solid #222; 
+
+    border-bottom: 1px solid #222;
+
 }
+
+
 
 /* Dropdown'a fare geldiğinde (hover) içeriği göster */
+
 .dropdown:hover .dropdown-content {
+
     display: block;
+
 }
+
+
 
 /* Kategoriler ana bağlantısının alt çizgisi, dropdown açıkken görünmemeli */
+
 .dropdown:hover > a {
+
     border-bottom: 2px solid transparent !important;
+
 }
+
 .dropdown {
+
   position: relative;
+
 }
+
+
 
 .dropdown-toggle {
+
   cursor: pointer;
+
 }
+
+
 
 .dropdown-content {
+
   display: none;
+
   position: absolute;
+
   background-color: #1a1a1a;
+
   min-width: 200px;
+
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
   border-radius: 10px;
+
   z-index: 1000;
+
   top: 100%;
+
   left: 0;
+
   padding: 10px 0;
+
   border: 1px solid #333;
+
 }
+
+
 
 .dropdown:hover .dropdown-content {
+
   display: block;
+
 }
+
+
 
 .dropdown-content li {
-  margin: 0;
-}
 
+  margin: 0;
+
+}
 .dropdown-content a {
   display: block;
   padding: 12px 20px;
@@ -151,12 +293,10 @@ header {
   border-bottom: 1px solid #2a2a2a;
   transition: background-color 0.3s ease;
 }
-
 .dropdown-content a:hover {
   background-color: #f1c40f;
   color: #183040;
 }
-
 .dropdown-content a:last-child {
   border-bottom: none;
 }

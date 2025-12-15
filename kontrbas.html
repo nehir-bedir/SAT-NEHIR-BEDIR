@@ -11,6 +11,33 @@
 
     <style>
         body { background-color: #183040; color: #eee; }
+
+        .back-button-wrapper {
+            max-width: 1200px;
+            margin: 20px auto 10px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center; 
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #f1c40f, #d4af37);
+            color: #183040;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(241, 196, 15, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 10px 25px rgba(241, 196, 15, 0.55);
+        }
+
         .detail-container { max-width: 1200px; margin: 30px auto; padding: 30px; background-color: #204055; border-radius: 15px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
         .detail-container h1 { font-size: 2.8rem; color: #d4af37; text-align: center; margin-bottom: 40px; border-bottom: 4px solid #f1c40f; padding-bottom: 15px; }
         .content-section { display: flex; align-items: center; gap: 40px; margin-bottom: 50px; flex-wrap: wrap; }
@@ -34,12 +61,33 @@
     </style>
 </head>
 
-<body>
-    <header id="site-header"></header>
+<header id="site-header">
+    <div class="header-content-wrapper">
+        <a href="ana-sayfa.html" style="color: #d4af37; font-size: 1.5rem; font-weight: bold; text-decoration: none;">
+            <span style="font-size: 1.8rem;">🎶</span> Müzik Aletleri
+        </a>
+        
+        <nav style="margin-left: 550px;"> 
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px;">
+                <li><a href="ana-sayfa.html" style="color: #fff; text-decoration: none;">Ana Sayfa</a></li>
+                <li>
+                    <a href="#" style="color: #fff; text-decoration: none;">Kategoriler ▼</a>
+                </li>
+                <li><a href="hakkinda.html" style="color: #fff; text-decoration: none;">Hakkında</a></li>
+                <li><a href="iletisim.html" style="color: #fff; text-decoration: none;">İletişim</a></li>
+                <li><a href="kurslar.html" style="color: #fff; text-decoration: none;">Kurslar</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="back-button-wrapper">
+    <button class="back-button" onclick="history.back()">← Geri Dön</button>
+</div>
 
     <main>
         <div class="detail-container">
-            <h1>Kontrabas</h1>
+            <h1>Kontrbas</h1>
 
             <div class="content-section">
                 <div class="section-text">
@@ -66,7 +114,7 @@
             </div>
 
             <div class="instrument-details">
-                <button id="toggleTypesButton" class="toggle-button">Kontrabas Çalma Tekniklerini İncele</button>
+                <button id="toggleTypesButton" class="toggle-button">Kontrbas Çalma Tekniklerini İncele</button>
                 
                 <div id="typesSection" class="types-section">
                     <h2>Temel Kontrbas Çalma Teknikleri</h2>
@@ -92,6 +140,8 @@
     </main>
 
     <footer id="site-footer"></footer>
+
+   <script src="js/ui.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

@@ -1,38 +1,94 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hakkında | Müzik Aletleri</title>
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/components/header.css">
-  <link rel="stylesheet" href="css/components/footer.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hakkında | Müzik Aletleri</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components/header.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+
+    <style>
+        
+        body {
+           
+            background-color: #183040; 
+            margin: 0;
+            
+            background-image: url('assets/images/hakkinda-bg.jpg'); 
+            background-size: cover; 
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        #site-header {
+    position: fixed;   
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;     
+        }
+
+        
+        
+        #site-footer {
+            margin-top: 0 !important; 
+            padding-top: 0;
+        }
+        #site-footer {
+    border-top: none;
+    box-shadow: none;
+}
+
+        
+        .content-box {
+            background-color: rgba(0, 0, 0, 0.65); 
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .about-page {
+            max-width: 900px; 
+            margin: 50px auto; 
+            padding: 20px;
+        }
+        
+        .content-box h1 {
+            color: #f1c40f; 
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
-  <header id="site-header"></header>
-  
+  <header id="site-header"></header>
+  
 
-  <main class="about-page" style="max-width: 900px; margin: 50px auto; padding: 20px;">
-    <h1>Hakkında</h1>
-    <p>
-      Bu web sitesi, farklı müzik aletlerini tanıtmak, kullanıcıların bilgi edinmesini
-      ve kendi yorumlarını paylaşmalarını sağlamak amacıyla tasarlanmıştır.
-    </p>
-    <p>
-      Site tamamen HTML, CSS ve JavaScript kullanılarak geliştirilmiştir. 
-      Veritabanı yerine, basit veri işlemleri için tarayıcı belleği (localStorage) kullanılmıştır.
-    </p>
-    <p>
-      Geliştirici: <strong>Nehir Bedir</strong><br>
-      Proje: <em>Sistem Analizi Dersi - Web Sitesi Projesi</em><br>
-      Yıl: 2025
-    </p>
-  </main>
+    <main class="about-page">
+        <div class="content-box">
+            <h1>Hakkında</h1>
+            <p>
+              Bu web sitesi, farklı müzik aletlerini tanıtmak, kullanıcıların bilgi edinmesini
+              ve kendi yorumlarını paylaşmalarını sağlamak amacıyla tasarlanmıştır.
+            </p>
+            <p>
+              Site tamamen HTML, CSS ve JavaScript kullanılarak geliştirilmiştir. 
+              Veritabanı yerine, basit veri işlemleri için tarayıcı belleği (localStorage) kullanılmıştır.
+            </p>
+            <p>
+              Geliştirici: <strong>Nehir Bedir</strong><br>
+              Proje: <em>Sistem Analizi Dersi - Web Sitesi Projesi</em><br>
+              Yıl: 2025
+            </p>
+        </div>
 
-  <footer id="site-footer"></footer>
+  </main>
 
-  <script src="js/ui.js"></script>
-  <script src="js/main.js"></script>
+  <footer id="site-footer"></footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

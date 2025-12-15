@@ -8,6 +8,47 @@
     <style>
   
         body { font-family: Arial, sans-serif; background-color: #183040; color: #eee; margin: 0; padding: 0; }
+
+       
+#site-header {
+width: 100%;
+background: linear-gradient(90deg, #000, #111);
+padding: 18px 40px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+position: relative;
+z-index: 999;
+}
+
+
+    
+       .back-button-wrapper {
+    width: 100%;
+    margin: 25px auto;
+    display: flex;
+    justify-content: center; 
+}
+
+
+        .back-button {
+            background: linear-gradient(135deg, #f1c40f, #d4af37);
+            color: #183040;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(241, 196, 15, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 10px 25px rgba(241, 196, 15, 0.55);
+        }
+
+
+
         .detail-container { max-width: 1200px; margin: 30px auto; padding: 30px; background-color: #204055; border-radius: 15px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
         .detail-container h1 { font-size: 2.8rem; color: #f1c40f; text-align: center; margin-bottom: 40px; border-bottom: 4px solid #f1c40f; padding-bottom: 15px; }
         .content-section { display: flex; align-items: center; gap: 40px; margin-bottom: 50px; flex-wrap: wrap; }
@@ -24,28 +65,71 @@
         .types-section { display: none; margin-top: 25px; padding: 25px; background-color: #2a4a60; border-radius: 12px; }
         #typeDetails { background-color: #183040; border-radius: 10px; padding: 25px; margin-top: 15px; }
         @media (max-width: 768px) { .content-section, .content-section.reverse { flex-direction: column; text-align: center; } .section-image { min-width: auto; } }
+
+        footer {
+    background-color: #000;
+    padding: 10px 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer p {
+    color: #fff;
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #f1c40f;
+    text-decoration: none;
+    margin: 0 6px;
+    font-size: 0.9rem;
+}
+
     </style>
 </head>
 
 <body>
+
+    <header id="site-header">
+    <div class="header-content-wrapper">
+        <a href="ana-sayfa.html" style="color: #d4af37; font-size: 1.5rem; font-weight: bold; text-decoration: none;">
+            <span style="font-size: 1.8rem;">🎶</span> Müzik Aletleri
+        </a>
+        
+        <nav style="margin-left: 550px;"> 
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px;">
+                <li><a href="ana-sayfa.html" style="color: #fff; text-decoration: none;">Ana Sayfa</a></li>
+                <li>
+                    <a href="#" style="color: #fff; text-decoration: none;">Kategoriler ▼</a>
+                </li>
+                <li><a href="hakkinda.html" style="color: #fff; text-decoration: none;">Hakkında</a></li>
+                <li><a href="iletisim.html" style="color: #fff; text-decoration: none;">İletişim</a></li>
+                <li><a href="kurslar.html" style="color: #fff; text-decoration: none;">Kurslar</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="back-button-wrapper">
+    <button class="back-button" onclick="history.back()">← Geri Dön</button>
+</div>
     <main>
         <div class="detail-container">
             <h1>Akordeon (Accordion)</h1>
-
-            <img src="https://via.placeholder.com/700x350?text=Akordeon+Gorseli" alt="Akordeon" class="main-instrument-image">
 
             <div class="content-section">
                 <div class="section-text">
                     <h2>Tanım ve Ses Üretimi</h2>
                     <p>
-                        **Akordeon**, körükle çalışan bir serbest kamışlı (free-reed) havalı çalgıdır. İcracı, iki elin arasında bulunan **körüğü** açıp kapatarak içindeki kamışları titreştiren hava akımını sağlar. Aynı anda, sağ taraftaki tuşlar/düğmeler melodi, sol taraftaki düğmeler ise bas ve akorları üretir.
+                        Akordeon, körükle çalışan bir serbest kamışlı (free-reed) havalı çalgıdır. İcracı, iki elin arasında bulunan körüğü açıp kapatarak içindeki kamışları titreştiren hava akımını sağlar. Aynı anda, sağ taraftaki tuşlar/düğmeler melodi, sol taraftaki düğmeler ise bas ve akorları üretir.
                     </p>
                     <p>
                         Akordeonun portatifliği ve orkestra dolgunluğunda ses üretebilmesi, onu birçok halk müziği ve tango gibi türün merkezine yerleştirmiştir.
                     </p>
                 </div>
                 <div class="section-image">
-                    <img src="https://via.placeholder.com/400x200?text=Akordeon+Koruk+ve+Tuslar" alt="Akordeon Körük ve Tuşlar">
+                    <img src="assets/images/akordeon-tuslar.jpg" alt="Akordeon Körük ve Tuşlar">
                 </div>
             </div>
 
@@ -56,12 +140,12 @@
                         Akordeonlar, sağ el klavyesinin türüne göre sınıflandırılır:
                     </p>
                     <ul>
-                        <li>**Piyano Akordeon:** Sağ elde, piyanodakine benzer beyaz ve siyah tuşlar bulunur. Avrupa ve Amerika'da en yaygın türdür.</li>
-                        <li>**Kromatik Düğmeli Akordeon (CBA):** Sağ elde düğmeler (butonlar) bulunur. Bu düğmeler kromatik bir düzenle yerleştirilmiştir ve daha geniş bir ses aralığı sunar. Balkanlar ve Rusya'da daha popülerdir.</li>
+                        <li>Piyano Akordeon: Sağ elde, piyanodakine benzer beyaz ve siyah tuşlar bulunur. Avrupa ve Amerika'da en yaygın türdür.</li>
+                        <li>Kromatik Düğmeli Akordeon (CBA): Sağ elde düğmeler (butonlar) bulunur. Bu düğmeler kromatik bir düzenle yerleştirilmiştir ve daha geniş bir ses aralığı sunar. Balkanlar ve Rusya'da daha popülerdir.</li>
                     </ul>
                 </div>
                 <div class="section-image">
-                    <img src="https://via.placeholder.com/400x200?text=Piyano+ve+Dugmeli+Akordeon" alt="Piyano ve Düğmeli Akordeon">
+                    <img src="assets/images/akordeon-turleri.jpg" alt="Piyano ve Düğmeli Akordeon">
                 </div>
             </div>
 
@@ -75,8 +159,8 @@
                             Sol el düğmeleri iki ana sisteme ayrılır:
                         </p>
                         <ul>
-                            <li>**Stradella Bas Sistemi:** En yaygın olanıdır. Tek bir düğmeye basarak hem tek bas notası hem de tam bir akor (majör, minör, dominant) çalınabilir.</li>
-                            <li>**Free-Bass (Serbest Bas) Sistemi:** Her düğme sadece tek bir nota çalar, bu da icracıya karmaşık bas melodileri ve kontrpuan çalma imkanı verir. Genellikle klasik akordeon için kullanılır.</li>
+                            <li>Stradella Bas Sistemi: En yaygın olanıdır. Tek bir düğmeye basarak hem tek bas notası hem de tam bir akor (majör, minör, dominant) çalınabilir.</li>
+                            <li>Free-Bass (Serbest Bas) Sistemi: Her düğme sadece tek bir nota çalar, bu da icracıya karmaşık bas melodileri ve kontrpuan çalma imkanı verir. Genellikle klasik akordeon için kullanılır.</li>
                         </ul>
                     </div>
                 </div>
@@ -84,6 +168,10 @@
         </div>
     </main>
 
+    <footer id="site-footer"></footer>
+
+   <script src="js/ui.js"></script>
+   
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const toggleButton = document.getElementById('toggleTypesButton');

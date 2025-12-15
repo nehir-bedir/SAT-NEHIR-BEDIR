@@ -4,63 +4,79 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Online Kurslar | Müzik Aletleri</title>
+
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/components/header.css">
   <link rel="stylesheet" href="css/components/footer.css">
-  
+
   <style>
-    body { background: #0c1e2b; color: #eee; font-family: 'Segoe UI', sans-serif; }
-    
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(
+        rgba(10, 25, 40, 0.9),
+        rgba(10, 25, 40, 0.9)
+      );
+      color: #eee;
+    }
+
     .kurslar-container {
       max-width: 1200px;
-      margin: 40px auto;
+      margin: 60px auto;
       padding: 40px 20px;
       text-align: center;
     }
 
     .kurslar-container h1 {
-      font-size: 4rem;
+      font-size: 3.8rem;
       color: #f1c40f;
       margin-bottom: 20px;
-      text-shadow: 0 0 30px rgba(241,196,15,0.6);
+      text-shadow: 0 0 25px rgba(241,196,15,0.5);
     }
 
     .kurslar-container p.intro {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       max-width: 800px;
       margin: 0 auto 60px;
       line-height: 1.7;
       opacity: 0.9;
     }
 
-    /* KURS KARTLARI */
+    
     .kurs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      margin-bottom: 80px;
+      gap: 35px;
+      margin-bottom: 90px;
     }
 
+    /* KURS KARTI */
     .kurs-card {
-      background: linear-gradient(135deg, #162b3d, #204055);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-radius: 20px;
       overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.15);
       box-shadow: 0 15px 40px rgba(0,0,0,0.5);
       transition: all 0.4s ease;
       text-decoration: none;
-      color: #eee;
+      color: #fff;
+      position: relative;
     }
 
     .kurs-card:hover {
-      transform: translateY(-15px);
-      box-shadow: 0 25px 60px rgba(241,196,15,0.3);
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 25px 60px rgba(241,196,15,0.35);
+      border-color: #f1c40f;
     }
 
     .kurs-card img {
       width: 100%;
       height: 200px;
       object-fit: cover;
+      filter: brightness(0.85);
     }
 
     .kurs-info {
@@ -70,138 +86,152 @@
     .kurs-info h3 {
       font-size: 1.8rem;
       color: #f1c40f;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .kurs-info p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
+      font-size: 1.05rem;
+      margin-bottom: 18px;
       opacity: 0.9;
+      line-height: 1.5;
     }
 
-    .kurs-price {
-      font-size: 1.4rem;
-      font-weight: bold;
+   
+    .kurs-badge {
+      display: inline-block;
+      background: rgba(241,196,15,0.15);
       color: #f1c40f;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.95rem;
       margin-bottom: 15px;
     }
 
     .kurs-btn {
-      background: #f1c40f;
-      color: #183040;
-      padding: 12px 30px;
+      margin-top: 10px;
+      background: linear-gradient(135deg, #f1c40f, #d4ac0d);
+      color: #000;
+      padding: 12px 26px;
       border: none;
       border-radius: 30px;
       font-weight: bold;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(241,196,15,0.4);
     }
 
     .kurs-btn:hover {
-      background: #ffcd3c;
-      transform: scale(1.05);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(241,196,15,0.6);
     }
 
     /* KAYIT FORMU */
     .kayit-section {
-      background: linear-gradient(135deg, #162b3d, #0f2027);
-      padding: 70px 40px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
       border-radius: 25px;
+      padding: 70px 40px;
       max-width: 800px;
       margin: 0 auto;
       box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.15);
     }
 
     .kayit-section h2 {
-      font-size: 2.8rem;
+      font-size: 2.6rem;
       color: #f1c40f;
       margin-bottom: 20px;
     }
 
-    .kayit-form input,
-    .kayit-form select,
-    .kayit-form button {
-      width: 100%;
-      padding: 16px;
-      margin: 12px 0;
-      border: none;
-      border-radius: 12px;
-      font-size: 1.1rem;
+    .kayit-section p {
+      font-size: 1.2rem;
+      margin-bottom: 35px;
+      opacity: 0.9;
     }
 
     .kayit-form input,
     .kayit-form select {
-      background: #1c2e3d;
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      border: none;
+      background: rgba(0,0,0,0.45);
       color: #fff;
+      outline: none;
     }
 
     .kayit-form button {
-      background: #f1c40f;
-      color: #183040;
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #f1c40f, #d4ac0d);
+      color: #000;
       font-weight: bold;
+      border-radius: 30px;
       cursor: pointer;
-      transition: 0.3s;
+      border: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(241,196,15,0.4);
     }
 
     .kayit-form button:hover {
-      background: #ffcd3c;
       transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(241,196,15,0.6);
     }
 
     @media (max-width: 768px) {
-      .kurslar-container h1 { font-size: 3rem; }
-      .kurslar-container p.intro { font-size: 1.2rem; }
+      .kurslar-container h1 { font-size: 2.8rem; }
+      .kurslar-container p.intro { font-size: 1.1rem; }
     }
   </style>
 </head>
+
 <body>
   <header id="site-header"></header>
 
   <div class="kurslar-container">
     <h1>Online Müzik Kursları</h1>
     <p class="intro">
-      Başlangıç seviyesinden ileri düzeye, kendi temponda öğren. 
-      Videolar, notalar, ödevler ve hocayla birebir geri bildirim seni bekliyor!
+      Başlangıçtan ileri seviyeye, kendi temponda öğren.
+      Videolar, notalar, ödevler ve birebir geri bildirim seni bekliyor.
     </p>
 
     <div class="kurs-grid">
-      <a href="#" class="kurs-card">
+      <div class="kurs-card">
         <img src="assets/images/instruments/gitar.jpg" alt="Gitar Kursu">
         <div class="kurs-info">
           <h3>Gitar Başlangıç</h3>
           <p>Akorttan akorlara, popüler parçalara kadar her şey</p>
-          <div class="kurs-price">Ücretsiz</div>
+          <span class="kurs-badge">Ücretsiz</span><br>
           <button class="kurs-btn">Hemen Başla →</button>
         </div>
-      </a>
+      </div>
 
-      <a href="#" class="kurs-card">
+      <div class="kurs-card">
         <img src="assets/images/instruments/baglama.jpg" alt="Bağlama Kursu">
         <div class="kurs-info">
           <h3>Bağlama Giriş</h3>
           <p>Türkülerden uzun hava tekniklerine</p>
-          <div class="kurs-price">Yakında</div>
+          <span class="kurs-badge">Yakında</span><br>
           <button class="kurs-btn">Bildirim Al</button>
         </div>
-      </a>
+      </div>
 
-      <a href="#" class="kurs-card">
+      <div class="kurs-card">
         <img src="assets/images/instruments/piyano.jpg" alt="Piyano Kursu">
         <div class="kurs-info">
           <h3>Piyano Temel</h3>
           <p>Nota okuma, parmak egzersizleri, klasik ve pop</p>
-          <div class="kurs-price">Ücretsiz</div>
+          <span class="kurs-badge">Ücretsiz</span><br>
           <button class="kurs-btn">Hemen Başla →</button>
         </div>
-      </a>
+      </div>
     </div>
 
-    <!-- KAYIT FORMU -->
     <div class="kayit-section">
       <h2>Erken Kayıt Avantajı!</h2>
-      <p style="font-size:1.3rem; margin-bottom:30px; opacity:0.9;">
-        Kayıt olan ilk 100 kişiye özel bonus içerik + sertifika!
-      </p>
+      <p>İlk 100 kişiye özel bonus içerik + sertifika</p>
+
       <form class="kayit-form">
         <input type="text" placeholder="Ad Soyad" required>
         <input type="email" placeholder="E-posta adresin" required>
@@ -222,10 +252,9 @@
 
   <script src="js/ui.js"></script>
   <script>
-    // Basit form feedback
     document.querySelector('.kayit-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('🎉 Tebrikler! Kaydın alındı. Dersler başladığında sana mail gelecek!');
+      alert('🎉 Tebrikler! Kaydın alındı.');
       this.reset();
     });
   </script>

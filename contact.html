@@ -12,6 +12,82 @@
 <body>
   <header id="site-header"></header>
 
+  <style>
+    
+body {
+    margin: 0;
+    background-image: url("assets/images/iletisim-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+main {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 120px auto 60px;
+    padding: 30px;
+    background: rgba(0,0,0,0.55);
+    border-radius: 12px;
+    color: #fff;
+}
+
+/* BAŞLIK */
+main h1 {
+    color: #f1c40f;
+    text-align: center;
+}
+
+/* INPUT & TEXTAREA – CAM EFEKT */
+main input,
+main textarea {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);            
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-size: 15px;
+}
+
+main input::placeholder,
+main textarea::placeholder {
+    color: rgba(255,255,255,0.75);
+}
+
+main input:focus,
+main textarea:focus {
+    outline: none;
+    border-color: #f1c40f;
+    background: rgba(255, 255, 255, 0.22);
+}
+
+
+/* BUTON */
+main button {
+    background-color: #f1c40f;
+    color: #000;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 12px;
+    cursor: pointer;
+}
+main button:hover {
+    background-color: #d4ac0d;
+}
+</style>
+
+
+
   <main style="max-width: 700px; margin: 40px auto; padding: 20px;">
     <h1>İletişim</h1>
     <p>

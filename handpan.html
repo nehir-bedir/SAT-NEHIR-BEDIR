@@ -4,96 +4,194 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Handpan | Detaylı İnceleme</title>
-    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+
     <style>
-     
-        body { font-family: Arial, sans-serif; background-color: #183040; color: #eee; margin: 0; padding: 0; }
+        body { background-color: #183040; color: #eee; }
+        
+           #site-header {
+           width: 100%;
+           background: linear-gradient(90deg, #000, #111);
+           padding: 18px 40px;
+           box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+           position: relative;
+           z-index: 999;
+         }
+
+
+      
+         .back-button-wrapper {
+         width: 100%;
+         margin: 25px auto;
+         display: flex;
+         justify-content: center; 
+         }
+
+
+        .back-button {
+            background: linear-gradient(135deg, #f1c40f, #d4af37);
+            color: #183040;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(241, 196, 15, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 10px 25px rgba(241, 196, 15, 0.55);
+        }
+       
         .detail-container { max-width: 1200px; margin: 30px auto; padding: 30px; background-color: #204055; border-radius: 15px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
-        .detail-container h1 { font-size: 2.8rem; color: #f1c40f; text-align: center; margin-bottom: 40px; border-bottom: 4px solid #f1c40f; padding-bottom: 15px; }
+        .detail-container h1 { font-size: 2.8rem; color: #d4af37; text-align: center; margin-bottom: 40px; border-bottom: 4px solid #f1c40f; padding-bottom: 15px; }
         .content-section { display: flex; align-items: center; gap: 40px; margin-bottom: 50px; flex-wrap: wrap; }
         .content-section.reverse { flex-direction: row-reverse; }
         .section-text { flex: 1; min-width: 300px; }
-        .section-text h2 { color: #d4af37; font-size: 1.6rem; margin-bottom: 20px; border-left: 6px solid #d4af37; padding-left: 15px; }
+        .section-text h2 { color: #f1c40f; font-size: 1.6rem; margin-bottom: 20px; border-left: 6px solid #d4af37; padding-left: 15px; }
         .section-text p { line-height: 1.8; font-size: 1.05rem; }
         .section-image { flex: 1; min-width: 300px; text-align: center; }
-        .section-image img, .main-instrument-image { width: 100%; max-width: 400px; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
-        .main-instrument-image { max-width: 700px; display: block; margin: 30px auto; }
+        .section-image img { width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
+        .main-instrument-image { width: 100%; max-width: 700px; display: block; margin: 30px auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
         .instrument-details { margin-top: 50px; padding: 25px; background-color: #2a4a60; border-radius: 12px; }
         .toggle-button { display: block; width: fit-content; margin: 0 auto 30px; background-color: #f1c40f; color: #183040; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(241, 196, 15, 0.3); }
-        .toggle-button:hover { background-color: #d4af37; transform: translateY(-2px); }
+        .toggle-button:hover { background-color: #d4af37; transform: translateY(-2px); box-shadow: 0 10px 25px rgba(241, 196, 15, 0.4); }
         .types-section { display: none; margin-top: 25px; padding: 25px; background-color: #2a4a60; border-radius: 12px; }
-        #typeDetails { background-color: #183040; border-radius: 10px; padding: 25px; margin-top: 15px; }
-        @media (max-width: 768px) { .content-section, .content-section.reverse { flex-direction: column; text-align: center; } .section-image { min-width: auto; } }
+        .types-section.visible { display: block; }
+        #typeDetails { background-color: #183040; border-radius: 10px; padding: 25px; margin-top: 25px; }
+        @media (max-width: 768px) { 
+            .content-section, .content-section.reverse { flex-direction: column; text-align: center; } 
+            .section-image { min-width: auto; } 
+        }
+    
+         footer {
+    background-color: #000;
+    padding: 10px 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer p {
+    color: #fff;
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #f1c40f;
+    text-decoration: none;
+    margin: 0 6px;
+    font-size: 0.9rem;
+}
+    
+    
     </style>
 </head>
 
 <body>
+     <header id="site-header">
+    <div class="header-content-wrapper">
+        <a href="ana-sayfa.html" style="color: #d4af37; font-size: 1.5rem; font-weight: bold; text-decoration: none;">
+            <span style="font-size: 1.8rem;">🎶</span> Müzik Aletleri
+        </a>
+        
+        <nav style="margin-left: 550px;"> 
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px;">
+                <li><a href="ana-sayfa.html" style="color: #fff; text-decoration: none;">Ana Sayfa</a></li>
+                <li>
+                    <a href="#" style="color: #fff; text-decoration: none;">Kategoriler ▼</a>
+                </li>
+                <li><a href="hakkinda.html" style="color: #fff; text-decoration: none;">Hakkında</a></li>
+                <li><a href="iletisim.html" style="color: #fff; text-decoration: none;">İletişim</a></li>
+                <li><a href="kurslar.html" style="color: #fff; text-decoration: none;">Kurslar</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="back-button-wrapper">
+    <button class="back-button" onclick="history.back()">← Geri Dön</button>
+</div>
+
     <main>
         <div class="detail-container">
             <h1>Handpan</h1>
 
-            <img src="https://via.placeholder.com/700x350?text=Nakkare+Gorseli" alt="Nakkare" class="main-instrument-image">
-
             <div class="content-section">
                 <div class="section-text">
-                    <h2>Tanım ve Köken</h2>
+                    <h2>Handpan Nedir?</h2>
                     <p>
-                        **Nakkare**, Türk Mehter Müziği ve klasik müziğinde kullanılan, küçük, çanak şeklinde ve çift davuldan oluşan bir vurmalı çalgıdır. İki ayrı davulun bir araya gelmesiyle oluşur; biri daha kalın (bas) ses, diğeri daha tiz (zil) ses verir. Bu, Nakkare'yi armoni üretebilen az sayıdaki vurmalı çalgıdan biri yapar.
-                    </p>
-                    <p>
-                        Kökeni Orta Asya'ya dayanan Nakkare, aynı zamanda Timpani'nin (Orkestra Davulu) atası olarak kabul edilir.
+                        Handpan (ya da halk arasında Hang Drum olarak da bilinir), 2000 yılında İsviçre’de PANArt tarafından icat edilmiş modern bir perküsyon enstrümanıdır. 
+                        UFO şeklinde, tamamen çelikten üretilir ve yalnızca ellerle çalınır. 
+                        Çıkardığı ses son derece hipnotik, meditatif ve duygusaldır. Günümüzde yoga, meditasyon, ses banyosu, sokak müziği ve film müzikleri gibi birçok alanda kullanılmaktadır.
                     </p>
                 </div>
                 <div class="section-image">
-                    <img src="https://via.placeholder.com/400x200?text=Nakkare+Davul+Cifti" alt="Nakkare Çifti">
+                    <img src="assets/images/handpan.jpg" alt="Handpan">
                 </div>
             </div>
 
             <div class="content-section reverse">
                 <div class="section-text">
-                    <h2>Yapısı ve Kullanım Alanları</h2>
+                    <h2>Yapısı ve Akort Sistemi</h2>
                     <p>
-                        Nakkare genellikle metal (bakır veya pirinç) veya kil gövdeye sahiptir. İki davul, bir kasnak üzerine yerleştirilir ve tokalaştırma veya vurma çubuklarıyla çalınır.
-                    </p>
-                    <p>
-                        Müzik literatüründe Nakkare'nin en bilinen kullanımı **Mehter Marşları**'ndadır. Ancak günümüzde klasik Türk müziği icralarında da ritim ve renk unsuru olarak yerini korumaktadır. Çanak biçimindeki yapısı sayesinde sesi, geniş alanlara yayılma özelliğine sahiptir.
+                        Handpan, iki çelik yarım kürenin birleştirilmesiyle oluşur. Üst yüzeyinde merkezi bir nota (Ding) ve etrafında genellikle 7–15 arası ton alanı bulunur. 
+                        Her ton alanı farklı bir nota verir. En yaygın akortlar D Kurd, Celtic Minor, F Pygmy gibi duygusal ve derin skalalardır. 
+                        Ses uzun süre titreşir (sustain), bu da ona eşsiz büyülü karakterini kazandırır.
                     </p>
                 </div>
                 <div class="section-image">
-                    <img src="https://via.placeholder.com/400x200?text=Nakkare+ve+Tokmaklar" alt="Nakkare Çalım Tokmakları">
+                    <img src="assets/images/handpan-yapisi.jpg" alt="Handpan Yapısı">
                 </div>
             </div>
 
             <div class="instrument-details">
-                <button id="toggleTypesButton" class="toggle-button">Nakkare'nin Tarihsel Rolünü Keşfet</button>
+                <button id="toggleTypesButton" class="toggle-button">Handpan Çalma Tekniklerini İncele</button>
                 
                 <div id="typesSection" class="types-section">
-                    <h2>Mehter ve Askeri Müzikteki Rolü</h2>
+                    <h2>Temel Handpan Çalma Teknikleri</h2>
                     <div id="typeDetails">
-                        <p>
-                            Nakkare, Osmanlı İmparatorluğu'nda askeri bandonun (Mehter Takımı) temel ritim enstrümanlarından biriydi. Sesi, askerlere yürüyüş ritmi vermenin yanı sıra, savaşta moral yükseltme ve düşmanı korkutma amaçlarına da hizmet ediyordu.
-                        </p>
+                        <p><strong>Finger Strike (Parmak Vuruşu)</strong><br>
+                        Temiz ve melodik ses için parmak uçlarıyla hafifçe vurulur. Ana melodi tekniğidir.</p>
+                        <hr>
+                        <p><strong>Palm Hit & Slap</strong><br>
+                        Avuç içi ya da parmak kenarıyla güçlü, perküsif ve baslı sesler elde edilir.</p>
+                        <hr>
+                        <p><strong>Ghost Notes & Harmonics</strong><br>
+                        Çok hafif dokunuşlarla hayalet notalar ve armonikler çıkarılır, derinlik katar.</p>
+                        <hr>
+                        <p><strong>Thumb Bass (Ding)</strong><br>
+                        Merkezdeki büyük ton alanı başparmakla çalınır – enstrümanın kalbi sayılır.</p>
+                        <hr>
+                        <p><strong>Roll & Tremolo</strong><br>
+                        Hızlı ardışık vuruşlarla sürekli ve dalgalı ses efekti yaratılır.</p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
+   
+    <footer id="site-footer"></footer>
+
+    <script src="js/ui.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const toggleButton = document.getElementById('toggleTypesButton');
             const typesSection = document.getElementById('typesSection');
-            
+
             toggleButton.addEventListener('click', () => {
-                const isVisible = typesSection.style.display === 'block';
-                
-                if (isVisible) {
-                    typesSection.style.display = 'none';
-                    toggleButton.textContent = "Nakkare'nin Tarihsel Rolünü Keşfet";
-                } else {
-                    typesSection.style.display = 'block';
-                    toggleButton.textContent = 'Tarihsel Rolü Gizle';
-                }
+                const isVisible = typesSection.classList.toggle('visible');
+                toggleButton.textContent = isVisible 
+                    ? 'Teknikleri Gizle' 
+                    : 'Handpan Çalma Tekniklerini İncele';
             });
         });
     </script>

@@ -16,6 +16,32 @@
             color: #eee;
         }
 
+        .back-button-wrapper {
+            max-width: 1200px;
+            margin: 20px auto 10px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center; 
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #f1c40f, #d4af37);
+            color: #183040;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(241, 196, 15, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 10px 25px rgba(241, 196, 15, 0.55);
+        }
+
         .detail-container {
             max-width: 1200px;
             margin: 30px auto;
@@ -191,19 +217,39 @@
 </head>
 
 <body>
-    <header id="site-header"></header>
+    <header id="site-header">
+    <div class="header-content-wrapper">
+        <a href="ana-sayfa.html" style="color: #d4af37; font-size: 1.5rem; font-weight: bold; text-decoration: none;">
+            <span style="font-size: 1.8rem;">🎶</span> Müzik Aletleri
+        </a>
+        
+        <nav style="margin-left: 550px;"> 
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px;">
+                <li><a href="ana-sayfa.html" style="color: #fff; text-decoration: none;">Ana Sayfa</a></li>
+                <li>
+                    <a href="#" style="color: #fff; text-decoration: none;">Kategoriler ▼</a>
+                </li>
+                <li><a href="hakkinda.html" style="color: #fff; text-decoration: none;">Hakkında</a></li>
+                <li><a href="iletisim.html" style="color: #fff; text-decoration: none;">İletişim</a></li>
+                <li><a href="kurslar.html" style="color: #fff; text-decoration: none;">Kurslar</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="back-button-wrapper">
+    <button class="back-button" onclick="history.back()">← Geri Dön</button>
+</div>
 
     <main>
         <div class="detail-container">
             <h1>Ud</h1>
 
-            <img src="assets/images/ud.jpg" alt="Ud" class="main-instrument-image"> 
-
             <div class="content-section">
                 <div class="section-text">
                     <h2>Tanım ve Genel Özellikler</h2>
                     <p>
-                        **Ud**, yayvan, yarım armut biçiminde gövdeye sahip, perdesiz ve telli bir çalgıdır. Arap, Türk, Fars, Yunan ve Kuzey Afrika müziğinin en önemli enstrümanlarından biridir ve modern gitarın atası olarak kabul edilir. Genellikle 11 (5 çift ve 1 tek bas) veya 12 teli bulunur ve mızrap (Rişe) ile çalınır.
+                        Ud, yayvan, yarım armut biçiminde gövdeye sahip, perdesiz ve telli bir çalgıdır. Arap, Türk, Fars, Yunan ve Kuzey Afrika müziğinin en önemli enstrümanlarından biridir ve modern gitarın atası olarak kabul edilir. Genellikle 11 (5 çift ve 1 tek bas) veya 12 teli bulunur ve mızrap (Rişe) ile çalınır.
                     </p>
                 </div>
                 <div class="section-image">
@@ -215,7 +261,7 @@
                 <div class="section-text">
                     <h2>Tarihsel Gelişimi</h2>
                     <p>
-                        Ud'un kökenleri yaklaşık 3500 yıl öncesine, Mezopotamya ve Mısır'a dayanır. Arapçada "ağaç" anlamına gelen **'al-'ūd** kelimesinden türemiştir. İslami Altın Çağ boyunca popülerleşmiş ve İspanya'daki Endülüs Emevi Devleti aracılığıyla Avrupa'ya yayılarak, oradaki telli çalgıların (örneğin Lavta) gelişimini etkilemiştir. Türk müziği repertuarında yüzlerce yıldır yer almaktadır.
+                        Ud'un kökenleri yaklaşık 3500 yıl öncesine, Mezopotamya ve Mısır'a dayanır. Arapçada "ağaç" anlamına gelen 'al-'ūd kelimesinden türemiştir. İslami Altın Çağ boyunca popülerleşmiş ve İspanya'daki Endülüs Emevi Devleti aracılığıyla Avrupa'ya yayılarak, oradaki telli çalgıların (örneğin Lavta) gelişimini etkilemiştir. Türk müziği repertuarında yüzlerce yıldır yer almaktadır.
                     </p>
                 </div>
                 <div class="section-image">
@@ -227,7 +273,7 @@
                 <div class="section-text">
                     <h2>Yapısal Özellikleri: Perdesizlik</h2>
                     <p>
-                        Ud'un en belirgin yapısal özelliği **perdesiz** olmasıdır. Perdesiz sap, icracının sesi tam olarak basma becerisini ve **makam müziğine özgü** ince ses aralıklarını (koma) hatasız çalabilme yeteneğini gerektirir. Armut şeklindeki **teknesi** genellikle maun, ceviz veya akçaağaç gibi farklı ağaç dilimlerinin birleştirilmesiyle yapılır.
+                        Ud'un en belirgin yapısal özelliği perdesiz olmasıdır. Perdesiz sap, icracının sesi tam olarak basma becerisini ve makam müziğine özgü ince ses aralıklarını (koma) hatasız çalabilme yeteneğini gerektirir. Armut şeklindeki teknesi genellikle maun, ceviz veya akçaağaç gibi farklı ağaç dilimlerinin birleştirilmesiyle yapılır.
                     </p>
                 </div>
                 <div class="section-image">
@@ -239,7 +285,7 @@
                 <div class="section-text">
                     <h2>Çalma Teknikleri</h2>
                     <p>
-                        Ud, **Rişe** adı verilen, genellikle ince ve uzun plastik bir mızrap kullanılarak çalınır. Temel teknikler arasında tellere tek tek veya çift vurarak melodi üretmek, **tremo** (hızlı tekrarlanan vuruşlar) ve akor basarak eşlik etme yer alır. Perdesiz yapısı sayesinde parmakların tel üzerindeki hafif kaydırma hareketleri ile **glissando** gibi ifadeli teknikler kolayca uygulanabilir.
+                        Ud, Rişe adı verilen, genellikle ince ve uzun plastik bir mızrap kullanılarak çalınır. Temel teknikler arasında tellere tek tek veya çift vurarak melodi üretmek, tremo (hızlı tekrarlanan vuruşlar) ve akor basarak eşlik etme yer alır. Perdesiz yapısı sayesinde parmakların tel üzerindeki hafif kaydırma hareketleri ile glissando gibi ifadeli teknikler kolayca uygulanabilir.
                     </p>
                 </div>
                 <div class="section-image">
@@ -261,7 +307,9 @@
         </div>
     </main>
 
-    <footer id="site-footer"></footer>
+   <footer id="site-footer"></footer>
+
+   <script src="js/ui.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -276,13 +324,13 @@
                 arap_udu: {
                     title: 'Arap Ud\'u',
                     shortInfo: 'Daha büyük gövdeli, kalın ve tok sesli, genellikle sabit burgulu.',
-                    image: 'assets/images/types/arap-udu.jpg', 
+                    image: 'assets/images/arap-ud.jpg', 
                     detailedInfo: 'Arap Ud\'u daha büyük bir gövdeye sahiptir, bu da daha kalın ve daha tok bir sese neden olur. Sapı Türk Ud\'una göre biraz daha kısadır. Akort düzeni Türk Ud\'una yakındır, ancak genellikle daha pes seslere akort edilir.'
                 },
                 iran_udu: {
                     title: 'Barbat (Fars Ud\'u)',
                     shortInfo: 'Daha derin gövde ve uzun sap ile karakterize edilir.',
-                    image: 'assets/images/types/iran-udu.jpg', 
+                    image: 'assets/images/iran-ud.jpg', 
                     detailedInfo: 'Fars Ud\'u veya Barbat, diğer udlardan daha derin ve uzun bir gövdeye sahiptir, bu da daha dolgun bir tona neden olur. Geleneksel Fars müziği (Dastgah) icrasında kullanılır.'
                 }
             };

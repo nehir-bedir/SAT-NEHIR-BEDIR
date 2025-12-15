@@ -15,6 +15,32 @@
             background-color: #183040;
             color: #eee;
         }
+     
+        .back-button-wrapper {
+            max-width: 1200px;
+            margin: 20px auto 10px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center; 
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #f1c40f, #d4af37);
+            color: #183040;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(241, 196, 15, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 10px 25px rgba(241, 196, 15, 0.55);
+        }
 
         .detail-container {
             max-width: 1200px;
@@ -155,20 +181,39 @@
     </style>
 </head>
 
-<body>
-    <header id="site-header"></header>
+<header id="site-header">
+    <div class="header-content-wrapper">
+        <a href="ana-sayfa.html" style="color: #d4af37; font-size: 1.5rem; font-weight: bold; text-decoration: none;">
+            <span style="font-size: 1.8rem;">🎶</span> Müzik Aletleri
+        </a>
+        
+        <nav style="margin-left: 550px;"> 
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px;">
+                <li><a href="ana-sayfa.html" style="color: #fff; text-decoration: none;">Ana Sayfa</a></li>
+                <li>
+                    <a href="#" style="color: #fff; text-decoration: none;">Kategoriler ▼</a>
+                </li>
+                <li><a href="hakkinda.html" style="color: #fff; text-decoration: none;">Hakkında</a></li>
+                <li><a href="iletisim.html" style="color: #fff; text-decoration: none;">İletişim</a></li>
+                <li><a href="kurslar.html" style="color: #fff; text-decoration: none;">Kurslar</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="back-button-wrapper">
+    <button class="back-button" onclick="history.back()">← Geri Dön</button>
+</div>
 
     <main>
         <div class="detail-container">
             <h1>Kanun</h1>
 
-            <img src="assets/images/kanun.jpg" alt="Kanun" class="main-instrument-image"> 
-
             <div class="content-section">
                 <div class="section-text">
                     <h2>Tanım ve Genel Özellikler</h2>
                     <p>
-                        **Kanun**, yamuk biçimli gövdesi olan, masanın üzerine yatırılarak iki parmağa takılan **yüzük mızrapları** ile çalınan telli bir çalgıdır. Geleneksel Türk, Arap, İran ve Ermeni müziğinde önemli bir yere sahiptir. Genellikle 72 ila 81 arasında teli bulunur ve bu teller, her nota için üçerli gruplar halinde düzenlenmiştir.
+                        Kanun, yamuk biçimli gövdesi olan, masanın üzerine yatırılarak iki parmağa takılan yüzük mızrapları ile çalınan telli bir çalgıdır. Geleneksel Türk, Arap, İran ve Ermeni müziğinde önemli bir yere sahiptir. Genellikle 72 ila 81 arasında teli bulunur ve bu teller, her nota için üçerli gruplar halinde düzenlenmiştir.
                     </p>
                 </div>
                 <div class="section-image">
@@ -180,11 +225,11 @@
                 <div class="section-text">
                     <h2>Tarihsel Gelişimi</h2>
                     <p>
-                        Kanun'un atası olan çalgıların kökeni M.Ö. 2. binyıla kadar uzanır. Modern formunun 10. yüzyılda **Farabi** tarafından geliştirildiği düşünülmektedir. Osmanlı İmparatorluğu döneminde saray müziğinde ve klasik Türk müziğinde yaygınlaşmıştır. 20. yüzyılda **mandallar** (fırdöndü) eklenerek, Türk müziği makamlarının ince ses aralıklarını (koma) çalma yeteneği büyük ölçüde artırılmıştır.
+                        Kanun'un atası olan çalgıların kökeni M.Ö. 2. binyıla kadar uzanır. Modern formunun 10. yüzyılda Farabi tarafından geliştirildiği düşünülmektedir. Osmanlı İmparatorluğu döneminde saray müziğinde ve klasik Türk müziğinde yaygınlaşmıştır. 20. yüzyılda mandallar (fırdöndü) eklenerek, Türk müziği makamlarının ince ses aralıklarını (koma) çalma yeteneği büyük ölçüde artırılmıştır.
                     </p>
                 </div>
                 <div class="section-image">
-                    <img src="assets/images/instruments/kanun-tarih.jpg" alt="Kanun Tarihçesi">
+                    <img src="assets/images/kanun-tarih.jpg" alt="Kanun Tarihçesi">
                 </div>
             </div>
 
@@ -192,11 +237,11 @@
                 <div class="section-text">
                     <h2>Yapısal Özellikleri: Mandallar</h2>
                     <p>
-                        Kanun'u diğer çalgılardan ayıran en önemli özellik, ses perdesini değiştirmek için kullanılan **mandallardır** (fırdöndü). Her telin sol yanında bulunan bu küçük metal kaldıraçlar, telin boyunu kısaltarak makamlara özgü **koma** seslerini (çeyrek tonlar) anında ayarlamaya olanak tanır. Kanun'a bu esnekliği kazandıran mandal sistemi, Türk sanat müziğinin icrası için hayati öneme sahiptir.
+                        Kanun'u diğer çalgılardan ayıran en önemli özellik, ses perdesini değiştirmek için kullanılan mandallardır (fırdöndü). Her telin sol yanında bulunan bu küçük metal kaldıraçlar, telin boyunu kısaltarak makamlara özgü koma seslerini (çeyrek tonlar) anında ayarlamaya olanak tanır. Kanun'a bu esnekliği kazandıran mandal sistemi, Türk sanat müziğinin icrası için hayati öneme sahiptir.
                     </p>
                 </div>
                 <div class="section-image">
-                    <img src="assets/images/instruments/kanun-mandallar.jpg" alt="Kanun Mandalları (Fırdöndü)">
+                    <img src="assets/images/kanun-mandallar.jpg" alt="Kanun Mandalları (Fırdöndü)">
                 </div>
             </div>
 
@@ -204,11 +249,11 @@
                 <div class="section-text">
                     <h2>Çalma Teknikleri</h2>
                     <p>
-                        Kanun, her iki elin işaret parmaklarına takılan **plektrum** (mızrap) adı verilen yüzüklerle çalınır. Kanun icrasında genellikle **tremo** (hızlı titreşim) ve farklı parmak vuruş pozisyonları kullanılır. Mandalların hızlıca değiştirilmesi icracıdan büyük bir beceri ve makam bilgisi gerektirir.
+                        Kanun, her iki elin işaret parmaklarına takılan plektrum (mızrap) adı verilen yüzüklerle çalınır. Kanun icrasında genellikle tremo (hızlı titreşim) ve farklı parmak vuruş pozisyonları kullanılır. Mandalların hızlıca değiştirilmesi icracıdan büyük bir beceri ve makam bilgisi gerektirir.
                     </p>
                 </div>
                 <div class="section-image">
-                    <img src="assets/images/instruments/kanun-plektrum.jpg" alt="Kanun Plektrumu">
+                    <img src="assets/images/kanun-plektrum.jpg" alt="Kanun Plektrumu">
                 </div>
             </div>
 
@@ -220,10 +265,10 @@
                     <div id="typeDetails">
                         <h3>Kanun Boyutları ve Tel Sayıları</h3>
                         <p>
-                            Kanunlar temelde iki ana çeşide ayrılır: **Klasik Türk Kanunu** ve daha az yaygın olan **Arap Kanunu**. Türk Kanunu genellikle 26 ses aralığına ve 78 tele sahiptir ve mandal sistemi oldukça karmaşıktır. Arap Kanunu ise daha az mandal kullanır ve daha çok Batı notalama sistemine yakın perdelerde akort edilir. Günümüzde çoğunlukla Türk Kanunu formu kullanılmaktadır.
+                            Kanunlar temelde iki ana çeşide ayrılır: Klasik Türk Kanunu ve daha az yaygın olan Arap Kanunu. Türk Kanunu genellikle 26 ses aralığına ve 78 tele sahiptir ve mandal sistemi oldukça karmaşıktır. Arap Kanunu ise daha az mandal kullanır ve daha çok Batı notalama sistemine yakın perdelerde akort edilir. Günümüzde çoğunlukla Türk Kanunu formu kullanılmaktadır.
                         </p>
                         <p>
-                            **Kanun, geniş ses aralığı ve makam müziğine uyumu sayesinde, hem solo hem de topluluk içinde zengin ve etkileyici bir enstrümandır.**
+                            Kanun, geniş ses aralığı ve makam müziğine uyumu sayesinde, hem solo hem de topluluk içinde zengin ve etkileyici bir enstrümandır.
                         </p>
                     </div>
                 </div>
@@ -232,6 +277,8 @@
     </main>
 
     <footer id="site-footer"></footer>
+
+   <script src="js/ui.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

@@ -15,6 +15,43 @@
             padding: 0; 
         }
 
+   
+           #site-header {
+           width: 100%;
+           background: linear-gradient(90deg, #000, #111);
+           padding: 18px 40px;
+           box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+           position: relative;
+           z-index: 999;
+         }
+
+
+         .back-button-wrapper {
+         width: 100%;
+         margin: 25px auto;
+         display: flex;
+         justify-content: center; 
+         }
+
+
+        .back-button {
+            background: linear-gradient(135deg, #f1c40f, #d4af37);
+            color: #183040;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(241, 196, 15, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 10px 25px rgba(241, 196, 15, 0.55);
+        }
+
         .detail-container {
             max-width: 1200px;
             margin: 30px auto;
@@ -216,10 +253,56 @@
                 min-width: auto;
             }
         }
+
+         footer {
+    background-color: #000;
+    padding: 10px 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer p {
+    color: #fff;
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #f1c40f;
+    text-decoration: none;
+    margin: 0 6px;
+    font-size: 0.9rem;
+}
+
     </style>
 </head>
 
 <body>
+
+     <header id="site-header">
+    <div class="header-content-wrapper">
+        <a href="ana-sayfa.html" style="color: #d4af37; font-size: 1.5rem; font-weight: bold; text-decoration: none;">
+            <span style="font-size: 1.8rem;">🎶</span> Müzik Aletleri
+        </a>
+        
+        <nav style="margin-left: 550px;"> 
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px;">
+                <li><a href="ana-sayfa.html" style="color: #fff; text-decoration: none;">Ana Sayfa</a></li>
+                <li>
+                    <a href="#" style="color: #fff; text-decoration: none;">Kategoriler ▼</a>
+                </li>
+                <li><a href="hakkinda.html" style="color: #fff; text-decoration: none;">Hakkında</a></li>
+                <li><a href="iletisim.html" style="color: #fff; text-decoration: none;">İletişim</a></li>
+                <li><a href="kurslar.html" style="color: #fff; text-decoration: none;">Kurslar</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="back-button-wrapper">
+    <button class="back-button" onclick="history.back()">← Geri Dön</button>
+</div>
+
     <div class="detail-container">
         <h1>Bateri (Davul Seti) Detaylı İnceleme</h1>
 
@@ -227,7 +310,7 @@
             <div class="section-text">
                 <h2>Bateri Tanımı ve Özellikleri</h2>
                 <p>
-                    **Bateri**, vurmalı çalgılar grubu içinde yer alan bir davul setidir. Çeşitli davullar, ziller ve pedallardan oluşur. Ritim, tempo ve vurgu oluşturmak için kullanılır. Modern müziklerin temel unsuru olup, farklı türlerde (rock, jazz, metal) uyarlanabilir.
+                    Bateri, vurmalı çalgılar grubu içinde yer alan bir davul setidir. Çeşitli davullar, ziller ve pedallardan oluşur. Ritim, tempo ve vurgu oluşturmak için kullanılır. Modern müziklerin temel unsuru olup, farklı türlerde (rock, jazz, metal) uyarlanabilir.
                 </p>
             </div>
             <div class="section-image">
@@ -272,20 +355,25 @@
                 <h2>Temel Bateri Çalma Teknikleri</h2>
                 <div id="typeDetails">
                     <p>
-                        **Rudiments (Temel Vuruşlar):** Single stroke, double stroke, paradiddle gibi temel vuruş desenleri ritim gelişimi için esastır.
+                        Rudiments (Temel Vuruşlar): Single stroke, double stroke, paradiddle gibi temel vuruş desenleri ritim gelişimi için esastır.
                     </p>
                     <hr style="border-color: #f1c40f55;">
                     <p>
-                        **Independence (Bağımsızlık):** Eller ve ayakların bağımsız hareket etmesi, komplex ritimler için şarttır.
+                        Independence (Bağımsızlık): Eller ve ayakların bağımsız hareket etmesi, komplex ritimler için şarttır.
                     </p>
                     <hr style="border-color: #f1c40f55;">
                     <p>
-                        **Ghost Notes:** Hafif vuruşlar, ritme derinlik katar, özellikle funk ve jazz'da kullanılır.
+                        Ghost Notes: Hafif vuruşlar, ritme derinlik katar, özellikle funk ve jazz'da kullanılır.
                     </p>
                 </div>
             </div>
         </div>
     </div>
+     </main>
+
+     <footer id="site-footer"></footer>
+
+     <script src="js/ui.js"></script>
 
     <script>
         

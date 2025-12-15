@@ -1,324 +1,195 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Darbuka | Detaylı İnceleme</title>
-  
-  <link rel="stylesheet" href="css/reset.css" />
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/components/header.css" />
-  <link rel="stylesheet" href="css/components/footer.css" />
-  
-  <link rel="stylesheet" href="css/components/detail-page.css" /> 
-
-  <style>
-    /* ----------------------------------------------------------------- */
-    /* 💥 KRİTİK GÖMÜLÜ STİLLER: KOYU DENİZ MAVİSİ TEMA VE SARI BUTON VURGUSU */
-    /* ----------------------------------------------------------------- */
-
-    /* Ana Arka Plan Rengi: Koyu Deniz Mavisi */
-    body {
-        background-color: #183040 !important; 
-        color: #eee;
-    }
-
-    /* Genel Kontayner Ayarları */
-    .detail-container {
-        max-width: 1100px;
-        margin: 50px auto;
-        padding: 30px;
-        background-color: #204055; /* İç konteyner biraz daha açık mavi */
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        color: #eee;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darbuka | Detaylı İnceleme</title>
     
-    /* Başlıklar ve Vurgu Renkleri (Sarı/Altın kalır) */
-    .detail-container h1 {
-        font-size: 2.5rem;
-        color: #d4af37; /* Sarı/Altın */
-        text-align: center;
-        margin-bottom: 40px;
-        border-bottom: 3px solid #f1c40f; 
-        padding-bottom: 10px;
-    }
-    .instrument-text h2 {
-        color: #f1c40f; /* Parlak Sarı Başlık */
-        border-left: 5px solid #d4af37;
-        padding-left: 10px;
-    }
+    <style>
 
-    /* Detaylar ve Butonlar Bölümü (Arka Plan) */
-    .detail-sections {
-        margin-top: 40px;
-        padding: 30px;
-        background-color: #2A516C; /* Orta mavi tonu */
-        border-radius: 10px;
-        color: #eee;
-    }
-    .detail-sections h3 {
-        color: #d4af37;
-        border-bottom: 1px dashed #666;
-        padding-bottom: 5px;
-    }
+        body { font-family: Arial, sans-serif; background-color: #183040; color: #eee; margin: 0; padding: 0; }
+       
+           #site-header {
+           width: 100%;
+           background: linear-gradient(90deg, #000, #111);
+           padding: 18px 40px;
+           box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+           position: relative;
+           z-index: 999;
+         }
 
-    /* Ana Toggle Buton Stili (SARI VURGU) */
-    .toggle-button {
-        display: inline-block;
-        background-color: #f1c40f; /* Sarı Buton Rengi */
-        color: #183040; /* Koyu Mavi Metin */
-        padding: 12px 25px;
-        border-radius: 30px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.2s;
-        text-decoration: none;
-        margin-top: 20px;
-        text-align: center;
-        border: none;
-    }
-    .toggle-button:hover {
-        background-color: #d4af37; /* Hover için daha koyu sarı */
-        transform: translateY(-2px);
-    }
+
+         .back-button-wrapper {
+         width: 100%;
+         margin: 25px auto;
+         display: flex;
+         justify-content: center; 
+         }
+
+
+        .back-button {
+            background: linear-gradient(135deg, #f1c40f, #d4af37);
+            color: #183040;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(241, 196, 15, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 10px 25px rgba(241, 196, 15, 0.55);
+        }
+        
+        .detail-container { max-width: 1200px; margin: 30px auto; padding: 30px; background-color: #204055; border-radius: 15px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
+        .detail-container h1 { font-size: 2.8rem; color: #f1c40f; text-align: center; margin-bottom: 40px; border-bottom: 4px solid #f1c40f; padding-bottom: 15px; }
+        .content-section { display: flex; align-items: center; gap: 40px; margin-bottom: 50px; flex-wrap: wrap; }
+        .content-section.reverse { flex-direction: row-reverse; }
+        .section-text { flex: 1; min-width: 300px; }
+        .section-text h2 { color: #d4af37; font-size: 1.6rem; margin-bottom: 20px; border-left: 6px solid #d4af37; padding-left: 15px; }
+        .section-text p { line-height: 1.8; font-size: 1.05rem; }
+        .section-image { flex: 1; min-width: 300px; text-align: center; }
+        .section-image img, .main-instrument-image { width: 100%; max-width: 400px; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
+        .main-instrument-image { max-width: 700px; display: block; margin: 30px auto; }
+        .instrument-details { margin-top: 50px; padding: 25px; background-color: #2a4a60; border-radius: 12px; }
+        .toggle-button { display: block; width: fit-content; margin: 0 auto 30px; background-color: #f1c40f; color: #183040; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(241, 196, 15, 0.3); }
+        .toggle-button:hover { background-color: #d4af37; transform: translateY(-2px); }
+        .types-section { display: none; margin-top: 25px; padding: 25px; background-color: #2a4a60; border-radius: 12px; }
+        #typeDetails { background-color: #183040; border-radius: 10px; padding: 25px; margin-top: 15px; }
+        @media (max-width: 768px) { .content-section, .content-section.reverse { flex-direction: column; text-align: center; } .section-image { min-width: auto; } }
     
-    /* YENİ: ÇEŞİTLER İÇİN YAN YANA GÖRSEL BUTON YAPISI */
-    .types-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-        gap: 20px;
-        padding: 20px 0;
-    }
+         footer {
+    background-color: #000;
+    padding: 10px 10px;
+    text-align: center;
+    margin-top: 20px;
+}
 
-    .type-button {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 15px;
-        background-color: #2A516C; /* .detail-sections ile aynı ton */
-        border: 2px solid transparent;
-        border-radius: 10px;
-        transition: 0.3s;
-        cursor: pointer;
-    }
+footer p {
+    color: #fff;
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
 
-    .type-button:hover {
-        background-color: #386485; 
-        border-color: #f1c40f; /* Sarı çerçeve vurgusu */
-        transform: translateY(-3px);
-    }
+footer a {
+    color: #f1c40f;
+    text-decoration: none;
+    margin: 0 6px;
+    font-size: 0.9rem;
+}
 
-    /* Tıklanan butonu sürekli vurgulama stili (SARI VURGU) */
-    .type-button.active {
-        border-color: #f1c40f !important; /* Aktif sarı çerçeve */
-        background-color: #386485;
-    }
-
-    .type-button img {
-        width: 100%;
-        height: auto;
-        max-height: 150px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 10px;
-    }
-    .type-button h4 {
-        color: #d4af37;
-    }
-
-    /* Açılır Kapanır Alanın CSS'i (Animasyon) */
-    .hidden-section {
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        transition: max-height 0.7s ease-in-out, opacity 0.5s;
-        padding: 0 10px; 
-    }
-    .hidden-section.visible {
-        max-height: 1500px; 
-        opacity: 1;
-        padding: 20px 10px; 
-    }
-    /* Detay alanı içindeki stil */
-    #typeDetails {
-        margin-top: 30px; 
-        padding: 20px; 
-        background-color: #204055 !important; /* Detay alanı için Ana Konteyner tonu */
-        border-radius: 8px;
-    }
-    #typeDetails h4 {
-        color: #f1c40f; 
-        font-size: 1.3rem; 
-        margin-bottom: 10px;
-    }
-
-    /* Mobil Uyumlu Düzenleme */
-    @media (max-width: 800px) {
-        .instrument-info {
-            flex-direction: column;
-        }
-        .instrument-info img {
-            width: 100%;
-            max-width: none;
-            margin-bottom: 20px;
-        }
-        .detail-container {
-            margin: 20px 10px;
-            padding: 20px;
-        }
-    }
-  </style>
+    
+    </style>
 </head>
 
 <body>
-  <header id="site-header"></header>
 
-  <main>
-    <div class="detail-container">
-      
-      <h1>Darbuka</h1>
-
-      <section class="instrument-info">
-        <img src="assets/images/instruments/darbuka-ana.jpg" alt="Darbuka Ana Görseli">
+    <header id="site-header">
+    <div class="header-content-wrapper">
+        <a href="ana-sayfa.html" style="color: #d4af37; font-size: 1.5rem; font-weight: bold; text-decoration: none;">
+            <span style="font-size: 1.8rem;">🎶</span> Müzik Aletleri
+        </a>
         
-        <div class="instrument-text">
-          <h2>Darbuka Nedir ve Tarihçesi?</h2>
-          <p>
-            **Darbuka**, Orta Doğu, Kuzey Afrika ve Balkanlar'da yaygın olarak kullanılan, kum saati veya kadeh şeklinde, tek başlı bir el davuludur. Gövdesi genellikle seramik veya metalden yapılır, derisi plastiktir.
-          </p>
-          <p>
-            Parmaklarla ve elin avuç içi kullanılarak "Dum" (derin bas) ve "Tek" (keskin tiz) gibi ana ritmik sesler üretilir. Zengin ritmik yapısı sayesinde hem solo hem de eşlik çalgısı olarak kullanılır.
-          </p>
-        </div>
-      </section>
-      
-      <div class="detail-sections">
-        <h3>Darbuka Türleri ve Temel Teknikleri</h3>
-        
-        <button id="toggleTypesButton" class="toggle-button">
-            Darbuka Türlerini ve Çalım Tekniklerini Keşfet! ⬇️
-        </button>
-        
-        <div id="instrumentTypesSection" class="hidden-section"> 
-            
-            <div class="types-grid">
-                
-                <button class="type-button" data-type="turk_darbukasi">
-                    <img src="assets/images/instruments/darbuka-turk.jpg" alt="Türk Darbukası Görseli">
-                    <h4>Türk Darbukası</h4>
-                </button>
-                
-                <button class="type-button" data-type="misir_darbukasi">
-                    <img src="assets/images/instruments/darbuka-misir.jpg" alt="Mısır Darbukası Görseli">
-                    <h4>Mısır Darbukası (Tabla)</h4>
-                </button>
-                
-                <button class="type-button" data-type="dum_vurus">
-                    <img src="assets/images/instruments/darbuka-dum.jpg" alt="Dum Vuruşu Görseli">
-                    <h4>Dum (Bas Vuruş)</h4>
-                </button>
-                 
-                <button class="type-button" data-type="tek_vurus">
-                    <img src="assets/images/instruments/darbuka-tek.jpg" alt="Tek Vuruşu Görseli">
-                    <h4>Tek (Tiz Vuruş)</h4>
-                </button>
-                
-            </div>
-            
-            <div id="typeDetails">
-                <p style="text-align: center; color: #d4af37;">Yukarıdaki darbuka türlerinden veya temel tekniklerden birine tıklayarak detaylı bilgi alabilirsiniz.</p>
-            </div>
-            
-        </div>
-      </div>
+        <nav style="margin-left: 550px;"> 
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px;">
+                <li><a href="ana-sayfa.html" style="color: #fff; text-decoration: none;">Ana Sayfa</a></li>
+                <li>
+                    <a href="#" style="color: #fff; text-decoration: none;">Kategoriler ▼</a>
+                </li>
+                <li><a href="hakkinda.html" style="color: #fff; text-decoration: none;">Hakkında</a></li>
+                <li><a href="iletisim.html" style="color: #fff; text-decoration: none;">İletişim</a></li>
+                <li><a href="kurslar.html" style="color: #fff; text-decoration: none;">Kurslar</a></li>
+            </ul>
+        </nav>
     </div>
-  </main>
+</header>
 
-  <footer id="site-footer" class="fixed-footer"></footer>
+<div class="back-button-wrapper">
+    <button class="back-button" onclick="history.back()">← Geri Dön</button>
+</div>
 
-  <script src="js/ui.js"></script>
-  <script src="js/main.js"></script>
-  
-  <script>
-    const typeData = {
-        turk_darbukasi: {
-            title: "Türk Darbukası",
-            info: "Genellikle kenarları keskin ve daha hafiftir. Vidasız akort sistemleri kullanılır ve daha tiz, keskin 'Tek' sesleri ön plana çıkarır. Hızlı ve virtüöz ritimler için idealdir."
-        },
-        misir_darbukasi: {
-            title: "Mısır Darbukası (Tabla)",
-            info: "Kenarları yuvarlak ve daha ağırdır (seramik veya döküm alüminyum). Ciddi bir bas sesi ('Dum') üretmek için optimize edilmiştir. Deri plastiktir ve akordu cıvatalarla yapılır."
-        },
-        dum_vurus: {
-            title: "Dum (Bas Vuruş) Tekniği",
-            info: "Elin avuç içine yakın düz kısmı ile davulun merkezine yapılan tok ve derin vuruştur. Ritmik temel (bas) vuruşlarını oluşturur."
-        },
-        tek_vurus: {
-            title: "Tek (Tiz Vuruş) Tekniği",
-            info: "Parmak uçları davulun kenarına, kasnağa yakın bölgeye hızla vurularak elde edilen keskin ve ince tınılı vuruştur. Ritimleri süslemek ve hızlandırmak için kullanılır."
-        }
-    };
+    <main>
+        <div class="detail-container">
+            <h1>Darbuka</h1>
 
-    document.addEventListener("DOMContentLoaded", () => {
-      // Header ve Footer yükle (Bu kısım tüm sayfalarda ortak)
-      fetch("partials/header.html").then(res => res.text()).then(data => {
-          const header = document.getElementById("site-header");
-          if(header) header.innerHTML = data;
-      });
+            <div class="content-section">
+                <div class="section-text">
+                    <h2>Tanım ve Köken</h2>
+                    <p>
+                        Darbuka, Ortadoğu, Kuzey Afrika ve Balkanlar'da yaygın olarak kullanılan, tek derili, kadeh biçiminde (goblet drum) bir vurmalı çalgıdır. Geleneksel olarak çömlekten (kil) yapılsa da, günümüzde alüminyum, bakır veya sentetik malzemelerden de üretilir.
+                    </p>
+                    <p>
+                        El parmaklarıyla çalınan bu enstrüman, yüksek tempolu ve karmaşık ritimler üretme yeteneği sayesinde halk ve klasik Arap/Türk müziklerinin vazgeçilmezidir.
+                    </p>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/darbuka-turleri.jpg" alt="Darbuka Türleri">
+                </div>
+            </div>
 
-      fetch("partials/footer.html").then(res => res.text()).then(data => {
-          const footer = document.getElementById("site-footer");
-          if(footer) footer.innerHTML = data;
-      });
-        
-      // Ana Toggle Butonu Fonksiyonu
-      const toggleButton = document.getElementById('toggleTypesButton');
-      const typesSection = document.getElementById('instrumentTypesSection');
+            <div class="content-section reverse">
+                <div class="section-text">
+                    <h2>Temel Çalım Sesleri ve Teknikleri</h2>
+                    <p>
+                        Darbuka ritimleri, deriye farklı vuruş noktaları ve tekniklerle elde edilen iki temel ses üzerine kuruludur:
+                    </p>
+                    <ul>
+                        <li>Düm (Bass/Tek): Derinin merkezine parmakların birleştiği etli kısımla yapılan vuruş; derin ve tok bir ses verir.</li>
+                        <li>Tek (Treble/Slap): Derinin kenarına parmak uçlarıyla yapılan keskin vuruş; tiz, metalik ve patlayıcı bir ses verir.</li>
+                    </ul>
+                    <p>
+                        Bu iki sesin kombinasyonu, Türk ritimlerindeki gibi karmaşık usulleri ortaya çıkarır.
+                    </p>
+                </div>
+                <div class="section-image">
+                    <img src="assets/images/darbuka-calma.jpg" alt="Darbuka Çalım Teknikleri">
+                </div>
+            </div>
 
-      if (toggleButton && typesSection) {
-          toggleButton.addEventListener('click', function() {
-              const isVisible = typesSection.classList.toggle('visible');
-              
-              if (isVisible) {
-                  toggleButton.innerHTML = 'Türleri ve Teknikleri Gizle ⬆️';
-                  // Açıldığında detaylara kaydır
-                  setTimeout(() => {
-                      typesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }, 100); 
-              } else {
-                  toggleButton.innerHTML = 'Darbuka Türlerini ve Çalım Tekniklerini Keşfet! ⬇️';
-              }
-          });
-      }
+            <div class="instrument-details">
+                <button id="toggleTypesButton" class="toggle-button">Darbuka Çeşitlerini ve İsimlerini Keşfet</button>
+                
+                <div id="typesSection" class="types-section">
+                    <h2>Darbuka Çeşitleri</h2>
+                    <div id="typeDetails">
+                        <p>
+                            Mısır Darbukası (Tabla): Yuvarlak kenarlara ve genellikle daha ağır bir gövdeye sahiptir. Daha tok ve akustik bir sese sahiptir.
+                        </p>
+                        <hr style="border-color: #f1c40f55;">
+                        <p>
+                            Türk Darbukası: Daha keskin kenarlara ve daha hafif bir gövdeye sahiptir. Bu, daha kolay ve hızlı "Tek" sesleri (slap) çalmaya olanak tanır.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-      // Tip Butonlarına Tıklama İşlemi (Çalışması istenen interaktif kısım)
-      const typeButtons = document.querySelectorAll('.type-button');
-      const detailsArea = document.getElementById('typeDetails');
-      
-      typeButtons.forEach(button => {
-          button.addEventListener('click', function() {
-              // 1. Tüm butonlardaki aktif vurguyu kaldır
-              typeButtons.forEach(btn => btn.classList.remove('active'));
-              
-              // 2. Tıklanan butonu aktif yap
-              this.classList.add('active'); 
+     <footer id="site-footer"></footer>
 
-              // 3. Veriyi Yükle
-              const type = this.getAttribute('data-type');
-              const data = typeData[type];
-              
-              detailsArea.innerHTML = `
-                  <h4 style="color: #f1c40f; font-size: 1.3rem; margin-bottom: 10px;">${data.title}</h4>
-                  <p>${data.info}</p>
-              `;
-
-              // 4. Detay Alanına Kaydır
-              detailsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          });
-      });
-    });
-  </script>
+     <script src="js/ui.js"></script>
+     
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('toggleTypesButton');
+            const typesSection = document.getElementById('typesSection');
+            
+            toggleButton.addEventListener('click', () => {
+                const isVisible = typesSection.style.display === 'block';
+                
+                if (isVisible) {
+                    typesSection.style.display = 'none';
+                    toggleButton.textContent = 'Darbuka Çeşitlerini ve İsimlerini Keşfet';
+                } else {
+                    typesSection.style.display = 'block';
+                    toggleButton.textContent = 'Çeşitleri Gizle';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

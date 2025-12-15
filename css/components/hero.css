@@ -10,14 +10,14 @@
     color: #fff; 
     text-align: center;
     
-    /* Animasyon için temel geçiş ayarları */
+    
     opacity: 1;
     visibility: visible;
     transition: opacity 0.5s ease, visibility 0.5s ease, height 0.5s ease;
 }
 
 .hero-content {
-    /* **TAM ORTALAMA: Mutlak Konumlandırma** */
+    
     position: absolute; 
     top: 50%;         
     left: 50%;        
@@ -28,22 +28,19 @@
     text-align: center;
 }
 
-/* ---------------------------------------------------- */
-/* **YENİ STİL: Butona Tıklandığında Hero'yu Gizle** */
-/* ---------------------------------------------------- */
 .hero-section.hidden {
-    opacity: 0; /* Saydamlık 0 yap */
-    visibility: hidden; /* Erişilebilirliği engelle */
-    height: 0; /* Yüksekliğini sıfırla (altındaki içeriğin yukarı kaymasını sağlar) */
+    opacity: 0; 
+    visibility: hidden; 
+    height: 0; 
     padding: 0;
     margin: 0;
     
-    /* visibility 0s 0.5s: Geçiş bittikten hemen sonra elemanı gizle */
+    
     transition: opacity 0.5s ease, visibility 0s 0.5s, height 0.5s ease; 
 }
 
 
-/* Başlık ve Buton Stilleri (Değişmedi) */
+/* Başlık ve Buton Stilleri */
 .hero-content h1 {
     font-size: 3.5rem; 
     color: #f1c40f; 
