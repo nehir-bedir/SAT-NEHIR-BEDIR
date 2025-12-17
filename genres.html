@@ -14,6 +14,30 @@
 
 <body>
   <header id="site-header"></header>
+    <button class="back-btn" onclick="history.back()">← Geri Dön</button>
+  <style>
+
+.back-btn {
+  position: fixed;
+  top: 90px; /* header altı */
+  left: 30px;
+  padding: 10px 20px;
+  background: rgba(0,0,0,0.6);
+  color: #f1c40f;
+  border: 1px solid rgba(241,196,15,0.5);
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.back-btn:hover {
+  background: rgba(241,196,15,0.9);
+  color: #000;
+}
+  </style>
 
   <main>
     <div class="detail-container">
